@@ -1,0 +1,51 @@
+.sidebar {
+    position: fixed;
+    float: left;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.mainbar {
+    width: 80%;
+    height: 100%;
+    float: right;
+    text-align: center;
+}
+
+.image {
+    height: 15%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.btn-exit {
+    background-color: #3b4da3;
+    color: white;
+    height: 40px;
+    width: 100px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 0px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    margin-right: 60px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+
+
+}
+
+.btn-exit:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.btn-exit:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}

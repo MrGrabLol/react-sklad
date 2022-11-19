@@ -1,0 +1,19 @@
+.card-item {
+    border: 3px solid #3b4da3;
+    border-radius: 1rem;
+    padding: 1.2rem 1.2rem;
+    display: inline-block;
+}
+.cart-item__title {
+    font-size: 1.3rem;
+    margin: 0 auto 0.6rem;
+}
+.card-item__text {
+    font-size: 1.1rem;
+    padding-top: 0.4rem;
+    text-align: start;
+    word-break: break-all;
+}
+span {
+    font-style: italic;
+}
