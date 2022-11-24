@@ -1,9 +1,15 @@
+import {useState} from "react";
+import {usePacks} from "../hooks/packs-marks";
+
 export function FilterPanel() {
+    const {error, packs, marks} = usePacks()
+
 
 
     return (
+
         <div className="filter">
-            <div>
+            {!error &&  <div>
                 <div className="filter__item">
                     <button className="btn btn-filter">
                     Очистить фильтр
@@ -23,7 +29,7 @@ export function FilterPanel() {
                 <p className="filter__title">Упаковка:</p>
 
             </div>
-        </div>
+        </div>}
 </div>
     )
 }

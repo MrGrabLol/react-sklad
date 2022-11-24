@@ -1,36 +1,31 @@
 import {useEffect, useState} from "react";
-import {IModels, IModelsCard} from "../interfaces/models";
+import {IModels, IModelsCard, ResponseBody} from "../interfaces/models";
 import axios, {AxiosError} from "axios";
 
-export function useModels() {
+export function useModels(response: ResponseBody) {
     const [cards, setCards] = useState<IModelsCard[]>([])
     const [models, setModels] = useState<IModels[]>([])
-    const [marks, setMarks] = useState<string[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
     async function fetchModels() {
+        const access = response.accessToken
+        // 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnZXkiLCJleHAiOjE2NjkzNzYxMTQsInJvbGVzIjpbXSwiZmlyc3ROYW1lIjoi0KHQtdGA0LPQtdC5IiwibG9jYXRpb25zIjpbIkJlbFNrbGFkIl19.-okuC9XE7nMhRaZmwkmDOl_qzBiVLaGDz5cwXLQMWbXJUKA1hnHJXUeGya7sM6y731TL29wgxB2169JzmrtYfA'
         try {
             setError('')
             setLoading(true)
             const response = await axios.get<IModels[]>('http://localhost:8081/api/v1/filter/table', {
                 headers: {
-                    Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnZXkiLCJleHAiOjE2Njg5NTAzMjcsInJvbGVzIjpbXSwiZmlyc3ROYW1lIjoi0KHQtdGA0LPQtdC5IiwibG9jYXRpb25zIjpbIkJlbFNrbGFkIl19.TSs8kjDcXpa1GG1CCTCTqE1JphfLUBTneI4oWnVwlhkNNU6wCsJ7XU62E4YvA9Y71rs2KxWQK-ZqqJnuHFmG9A'
+                    Authorization: 'Bearer ' + access
                 }
             })
             const responseCards = await axios.get<IModelsCard[]>('http://localhost:8081/api/v1/position', {
                 headers: {
-                    Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnZXkiLCJleHAiOjE2Njg5NTAzMjcsInJvbGVzIjpbXSwiZmlyc3ROYW1lIjoi0KHQtdGA0LPQtdC5IiwibG9jYXRpb25zIjpbIkJlbFNrbGFkIl19.TSs8kjDcXpa1GG1CCTCTqE1JphfLUBTneI4oWnVwlhkNNU6wCsJ7XU62E4YvA9Y71rs2KxWQK-ZqqJnuHFmG9A'
-                }
-            })
-            const responseMarks = await axios.get<string[]>('http://localhost:8081/api/v1/filter/marks', {
-                headers: {
-                    Authorization: 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnZXkiLCJleHAiOjE2Njg5NTAzMjcsInJvbGVzIjpbXSwiZmlyc3ROYW1lIjoi0KHQtdGA0LPQtdC5IiwibG9jYXRpb25zIjpbIkJlbFNrbGFkIl19.TSs8kjDcXpa1GG1CCTCTqE1JphfLUBTneI4oWnVwlhkNNU6wCsJ7XU62E4YvA9Y71rs2KxWQK-ZqqJnuHFmG9A'
+                    Authorization: 'Bearer ' + access
                 }
             })
             setModels(response.data)
             setCards(responseCards.data)
-            setMarks(responseMarks.data)
             setLoading(false)
         } catch (e: unknown) {
             const error = e as AxiosError
@@ -44,5 +39,5 @@ export function useModels() {
         fetchModels()
     }, [])
 
-    return {models, cards, marks, error, loading}
+    return {models, cards, error, loading}
 }

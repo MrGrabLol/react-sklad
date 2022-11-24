@@ -1,0 +1,60 @@
+.login {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-panel {
+    left: 795px;
+    top: 315px;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
+    /*margin-top: 310px;*/
+    /*float: bottom;*/
+    display: block;
+    width: 350px;
+}
+
+.field {
+    display: inline-block;
+}
+
+.field input {
+    height: 20px;
+    background-color: gainsboro;
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 190px;
+    border: none;
+    border-radius: 2px;
+}
+
+.field p {
+    /*float: left;*/
+}
+
+.btn-login {
+    /*display: inline-block;*/
+    height: 35px;
+    width: 85px;
+    border-radius: 6px;
+    border: none;
+    background-color: #3b4da3;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.btn-login:active {
+    background-color: white;
+    border: 2px solid #3b4da3;
+    color: #3b4da3;
+}
+
+.btn-login:hover {
+    opacity: 0.89;
+}

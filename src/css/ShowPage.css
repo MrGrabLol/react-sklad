@@ -1,22 +1,20 @@
 table {
     width: 80%;
-    /*border: 2px solid red;*/
-    /*margin-bottom: 20px;*/
     float: left;
-    /*display: inline-block;*/
 }
 
 .filter-panel {
-    /*position: absolute;*/
     margin-top: 85px;
-    /*display: block;*/
     width: 18%;
     float: right;
-    /*border: 2px solid blue;*/
+}
+
+.diameter {
+    margin-top: 28px;
 }
 
 .card-container {
-    width: 75%;
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 290px);
     grid-gap: 12px;
@@ -75,14 +73,12 @@ table tbody tr td:last-child {
     font-family: 'Roboto Mono', monospace;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -121,7 +117,6 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }

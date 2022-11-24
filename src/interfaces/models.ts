@@ -24,3 +24,14 @@ export interface IModelsCard {
     createdFrom: string,
     pack: number
 }
+
+export interface Login {
+    login: string,
+    password: string
+}
+
+export interface ResponseBody {
+    type: string,
+    accessToken : string,
+    refreshToken: string
+}

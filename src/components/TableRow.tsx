@@ -1,7 +1,7 @@
 import React from "react";
 import {IModels} from "../interfaces/models";
 
-interface ModelsProps {
+export interface ModelsProps {
     model: IModels
 }
 
