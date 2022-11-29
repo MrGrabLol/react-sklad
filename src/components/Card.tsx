@@ -23,7 +23,6 @@ export function Card({card}: ModelCardProps) {
             {isComment() && <p className="card-item__text"><span>Комментарий:</span> {card.comment}</p>}
             <p className="card-item__text"><span>Статус:</span> {card.status}</p>
             <p className="card-item__text"><span>Склад:</span> {card.location}</p>
-            {/*<p className="card-item__text"></p>*/}
         </div>
     )
 }

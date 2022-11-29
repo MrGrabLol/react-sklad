@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
 
 .block {
-    /*display: inline-block;*/
     align-items: center;
     text-align: center;
     vertical-align: middle;
-    /*horiz-align: center;*/
 }
 
 .sidebar-btn {

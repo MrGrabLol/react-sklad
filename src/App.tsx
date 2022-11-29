@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
-import {Navigation} from "./components/Navigation";
+import React from 'react';
+import {LoginPage} from "./pages/LoginPage";
 import {Route, Routes} from "react-router-dom";
+import icon from "./assets/icon.svg";
+import {Navigation} from "./components/Navigation";
 import {RegisterPage} from "./pages/RegisterPage";
 import {ShowPage} from "./pages/ShowPage";
 import {SearchPage} from "./pages/SearchPage";
@@ -10,44 +12,34 @@ import {ShipmentPage} from "./pages/ShipmentPage";
 import {ShipmentHistoryPage} from "./pages/ShipmentHistoryPage";
 import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
-import "./css/app.css"
-import icon from "./assets/icon.svg"
-import {Link} from "react-router-dom";
-import {LoginPage} from "./pages/LoginPage";
-import {AxiosError, AxiosResponse} from "axios";
-import {Login, ResponseBody} from "./interfaces/models";
+import './css/app.css'
+import useToken from "./hooks/useToken";
 
 function App() {
-    const [response, setResponse] = useState<ResponseBody>({type: '', accessToken: '', refreshToken: ''}) //передать в другие хуки
-    const [checked, setChecked] = useState(false)
+    const {token, setToken} = useToken()
 
-    function doLogin(item: ResponseBody) {
-        setResponse(item)
-        if (item.accessToken !== '') {
-            setChecked(true)
-        } else {
-            setChecked(false)
-        }
+    if (!token) {
+        return <LoginPage setToken={setToken}/>
+    }
+
+    const clickHandler = () => {
+        setToken('')
+        localStorage.removeItem('token')
     }
 
     return (
         <>
             <div className='container'>
-                {!checked && <Routes>
-                    <Route path='/login' element={<LoginPage doLogin={doLogin}/>}/>
-                </Routes>}
-                {checked && <div>
-                    <div className='sidebar'>
-                        <img className='image' src={icon} alt="Солнечногорск. Ферротрейд"/>
-                        <Navigation/>
-                    </div>
-                    <div className='mainbar'>
-                        <button className='btn-exit'>Выйти</button>
+                <div className='sidebar'>
+                    <img className='image' src={icon} alt="Солнечногорск. Ферротрейд"/>
+                    <Navigation/>
+                </div>
+                <div className='mainbar'>
+                    <button className='btn-exit' onClick={clickHandler} >Выйти</button>
                         <Routes>
                             <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
                             <Route path='/sklad/show'
-                                   element={<ShowPage type={response?.type} accessToken={response?.accessToken}
-                                                      refreshToken={response?.refreshToken}/>}></Route>
+                                   element={<ShowPage token={token}/>}></Route>
                             <Route path='/sklad/search' element={<SearchPage></SearchPage>}></Route>
                             <Route path='/sklad/melt-search' element={<MeltSearchPage></MeltSearchPage>}></Route>
                             <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
@@ -57,8 +49,7 @@ function App() {
                             <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}></Route>
                             <Route path='/sklad/send' element={<SendPage></SendPage>}></Route>
                         </Routes>
-                    </div>
-                </div>}
+                </div>
             </div>
         </>
     )

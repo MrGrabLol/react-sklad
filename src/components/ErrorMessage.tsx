@@ -7,6 +7,6 @@ interface ErrorMessageProps {
 
 export function ErrorMessage({error}: ErrorMessageProps) {
     return (
-        <p className='error'>Ошибка</p>
+        <p className='error'>Ошибка: {error}</p>
     )
 }

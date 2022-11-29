@@ -1,40 +1,89 @@
 import '../css/Login.css'
-import {useState} from "react";
-import {Login, ResponseBody} from '../interfaces/models'
-import axios, {AxiosError, AxiosResponse} from "axios";
+import React, {useState} from "react";
+import axios, {AxiosError} from "axios";
+import PropTypes from 'prop-types'
+import {ErrorMessage} from "../components/ErrorMessage";
 
-interface LoginProps {
-    doLogin: (response: ResponseBody) => void
+interface LoginPageProps {
+    setToken: (item: string) => void
 }
 
+export function LoginPage({setToken}: LoginPageProps) {
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
-export function LoginPage({doLogin}: LoginProps) {
-    const [lgn, setLogin] = useState('')
-    const [pswrd, setPassword] = useState('')
+    // const submitHandler = async () => {
+    //     try {
+    //         console.log(login)
+    //         console.log(password)
+    //         console.log(login)
+    //         console.log(1234567899877)
+    //         const response = await axios.post<ResponseBody>('http://localhost:8081/api/v1/auth/login', {
+    //             login: login,
+    //             password: password
+    //         })
+    //         console.log(login)
+    //         console.log(password)
+    //         console.log(response)
+    //         // doLogin(response.data)
+    //     } catch (e: unknown) {
+    //         const error = e as AxiosError
+    //         setError(error.message)
+    //     }
+    //     if (!error) {
+    //         redirect('/sklad')
+    //     }
+    // }
 
-    const submitHandler = async () => {
-        const log: Login = {
-            login: lgn,
-            password: pswrd
+    // async function logIn(credentials: { login: string; password: string; }) {
+    //     return fetch('http://localhost:8081/api/v1/auth/login', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(credentials)
+    //     })
+    //         .then(data => data.json())
+    // }
+
+    const submitHandler = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault()
+        try {
+            const response = await axios.post('http://localhost:8081/api/v1/auth/login', {
+                login,
+                password
+            })
+            setToken(response.data.accessToken)
+        } catch (e: unknown) {
+            const error = e as AxiosError
+            setError(error.message)
         }
-        const response = await axios.post<ResponseBody>('http://localhost:8081/api/v1/auth/login', log)
-        doLogin(response.data)
     }
 
     return (
-        <div className='login'>
-            <form onSubmit={submitHandler} className='login-panel'>
-                <h1>Авторизация</h1>
-                <span className='field'>
+        <>
+            <div className='login'>
+                {error && <ErrorMessage error={error}/>}
+                <form onSubmit={submitHandler} className='login-panel'>
+                    <h1>Авторизация</h1>
+                    <span className='field'>
                     <p>Логин:</p>
-                    <input type="text" value={lgn} onChange={event => setLogin(event.target.value)}/>
+                    <input type="text" value={login} onChange={event => setLogin(event.target.value)}/>
                 </span>
-                <span className='field'>
+                    <span className='field'>
                     <p>Пароль:</p>
-                    <input type="text" value={pswrd} onChange={event => setPassword(event.target.value)}/>
+                    <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 </span>
-                <br/>
-                <button type='submit' className='btn-login'>Войти</button>
-            </form>
-        </div>)
+                    <br/>
+                    <button type='submit' className='btn-login'>Войти</button>
+                </form>
+            </div>
+        </>
+    )
+}
+
+
+LoginPage.propTypes = {
+    setToken: PropTypes.func.isRequired
 }
