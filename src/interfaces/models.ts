@@ -24,3 +24,8 @@ export interface IModelsCard {
     createdFrom: string,
     pack: number
 }
+
+export interface Diameter {
+    min: number,
+    max: number
+}

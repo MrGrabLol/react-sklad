@@ -6,10 +6,12 @@ import '../css/TableView.css'
 interface TableViewProps {
     models: IModels[]
     selectedMarks: string[],
-    selectedPacks: string[]
+    selectedPacks: string[],
+    selectedDiameterLeft: number,
+    selectedDiameterRight: number
 }
 
-export function TableView({models, selectedMarks, selectedPacks}: TableViewProps) {
+export function TableView({models, selectedMarks, selectedPacks, selectedDiameterLeft, selectedDiameterRight}: TableViewProps) {
     return (
         <table>
             <thead>
@@ -25,6 +27,8 @@ export function TableView({models, selectedMarks, selectedPacks}: TableViewProps
             <tbody>
             {models.filter((model) => {
                     return (selectedMarks.length > 0) ? selectedMarks.includes(model.mark) : model
+            }).filter((model) => {
+                return (Number(model.diameter) >= selectedDiameterLeft && Number(model.diameter) <= selectedDiameterRight)
             }).filter((model) => {
                 return (selectedPacks.length > 0) ? selectedPacks.includes(model.packing) : model
             })

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {IModels, IModelsCard} from "../interfaces/models";
+import {Diameter, IModels, IModelsCard} from "../interfaces/models";
 import axios, {AxiosError} from "axios";
 
 export function useModels(accessToken: string) {
@@ -9,6 +9,9 @@ export function useModels(accessToken: string) {
     const [marks, setMarks] = useState<string[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [diameter, setDiameter] = useState<Diameter>({min: 0, max: 0})
+    // const [leftDiameter, setLeftDiameter] = useState()
+    // const [rightDiameter, setRightDiameter] = useState()
 
     async function fetchModels() {
         try {
@@ -34,10 +37,18 @@ export function useModels(accessToken: string) {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
+            const responseDiameter = await axios.get('http://localhost:8081/api/v1/filter/diameter', {
+                headers: {
+                    Authorization: 'Bearer ' + accessToken
+                }
+            })
             setModels(response.data)
             setCards(responseCards.data)
             setPacks(responsePacks.data)
             setMarks(responseMarks.data)
+            setDiameter(responseDiameter.data)
+            // setLeftDiameter(responseDiameter.data.min)
+            // setRightDiameter(responseDiameter.data.max)
             setLoading(false)
         } catch (e: unknown) {
             const error = e as AxiosError
@@ -51,5 +62,5 @@ export function useModels(accessToken: string) {
         fetchModels()
     }, [])
 
-    return {models, cards, marks, packs, error, loading}
+    return {models, cards, marks, packs, error, loading, diameter}
 }
