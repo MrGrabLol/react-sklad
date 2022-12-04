@@ -33,7 +33,6 @@ export function ShowPage({token}: ShowPageProps) {
             {error && <ErrorMessage error={error}></ErrorMessage>}
             {!loading &&
                 <div>
-                    {}
                     <div className='switchbar'>
                         <p>Переключить на карточный вид:</p>
                         <label className='switch'>
@@ -52,7 +51,7 @@ export function ShowPage({token}: ShowPageProps) {
                         />
                     }
                     {cardView &&
-                        <CardView cards={cards} selectedMarks={selectedMarks} selectedPacks={selectedPacks}/>
+                        <CardView cards={cards}/>
                     }
                 </div>
             }

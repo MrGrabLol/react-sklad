@@ -10,8 +10,6 @@ export function useModels(accessToken: string) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [diameter, setDiameter] = useState<Diameter>({min: 0, max: 0})
-    // const [leftDiameter, setLeftDiameter] = useState()
-    // const [rightDiameter, setRightDiameter] = useState()
 
     async function fetchModels() {
         try {
@@ -47,8 +45,6 @@ export function useModels(accessToken: string) {
             setPacks(responsePacks.data)
             setMarks(responseMarks.data)
             setDiameter(responseDiameter.data)
-            // setLeftDiameter(responseDiameter.data.min)
-            // setRightDiameter(responseDiameter.data.max)
             setLoading(false)
         } catch (e: unknown) {
             const error = e as AxiosError

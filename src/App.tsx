@@ -40,7 +40,7 @@ function App() {
                             <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
                             <Route path='/sklad/show'
                                    element={<ShowPage token={token}/>}></Route>
-                            <Route path='/sklad/search' element={<SearchPage></SearchPage>}></Route>
+                            <Route path='/sklad/search' element={<SearchPage token={token}/>}></Route>
                             <Route path='/sklad/melt-search' element={<MeltSearchPage></MeltSearchPage>}></Route>
                             <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
                             <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}></Route>

@@ -5,11 +5,9 @@ import '../css/CardView.css'
 
 interface CardViewProps {
     cards: IModelsCard[]
-    selectedMarks: string[],
-    selectedPacks: string[]
 }
 
-export function CardView({cards, selectedMarks, selectedPacks}: CardViewProps) {
+export function CardView({cards}: CardViewProps) {
     return (
         <div className='card-container'>
             {cards.map((card, i) => <Card card={card} key={i}/>)}
