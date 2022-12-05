@@ -6,9 +6,9 @@ export function Navigation() {
         <nav>
             <span className='block'>
                 <Link className='sidebar-btn' to='/sklad/register'>Регистрация</Link>
-                <Link className='sidebar-btn' to='/sklad/show'>Посмотреть все</Link>
-                <Link className='sidebar-btn' to='/sklad/search'>Поиск</Link>
-                <Link className='sidebar-btn' to='/sklad/melt-search'>Поиск по плавке</Link>
+                <Link className='sidebar-btn' to='/sklad/show'>Наличие</Link>
+                <Link className='sidebar-btn' to='/sklad/search'>Сканирование</Link>
+                <Link className='sidebar-btn' to='/sklad/melt-search'>Поиск</Link>
                 <Link className='sidebar-btn' to='/sklad/combine'>Объединить</Link>
                 <Link className='sidebar-btn' to='/sklad/shipment'>Отгрузка</Link>
                 <Link className='sidebar-btn' to='/sklad/shipment-history'>История отгрузок</Link>

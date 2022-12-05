@@ -3,6 +3,20 @@
     display: inline-block;
     margin-top: 110px;
     float: left;
+    margin-bottom: 20px;
+}
+
+.search-cards .card-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 290px);
+    grid-gap: 12px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.input-block .check-label {
+    width: 250px;
+    height: 32px;
 }
 
 .input-block input {
