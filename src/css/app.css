@@ -14,7 +14,7 @@
 }
 
 .image {
-    height: 15%;
+    height: 105px;
     margin-top: 40px;
     margin-bottom: 30px;
 }
@@ -24,8 +24,9 @@
     color: white;
     height: 40px;
     width: 100px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Open Sans', regular;
     font-size: 16px;
+    font-weight: 400;
     border-radius: 6px;
     border: 0px;
     margin-top: 25px;
