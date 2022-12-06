@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoginPage} from "./pages/LoginPage";
 import {Route, Routes} from "react-router-dom";
-import icon from "./assets/icon.svg";
+import icon from "./assets/logo_new_v2.png";
 import {Navigation} from "./components/Navigation";
 import {RegisterPage} from "./pages/RegisterPage";
 import {ShowPage} from "./pages/ShowPage";
