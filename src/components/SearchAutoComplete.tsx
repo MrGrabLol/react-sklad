@@ -1,38 +1,27 @@
-import React, {useState} from "react";
+import React from "react";
 import "../css/SearchAutoComplete.css"
 import axios from "axios";
+import {ISearchAutoComplete, SearchAutocompleteResponse} from '../interfaces/models'
 
 interface SearchAutoCompleteProps {
-    activeSuggestion: number,
-    markSuggestions: Array<string>,
-    partSuggestions: Array<string>,
-    heatSuggestions : Array<string>,
-    showSuggestions: boolean,
-    userInput: string
+    state: ISearchAutoComplete,
+    setState: (prop: ISearchAutoComplete) => void
 }
 
-interface SearchAutocompleteResponse {
-    marks: Array<string>,
-    plav: Array<string>,
-    part: Array<string>
-}
+export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) {
 
-export function SearchAutoComplete () {
-
-    const [state, setState] = useState<SearchAutoCompleteProps>({
-        activeSuggestion: 0,
-        markSuggestions: [],
-        partSuggestions: [],
-        heatSuggestions: [],
-        showSuggestions: false,
-        userInput: ''
-    })
+    // const [state, setState] = useState<SearchAutoCompleteProps>({
+    //     activeSuggestion: 0,
+    //     markSuggestions: [],
+    //     partSuggestions: [],
+    //     heatSuggestions: [],
+    //     showSuggestions: false,
+    //     userInput: ''
+    // })
 
     async function onChangeHandler(event: { currentTarget: { value: any; }; }) {
         const userInput = event.currentTarget.value;
 
-        // Filter our suggestions that don't contain the user's input
-        //Request to our server ->
         const response = await axios.post<SearchAutocompleteResponse>("http://localhost:8081/api/v1/search/autocomplete", {
             query: userInput
         }, {

@@ -29,3 +29,29 @@ export interface Diameter {
     min: number,
     max: number
 }
+
+export interface ISearchModels {
+    mark: string,
+    diameter: string,
+    pack: string,
+    manufacture: string,
+    solnechnogorsk: string,
+    belSklad: string,
+    part: string,
+    plav: string
+}
+
+export interface ISearchAutoComplete {
+    activeSuggestion: number,
+    markSuggestions: Array<string>,
+    partSuggestions: Array<string>,
+    heatSuggestions : Array<string>,
+    showSuggestions: boolean,
+    userInput: string
+}
+
+export interface SearchAutocompleteResponse {
+    marks: Array<string>,
+    plav: Array<string>,
+    part: Array<string>
+}

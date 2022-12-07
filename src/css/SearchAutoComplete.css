@@ -1,6 +1,8 @@
 .no-suggestions {
     color: #999;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    width: calc(706px);
+    position: absolute;
 }
 
 .suggestions {
@@ -11,6 +13,9 @@
     overflow-y: auto;
     padding-left: 0;
     width: calc(706px);
+    border-radius: 6px;
+    position: absolute;
+    background-color: white;
 }
 
 .suggestions li {
@@ -20,7 +25,7 @@
 .suggestion-title,
 .suggestion-title:hover {
     font-weight: bold;
-    background-color: #999;
+    background-color: #d8d8d8;
 }
 
 .suggestion-active,
@@ -32,5 +37,5 @@
 }
 
 .suggestions li:not(:last-of-type) {
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #d8d8d8;
 }
