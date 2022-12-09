@@ -11,7 +11,7 @@ import {CombinePage} from "./pages/CombinePage";
 import {ShipmentPage} from "./pages/ShipmentPage";
 import {ShipmentHistoryPage} from "./pages/ShipmentHistoryPage";
 import {AdmissionPage} from "./pages/AdmissionPage";
-import {SendPage} from "./pages/SendPage";
+import SendPage from "./pages/SendPage";
 import './css/app.css'
 import useToken from "./hooks/useToken";
 
