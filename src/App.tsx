@@ -41,7 +41,7 @@ function App() {
                             <Route path='/sklad/show'
                                    element={<ShowPage token={token}/>}></Route>
                             <Route path='/sklad/search' element={<SearchPage token={token}/>}></Route>
-                            <Route path='/sklad/melt-search' element={<MeltSearchPage></MeltSearchPage>}></Route>
+                            <Route path='/sklad/melt-search' element={<MeltSearchPage token={token} />}></Route>
                             <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
                             <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}></Route>
                             <Route path='/sklad/shipment-history'
