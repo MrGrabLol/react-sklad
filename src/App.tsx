@@ -1,6 +1,6 @@
 import React from 'react';
 import {LoginPage} from "./pages/LoginPage";
-import {Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import icon from "./assets/logo_new_v2.png";
 import {Navigation} from "./components/Navigation";
 import {RegisterPage} from "./pages/RegisterPage";
@@ -14,6 +14,7 @@ import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
 import './css/app.css'
 import useToken from "./hooks/useToken";
+import {CardIdView} from "./pages/CardIdView";
 
 function App() {
     const {token, setToken} = useToken()
@@ -29,13 +30,14 @@ function App() {
 
     return (
         <>
-            <div className='container'>
-                <div className='sidebar'>
-                    <img className='image' src={icon} alt="Солнечногорск. Ферротрейд"/>
-                    <Navigation/>
-                </div>
-                <div className='mainbar'>
-                    <button className='btn-exit' onClick={clickHandler} >Выйти</button>
+            <BrowserRouter>
+                <div className='container'>
+                    <div className='sidebar'>
+                        <img className='image' src={icon} alt="Солнечногорск. Ферротрейд"/>
+                        <Navigation/>
+                    </div>
+                    <div className='mainbar'>
+                        <button className='btn-exit' onClick={clickHandler} >Выйти</button>
                         <Routes>
                             <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
                             <Route path='/sklad/show'
@@ -49,8 +51,9 @@ function App() {
                             <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}></Route>
                             <Route path='/sklad/send' element={<SendPage></SendPage>}></Route>
                         </Routes>
+                    </div>
                 </div>
-            </div>
+            </BrowserRouter>
         </>
     )
 }
