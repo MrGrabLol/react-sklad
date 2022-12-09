@@ -6,8 +6,9 @@
 }
 
 .login-panel {
-    left: 795px;
-    top: 315px;
+    top: 40%;
+    left: 50%;
+    margin: -175px 0 0 -175px;
     position: absolute;
     text-align: center;
     align-items: center;
@@ -15,6 +16,7 @@
     vertical-align: center;
     display: block;
     width: 350px;
+    height: 350px;
 }
 
 .field {

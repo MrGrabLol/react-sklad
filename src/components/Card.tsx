@@ -1,9 +1,7 @@
 import '../css/Card.css'
 import {IModelsCard} from "../interfaces/models";
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import {CardIdView} from "../pages/CardIdView";
+import {Link} from "react-router-dom";
 import React from "react";
-import {AdmissionPage} from "../pages/AdmissionPage";
 
 interface ModelCardProps {
     card: IModelsCard
@@ -16,7 +14,7 @@ export function Card({card}: ModelCardProps) {
     }
 
     return (
-        <Link className="card-item" to={'/sklad/show/' + card.id}>
+        <Link className="card-item" target="_blank" to={'/position/' + card.id}>
             <div>
                 <p className="cart-item__title">{card.type}</p>
                 <p className="card-item__text"><span>Марка:</span> {card.mark}</p>
