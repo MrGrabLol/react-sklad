@@ -12,11 +12,11 @@ import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
 import './css/app.css'
 import useToken from "./hooks/useToken";
-import {CardIdView} from "./pages/CardIdView";
-import {loader as cardIdLoader} from './components/CardIdViewShow'
+import {PositionPage} from "./pages/PositionPage";
+import {loader as cardIdLoader} from "./components/PositionDetails"
 import {SkladPage} from "./pages/SkladPage";
-import {CardIdViewShow} from "./components/CardIdViewShow";
-import {CardIdViewPrint} from "./components/CardIdViewPrint";
+import {PositionDetails} from "./components/PositionDetails";
+import {PositionPrint} from "./components/PositionPrint";
 
 function App() {
     const {token, setToken} = useToken()
@@ -41,12 +41,11 @@ function App() {
                 </>
             }/>
             <Route path='/login' element={<LoginPage setToken={setToken}/>}/>
-            {/*<Route path='/position/:id' element={<CardIdView/>} loader={cardIdLoader}/>*/}
 
-            <Route path='/position/:id' element={<CardIdView/>} children={
+            <Route path='/position/:id' element={<PositionPage/>} children={
                 <>
-                    <Route path='/position/:id/show' loader={cardIdLoader} element={<CardIdViewShow/>}/>
-                    <Route path='/position/:id/print' element={<CardIdViewPrint/>}/>
+                    <Route path='/position/:id' loader={cardIdLoader} element={<PositionDetails/>}/>
+                    <Route path='/position/:id/print' element={<PositionPrint/>}/>
                 </>
             }/>
 
