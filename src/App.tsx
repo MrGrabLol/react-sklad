@@ -23,16 +23,20 @@ function App() {
     }
 
     const JSXRoutes = (
-        <><Route path='/sklad' element={<SkladPage></SkladPage>} children={<>
-            <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
-            <Route path='/sklad/show' element={<ShowPage token={token}/>}></Route>
-            <Route path='/sklad/search' element={<SearchPage token={token}/>}></Route>
-            <Route path='/sklad/melt-search' element={<MeltSearchPage token={token}/>}></Route>
-            <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
-            <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}></Route>
-            <Route path='/sklad/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}></Route>
-            <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}></Route>
-            <Route path='/sklad/send' element={<SendPage></SendPage>}></Route></>}></Route>
+        <>
+            <Route path='/sklad' element={<SkladPage></SkladPage>} children={
+                <>
+                    <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
+                    <Route path='/sklad/show' element={<ShowPage token={token}/>}></Route>
+                    <Route path='/sklad/search' element={<SearchPage token={token}/>}></Route>
+                    <Route path='/sklad/melt-search' element={<MeltSearchPage token={token}/>}></Route>
+                    <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
+                    <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}></Route>
+                    <Route path='/sklad/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}></Route>
+                    <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}></Route>
+                    <Route path='/sklad/send' element={<SendPage></SendPage>}></Route>
+                </>
+            }/>
             <Route path='/login' element={<LoginPage setToken={setToken}/>}/>
             <Route path='/position/:id' element={<CardIdView/>}
             loader={cardIdLoader}
