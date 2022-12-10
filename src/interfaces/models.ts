@@ -22,6 +22,25 @@ export interface IModelsCard {
     status: string,
     location: string,
     createdFrom: string,
+    pack: number,
+    positions: IModelsCardPackage[]
+}
+
+export interface IModelsCardPackage {
+    id: number,
+    date: string,
+    manufacturer: string,
+    type: string,
+    mark: string,
+    diameter: string,
+    packing: string,
+    part: string,
+    plav: string,
+    weight: string,
+    comment: string,
+    status: string,
+    location: string,
+    createdFrom: string,
     pack: number
 }
 

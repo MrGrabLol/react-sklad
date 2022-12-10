@@ -12,8 +12,11 @@ import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
 import './css/app.css'
 import useToken from "./hooks/useToken";
-import {CardIdView, loader as cardIdLoader} from "./pages/CardIdView";
+import {CardIdView} from "./pages/CardIdView";
+import {loader as cardIdLoader} from './components/CardIdViewShow'
 import {SkladPage} from "./pages/SkladPage";
+import {CardIdViewShow} from "./components/CardIdViewShow";
+import {CardIdViewPrint} from "./components/CardIdViewPrint";
 
 function App() {
     const {token, setToken} = useToken()
@@ -38,7 +41,15 @@ function App() {
                 </>
             }/>
             <Route path='/login' element={<LoginPage setToken={setToken}/>}/>
-            <Route path='/position/:id' element={<CardIdView/>} loader={cardIdLoader}/>
+            {/*<Route path='/position/:id' element={<CardIdView/>} loader={cardIdLoader}/>*/}
+
+            <Route path='/position/:id' element={<CardIdView/>} children={
+                <>
+                    <Route path='/position/:id/show' loader={cardIdLoader} element={<CardIdViewShow/>}/>
+                    <Route path='/position/:id/print' element={<CardIdViewPrint/>}/>
+                </>
+            }/>
+
         </>
     )
 
