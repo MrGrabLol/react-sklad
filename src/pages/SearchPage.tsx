@@ -2,7 +2,6 @@ import '../css/SearchPage.css'
 import {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
-import {Card} from "../components/Card";
 import {IModelsCard} from "../interfaces/models";
 import '../css/Checkbox.css'
 import {CardView} from "../components/CardView";
@@ -22,7 +21,6 @@ export function SearchPage({token}: SearchPageProps) {
         const request = id.replace(/[^,1234567890]+/g, '')
             .split(',')
             .filter((v) => v.length !== 0)
-        console.log(request)
         if (request.length > 0) {
             try {
                 setError('')

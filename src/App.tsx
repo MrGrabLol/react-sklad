@@ -1,8 +1,6 @@
 import React from 'react';
 import {LoginPage} from "./pages/LoginPage";
-import {Route, Routes} from "react-router-dom";
-import icon from "./assets/logo_new_v2.png";
-import {Navigation} from "./components/Navigation";
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 import {RegisterPage} from "./pages/RegisterPage";
 import {ShowPage} from "./pages/ShowPage";
 import {SearchPage} from "./pages/SearchPage";
@@ -14,6 +12,11 @@ import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
 import './css/app.css'
 import useToken from "./hooks/useToken";
+import {PositionPage} from "./pages/PositionPage";
+import {loader as cardIdLoader} from "./components/PositionDetails"
+import {SkladPage} from "./pages/SkladPage";
+import {PositionDetails} from "./components/PositionDetails";
+import {PositionPrint} from "./components/PositionPrint";
 
 function App() {
     const {token, setToken} = useToken()
@@ -22,35 +25,39 @@ function App() {
         return <LoginPage setToken={setToken}/>
     }
 
-    const clickHandler = () => {
-        setToken('')
-        localStorage.removeItem('token')
-    }
+    const JSXRoutes = (
+        <>
+            <Route path='/sklad' element={<SkladPage></SkladPage>} children={
+                <>
+                    <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}/>
+                    <Route path='/sklad/show' element={<ShowPage token={token}/>}/>
+                    <Route path='/sklad/search' element={<SearchPage token={token}/>}/>
+                    <Route path='/sklad/melt-search' element={<MeltSearchPage token={token}/>}/>
+                    <Route path='/sklad/combine' element={<CombinePage></CombinePage>}/>
+                    <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}/>
+                    <Route path='/sklad/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}/>
+                    <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}/>
+                    <Route path='/sklad/send' element={<SendPage></SendPage>}/>
+                </>
+            }/>
+            <Route path='/login' element={<LoginPage setToken={setToken}/>}/>
+
+            <Route path='/position/:id' element={<PositionPage/>} children={
+                <>
+                    <Route path='/position/:id' loader={cardIdLoader} element={<PositionDetails/>}/>
+                    <Route path='/position/:id/print' element={<PositionPrint/>}/>
+                </>
+            }/>
+
+        </>
+    )
+
+    const routes = createRoutesFromElements(JSXRoutes);
+    const router = createBrowserRouter(routes);
 
     return (
         <>
-            <div className='container'>
-                <div className='sidebar'>
-                    <img className='image' src={icon} alt="Солнечногорск. Ферротрейд"/>
-                    <Navigation/>
-                </div>
-                <div className='mainbar'>
-                    <button className='btn-exit' onClick={clickHandler} >Выйти</button>
-                        <Routes>
-                            <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}></Route>
-                            <Route path='/sklad/show'
-                                   element={<ShowPage token={token}/>}></Route>
-                            <Route path='/sklad/search' element={<SearchPage token={token}/>}></Route>
-                            <Route path='/sklad/melt-search' element={<MeltSearchPage token={token} />}></Route>
-                            <Route path='/sklad/combine' element={<CombinePage></CombinePage>}></Route>
-                            <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}></Route>
-                            <Route path='/sklad/shipment-history'
-                                   element={<ShipmentHistoryPage></ShipmentHistoryPage>}></Route>
-                            <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}></Route>
-                            <Route path='/sklad/send' element={<SendPage></SendPage>}></Route>
-                        </Routes>
-                </div>
-            </div>
+            <RouterProvider router={router}/>
         </>
     )
 }

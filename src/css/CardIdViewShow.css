@@ -1,0 +1,37 @@
+.one-card-table {
+    border-radius: 1rem;
+    border: 3px solid #3b4da3;
+    width: 70%;
+    height: 450px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    /*border-collapse: collapse;*/
+    border-spacing: 0;
+}
+
+.one-card-table tr {
+    border-bottom: 2px solid lightgray;
+}
+
+.one-card-table td {
+    border-top: none;
+    /*border-left: 2px solid lightgray;*/
+    height: 45px;
+    font-size: 20px;
+    border-bottom: 2px solid lightgray;
+    /*border: 2px solid red*/
+}
+
+.one-card-table tr:last-child td {
+    border-bottom: none;
+}
+
+.one-card-table .header {
+    font-weight: bold;
+    border-right: 2px solid lightgray;
+}
+
+.mainbar-container {
+    justify-content: center;
+    display: flex;
+}

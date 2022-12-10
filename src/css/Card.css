@@ -3,6 +3,12 @@
     border-radius: 1rem;
     padding: 1.2rem 1.2rem;
     display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+.card-item:hover {
+    background-color: #eaeaea;
+    opacity: 0.89;
 }
 .cart-item__title {
     font-size: 1.3rem;

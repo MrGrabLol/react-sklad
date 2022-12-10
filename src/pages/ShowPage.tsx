@@ -41,13 +41,17 @@ export function ShowPage({token}: ShowPageProps) {
                         </label>
                     </div>
                     <FilterPanel marks={marks} packs={packs} selectedMarks={selectedMarks} selectedPacks={selectedPacks}
-                                 marksHandler={marksHandler} packsHandler={packsHandler} leftDiameter={diameter.min} rightDiameter={diameter.max}
-                                 selectedDiameterLeft={selectedDiameterLeft} selectedDiameterRight={selectedDiameterRight}
-                                 leftDiameterHandler={setSelectedDiameterLeft} rightDiameterHandler={setSelectedDiameterRight}
+                                 marksHandler={marksHandler} packsHandler={packsHandler} leftDiameter={diameter.min}
+                                 rightDiameter={diameter.max}
+                                 selectedDiameterLeft={selectedDiameterLeft}
+                                 selectedDiameterRight={selectedDiameterRight}
+                                 leftDiameterHandler={setSelectedDiameterLeft}
+                                 rightDiameterHandler={setSelectedDiameterRight}
                     />
                     {!cardView &&
                         <TableView models={models} selectedMarks={selectedMarks} selectedPacks={selectedPacks}
-                                   selectedDiameterLeft={selectedDiameterLeft} selectedDiameterRight={selectedDiameterRight}
+                                   selectedDiameterLeft={selectedDiameterLeft}
+                                   selectedDiameterRight={selectedDiameterRight}
                         />
                     }
                     {cardView &&
