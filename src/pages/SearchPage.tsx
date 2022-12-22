@@ -2,7 +2,7 @@ import '../css/SearchPage.css'
 import {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
-import {IModelsCard} from "../interfaces/models";
+import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/Checkbox.css'
 import {CardView} from "../components/CardView";
 

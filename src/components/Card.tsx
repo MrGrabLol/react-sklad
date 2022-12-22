@@ -1,5 +1,5 @@
 import '../css/Card.css'
-import {IModelsCard} from "../interfaces/models";
+import {IModelsCard} from "../interfaces/exportedInterfaces";
 import {Link} from "react-router-dom";
 import React from "react";
 

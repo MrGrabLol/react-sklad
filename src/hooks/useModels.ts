@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Diameter, IModels, IModelsCard} from "../interfaces/models";
+import {Diameter, IModels, IModelsCard} from "../interfaces/exportedInterfaces";
 import axios, {AxiosError} from "axios";
 
 export function useModels(accessToken: string) {

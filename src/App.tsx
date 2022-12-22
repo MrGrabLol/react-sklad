@@ -1,6 +1,6 @@
 import React from 'react';
 import {LoginPage} from "./pages/LoginPage";
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider} from "react-router-dom";
 import {RegisterPage} from "./pages/RegisterPage";
 import {ShowPage} from "./pages/ShowPage";
 import {SearchPage} from "./pages/SearchPage";
@@ -17,6 +17,7 @@ import {loader as cardIdLoader} from "./components/PositionDetails"
 import {SkladPage} from "./pages/SkladPage";
 import {PositionDetails} from "./components/PositionDetails";
 import {PositionPrint} from "./components/PositionPrint";
+import {Navigation} from "./components/Navigation";
 
 function App() {
     const {token, setToken} = useToken()
@@ -27,6 +28,7 @@ function App() {
 
     const JSXRoutes = (
         <>
+            <Route path='/' element={<Navigate to='/sklad'/>}/>
             <Route path='/sklad' element={<SkladPage></SkladPage>} children={
                 <>
                     <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}/>

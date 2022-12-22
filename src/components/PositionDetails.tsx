@@ -1,6 +1,6 @@
 import {Link, useLoaderData} from "react-router-dom";
 import axios from "axios";
-import {IModelsCard} from "../interfaces/models";
+import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/CardIdViewShow.css'
 import {CardView} from "./CardView";
 
@@ -83,7 +83,7 @@ export function PositionDetails() {
                         card.type === 'Позиция' && card.pack !== null &&
                         <tr>
                             <td className='header'>Поддон</td>
-                            <td><Link to={'/position/' + card.pack + '/show'}>{card.pack}</Link></td>
+                            <td><Link to={'/position/' + card.pack}>{card.pack}</Link></td>
                         </tr>
                     }
                 </table>

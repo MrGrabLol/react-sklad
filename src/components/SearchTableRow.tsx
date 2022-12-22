@@ -1,5 +1,5 @@
 import React from "react";
-import {ISearchModels} from "../interfaces/models";
+import {ISearchModels} from "../interfaces/exportedInterfaces";
 
 interface SearchTableRowProps {
     model: ISearchModels

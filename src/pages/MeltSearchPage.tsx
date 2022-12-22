@@ -2,7 +2,7 @@ import '../css/SearchPage.css'
 import {SearchAutoComplete} from "../components/SearchAutoComplete";
 import {useState} from "react";
 import {SearchTableView} from "../components/SearchTableView";
-import {ISearchAutoComplete, ISearchModels} from "../interfaces/models";
+import {ISearchAutoComplete, ISearchModels} from "../interfaces/exportedInterfaces";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
 

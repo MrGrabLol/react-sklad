@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/SearchAutoComplete.css"
 import axios from "axios";
-import {ISearchAutoComplete, SearchAutocompleteResponse} from '../interfaces/models'
+import {ISearchAutoComplete, SearchAutocompleteResponse} from '../interfaces/exportedInterfaces'
 
 interface SearchAutoCompleteProps {
     state: ISearchAutoComplete,
@@ -9,15 +9,6 @@ interface SearchAutoCompleteProps {
 }
 
 export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) {
-
-    // const [state, setState] = useState<SearchAutoCompleteProps>({
-    //     activeSuggestion: 0,
-    //     markSuggestions: [],
-    //     partSuggestions: [],
-    //     heatSuggestions: [],
-    //     showSuggestions: false,
-    //     userInput: ''
-    // })
 
     async function onChangeHandler(event: { currentTarget: { value: any; }; }) {
         const userInput = event.currentTarget.value;
@@ -31,8 +22,6 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
         })
         const partSug = response.data.part
         const plavSug = response.data.plav
-        console.log(partSug)
-        console.log(plavSug)
         setState({
             activeSuggestion: 0,
             markSuggestions: response.data.marks,
@@ -41,7 +30,6 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
             showSuggestions: true,
             userInput: userInput
         });
-        console.log(state)
     }
 
     function onClickHandler(event: { currentTarget: { innerText: any; }; }) {

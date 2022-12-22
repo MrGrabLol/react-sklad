@@ -1,6 +1,6 @@
 import {TableRow} from "./TableRow";
 import React from "react";
-import {IModels} from "../interfaces/models";
+import {IModels} from "../interfaces/exportedInterfaces";
 import '../css/TableView.css'
 
 interface TableViewProps {
