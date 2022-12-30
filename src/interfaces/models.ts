@@ -23,7 +23,8 @@ export interface IModelsCard {
     location: string,
     createdFrom: string,
     pack: number,
-    positions: IModelsCardPackage[]
+    positions: IModelsCardPackage[],
+    standarts: string[]
 }
 
 export interface IModelsCardPackage {

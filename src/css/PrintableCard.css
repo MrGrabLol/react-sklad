@@ -1,0 +1,45 @@
+@page {
+    size: 60mm 60mm;
+    /*size: 85mm 99.45mm;*/
+}
+
+@media print {
+    div {
+        border: none !important;
+    }
+}
+
+.card {
+    border: #3b4da3 3px solid;
+    border-radius: 1rem;
+}
+
+.big {
+    width: 495px;
+    height: 425px;
+}
+
+.small {
+    width: 290px;
+    height: 290px;
+    font-size: 30px;
+    margin-bottom: 0;
+    line-height: 0;
+    padding-left: 10px;
+}
+
+.small img.barcode {
+    height: 70px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.small img.logo {
+    height: 90px;
+}
+
+.small span {
+    font-weight: bold;
+}
+
+

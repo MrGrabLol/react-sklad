@@ -1,0 +1,17 @@
+.mainbar_card {
+    margin-top: 150px;
+    padding-right: 7%;
+}
+
+.logo-card {
+    width: 495px;
+    height: 425px;
+    float: left;
+    margin-left: 5%;
+}
+
+.no-logo-card {
+    width: 290px;
+    height: 300px;
+    margin-left: 55%;
+}

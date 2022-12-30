@@ -16,7 +16,7 @@ import {PositionPage} from "./pages/PositionPage";
 import {loader as cardIdLoader} from "./components/PositionDetails"
 import {SkladPage} from "./pages/SkladPage";
 import {PositionDetails} from "./components/PositionDetails";
-import {PositionPrint} from "./components/PositionPrint";
+import PositionPrint from "./pages/PositionPrint";
 
 function App() {
     const {token, setToken} = useToken()
@@ -45,7 +45,7 @@ function App() {
             <Route path='/position/:id' element={<PositionPage/>} children={
                 <>
                     <Route path='/position/:id' loader={cardIdLoader} element={<PositionDetails/>}/>
-                    <Route path='/position/:id/print' element={<PositionPrint/>}/>
+                    <Route path='/position/:id/print' loader={cardIdLoader} element={<PositionPrint/>}/>
                 </>
             }/>
 
