@@ -16,7 +16,7 @@ export function Card({card}: ModelCardProps) {
     return (
         <Link className="card-item" target="_blank" to={ '/position/' + card.id }>
             <div>
-                <p className="cart-item__title">{card.type}</p>
+                <p className="card-item__title">{card.type}</p>
                 <p className="card-item__text"><span>Марка:</span> {card.mark}</p>
                 <p className="card-item__text"><span>Диаметр:</span> {card.diameter}</p>
                 <p className="card-item__text"><span>Упаковка:</span> {card.packing}</p>

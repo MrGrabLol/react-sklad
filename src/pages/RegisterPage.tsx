@@ -6,7 +6,6 @@ import {ErrorMessage} from "../components/ErrorMessage";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import {RegisterStepTwo} from "../components/RegisterStepTwo";
-import axios from "axios";
 import {ModalWindow} from "../components/ModalWindow";
 
 interface SelectFields {

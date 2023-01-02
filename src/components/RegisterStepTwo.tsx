@@ -32,10 +32,12 @@ export function RegisterStepTwo({
 
     const [cardArray, setCardArray] = useState<IPositionModel[]>([])
     const [generalError, setGeneralError] = useState('')
-    const [pack, setPack] = useState(() => {
+    const [packView, setPackView] = useState(() => {
         return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock;
     })
-    const [checkedPack, setCheckedPack] = useState(false)
+    const [packPrint, setPackPrint] = useState(() => {
+        return packView;
+    })
     const [thirdStepRegister, setThirdStepRegister] = useState(false)
     const [registerResponse, setRegisterResponse] = useState<IRegisterResponse>({
         positions: [], pack: {
@@ -71,7 +73,7 @@ export function RegisterStepTwo({
             try {
                 const response = await axios.post('http://localhost:8081/api/v1/registration', {
                     positions: cardArray,
-                    pack: checkedPack
+                    pack: packPrint
                 }, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -91,11 +93,11 @@ export function RegisterStepTwo({
         <div>
             {!thirdStepRegister && <form onSubmit={submitHandler}>
                 <h2 className='header-reg'>Введите незаполненные поля</h2>
-                {pack &&
+                {packView &&
                     <div className='switchbar-reg'>
                         <p>Объединить в поддон:</p>
                         <label className='switch-reg'>
-                            <input type='checkbox' checked={checkedPack} onChange={() => setCheckedPack(!checkedPack)}/>
+                            <input type='checkbox' checked={packPrint} onChange={() => setPackPrint(!packPrint)}/>
                             <span className='slider round'></span>
                         </label>
                     </div>
@@ -120,7 +122,7 @@ export function RegisterStepTwo({
                 </div>
                 <button type='submit' className='form-main-button-step-two'>Подтвердить</button>
             </form>}
-            {thirdStepRegister && !generalError && <RegisterStepThree registerResponse={registerResponse}/>}
+            {thirdStepRegister && !generalError && <RegisterStepThree registerResponse={registerResponse} packPrint={packPrint}/>}
         </div>
     )
 }

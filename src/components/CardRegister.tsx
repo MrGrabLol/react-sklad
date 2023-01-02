@@ -53,7 +53,7 @@ export function CardRegister({card, diameterBlock, packageBlock, plavBlock, part
 
     return (
             <div className='card-item-reg'>
-                <p className='cart-item__title-reg'>{card.mark}</p>
+                <p className='card-item__title-reg'>{card.mark}</p>
                 <div className='input-block-step-two'>
                     <p className='card-item__text-reg'><span className='span-reg'>Стандарты: </span>{card.standard.standards.join(', ')}</p>
                 </div>
