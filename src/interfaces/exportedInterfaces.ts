@@ -103,3 +103,45 @@ export interface IStandards {
 export interface IStandardsRequest {
     marks: IStandards[]
 }
+
+export interface IPositionsResponse {
+    id: number,
+    mark: string,
+    diameter: string,
+    packing: string,
+    date: string,
+    comment: string,
+    part: string,
+    plav: string,
+    manufacturer: string,
+    weight: string,
+    status: string,
+    location: string,
+    type: string,
+    standards: string[],
+    createdFrom: string,
+    pack: number
+}
+
+export interface IPackResponse {
+    id: number,
+    mark: string,
+    diameter: string,
+    packing: string,
+    date: string,
+    comment: string,
+    part: string,
+    plav: string,
+    manufacturer: string,
+    weight: string,
+    status: string,
+    location: string,
+    type: string,
+    "standards": string[],
+    "positions": IPositionsResponse[]
+}
+
+export interface IRegisterResponse {
+    positions: IPositionsResponse[],
+    pack: IPackResponse
+}

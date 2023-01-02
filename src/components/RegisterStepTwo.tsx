@@ -1,8 +1,8 @@
-import {IPositionModel, IRegisterModel} from "../interfaces/exportedInterfaces";
+import {IPositionModel, IRegisterModel, IRegisterResponse} from "../interfaces/exportedInterfaces";
 import {CardView} from "./CardView";
 import {CardRegister} from "./CardRegister";
 import React, {useState} from "react";
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import {RegisterStepThree} from "./RegisterStepThree";
 
 interface RegisterStepTwoProps {
@@ -32,13 +32,17 @@ export function RegisterStepTwo({
 
     const [cardArray, setCardArray] = useState<IPositionModel[]>([])
     const [generalError, setGeneralError] = useState('')
-    // const [registerModel, setRegisterModel] = useState<IRegisterModel>({positions: [], pack: true})
     const [pack, setPack] = useState(() => {
         return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock;
     })
-    // const [] = useState()
     const [checkedPack, setCheckedPack] = useState(false)
     const [thirdStepRegister, setThirdStepRegister] = useState(false)
+    const [registerResponse, setRegisterResponse] = useState<IRegisterResponse>({
+        positions: [], pack: {
+            id: 0, mark: '', diameter: '', packing: '', date: '', comment: '', part: '', plav: '', manufacturer: '',
+            weight: '', status: '', location: '', type: '', standards: [], positions: []
+        }
+    })
 
     const [once, setOnce] = useState(false)
     if (!once) {
@@ -64,15 +68,22 @@ export function RegisterStepTwo({
             event.preventDefault()
             setGeneralError(error)
         } else {
-            const responseRegister = await axios.post('http://localhost:8081/api/v1/position', {
-                positions: cardArray,
-                pack: checkedPack
-            }, {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
-                }
-            })
-            setThirdStepRegister(true)
+            try {
+                const response = await axios.post('http://localhost:8081/api/v1/registration', {
+                    positions: cardArray,
+                    pack: checkedPack
+                }, {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                setRegisterResponse(response.data)
+                setThirdStepRegister(true)
+            } catch (e: unknown) {
+                event.preventDefault()
+                const requestError = e as AxiosError
+                setGeneralError('Ошибка сервера: ' + requestError.message + ', повторите попытку позже')
+            }
         }
     }
 
@@ -109,7 +120,7 @@ export function RegisterStepTwo({
                 </div>
                 <button type='submit' className='form-main-button-step-two'>Подтвердить</button>
             </form>}
-            {thirdStepRegister && <RegisterStepThree/>}
+            {thirdStepRegister && !generalError && <RegisterStepThree registerResponse={registerResponse}/>}
         </div>
     )
 }

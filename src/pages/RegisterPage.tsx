@@ -87,7 +87,7 @@ export function RegisterPage() {
                 plav: plav.trim(),
                 manufacturer: manufacturer.trim(),
                 weight: Number(weight),
-                diameter: diameter,
+                diameter: String(Number(diameter)),
                 comment: comment.trim(),
                 standard: {
                     mark: mark.trim(),
