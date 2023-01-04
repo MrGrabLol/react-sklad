@@ -5,16 +5,15 @@ import {ErrorMessage} from "../components/ErrorMessage";
 import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/Checkbox.css'
 import {CardView} from "../components/CardView";
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
 
-interface SearchPageProps {
-    token: string
-}
-
-export function SearchPage({token}: SearchPageProps) {
+export function SearchPage() {
     const [id, setId] = useState<string>('')
     const [error, setError] = useState('')
     const [cards, setCards] = useState<IModelsCard[]>()
     const [checked, setChecked] = useState(false)
+    const {token, setToken} = useToken()
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
@@ -24,7 +23,7 @@ export function SearchPage({token}: SearchPageProps) {
         if (request.length > 0) {
             try {
                 setError('')
-                const response = await axios.post('http://localhost:8081/api/v1/search', {
+                const response = await axios.post(BACKEND_URL + '/api/v1/search', {
                     positions: request
                 }, {
                     headers: {

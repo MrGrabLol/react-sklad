@@ -5,12 +5,11 @@ import {SearchTableView} from "../components/SearchTableView";
 import {ISearchAutoComplete, ISearchModels} from "../interfaces/exportedInterfaces";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
 
-interface MeltSearchPageProps {
-    token: string
-}
-
-export function MeltSearchPage({token}: MeltSearchPageProps) {
+export function MeltSearchPage() {
+    const {token, setToken} = useToken()
     const [request, setRequest] = useState(false)
     const [state, setState] = useState<ISearchAutoComplete>({
         activeSuggestion: 0,
@@ -27,7 +26,7 @@ export function MeltSearchPage({token}: MeltSearchPageProps) {
         event.preventDefault()
         try {
             setError('')
-            const response = await axios.post('http://localhost:8081/api/v1/search/params', {
+            const response = await axios.post(BACKEND_URL + '/api/v1/search/params', {
                 query: state.userInput
             }, {
                 headers: {

@@ -6,19 +6,16 @@ import {useModels} from "../hooks/useModels";
 import {FilterPanel} from "../components/FilterPanel";
 import {TableView} from "../components/TableView";
 import {CardView} from "../components/CardView";
+import useToken from "../hooks/useToken";
 
-interface ShowPageProps {
-    token: string
-}
-
-export function ShowPage({token}: ShowPageProps) {
-    const {loading, error, models, cards, marks, packs, diameter} = useModels(token)
+export function ShowPage() {
+    const {token, setToken} = useToken()
+    const {loading, error, models, cards, marks, packs, diameter} = useModels(token!!)
     const [cardView, setCardView] = useState(false)
     const [selectedMarks, setSelectedMarks] = useState<string[]>([])
     const [selectedPacks, setSelectedPacks] = useState<string[]>([])
     const [selectedDiameterLeft, setSelectedDiameterLeft] = useState(0.3)
     const [selectedDiameterRight, setSelectedDiameterRight] = useState(20)
-
     function packsHandler(item: string[]) {
         setSelectedPacks(item)
     }

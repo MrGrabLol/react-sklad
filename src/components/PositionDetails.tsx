@@ -3,11 +3,12 @@ import axios from "axios";
 import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/CardIdViewShow.css'
 import {CardView} from "./CardView";
+import {BACKEND_URL} from "../ConstConfig";
 
 // @ts-ignore
 export async function loader({params}) {
     let card;
-    await axios.get<IModelsCard>('http://localhost:8081/api/v1/search/' + params.id, {
+    await axios.get<IModelsCard>(BACKEND_URL + '/api/v1/search/' + params.id, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem("token")
         }

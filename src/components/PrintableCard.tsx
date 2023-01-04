@@ -1,6 +1,7 @@
 import React, {ForwardedRef} from "react";
 import logo from "../assets/logo_new_v2.png";
-import {IRegisterResponse} from "../interfaces/exportedInterfaces";
+import otk from '../assets/otk.png'
+import '../css/PrintableCard.css'
 
 export interface PrintViewProps {
     mark: string,
@@ -9,7 +10,7 @@ export interface PrintViewProps {
     packing: string,
     part: string,
     plav: string,
-    weight: number,
+    weight: string,
     id: number
 }
 
@@ -32,6 +33,7 @@ export const PrintableCard = React.forwardRef(({object, classname}: PrintableCar
             <p className="card-item__text"><span>Партия:</span> {object.part}</p>
             <p className="card-item__text"><span>Плавка:</span> {object.plav}</p>
             <p className="card-item__text"><span>Вес:</span> {object.weight}</p>
+            <img className='otk' src={otk} alt="OTK"/>
         </div>
     )
 })

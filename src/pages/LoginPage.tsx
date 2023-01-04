@@ -3,17 +3,16 @@ import React, {useState} from "react";
 import axios, {AxiosError} from "axios";
 import PropTypes from 'prop-types'
 import {ErrorMessage} from "../components/ErrorMessage";
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 import icon from "../assets/logo_new.png"
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
 
-interface LoginPageProps {
-    setToken: (item: string) => void
-}
-
-export function LoginPage({setToken}: LoginPageProps) {
+export function LoginPage() {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const {token, setToken} = useToken()
     const navigate = useNavigate();
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
@@ -52,9 +51,4 @@ export function LoginPage({setToken}: LoginPageProps) {
             </div>
         </>
     )
-}
-
-
-LoginPage.propTypes = {
-    setToken: PropTypes.func.isRequired
 }

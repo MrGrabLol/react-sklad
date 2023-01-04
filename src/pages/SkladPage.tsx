@@ -3,6 +3,7 @@ import {Navigation} from "../components/Navigation";
 import {Outlet, useNavigate} from "react-router-dom";
 import React from "react";
 import useToken from "../hooks/useToken";
+import {LoginPage} from "./LoginPage";
 
 export function SkladPage() {
 
@@ -12,6 +13,9 @@ export function SkladPage() {
     const clickHandler = () => {
         setToken('')
         localStorage.removeItem('token')
+    }
+
+    if (!localStorage.getItem('token')) {
         navigate('/login')
     }
 

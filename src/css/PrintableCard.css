@@ -1,0 +1,16 @@
+@page {
+    size: 58mm 60mm;
+}
+
+@media print {
+    div {
+        border: none !important;
+    }
+}
+
+.card {
+    display: inline-block;
+    border: #3b4da3 3px solid;
+    border-radius: 14px;
+    white-space: pre-wrap;
+}
