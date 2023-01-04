@@ -1,0 +1,147 @@
+@page {
+    size: auto;
+}
+
+/*@page.big {*/
+/*    size: 99.5mm 85mm;*/
+/*}*/
+
+@media print {
+    div {
+        border: none !important;
+    }
+}
+
+.card {
+    border: #3b4da3 3px solid;
+    border-radius: 1rem;
+    white-space: pre-wrap;
+}
+
+.big {
+    /*width: 99.5mm;*/
+    /*height: 88mm;*/
+    width: fit-content;
+    height: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.big p.gost {
+    line-height: 29px;
+    margin-bottom: -14px;
+    margin-top: -14px;
+}
+
+.big p:not(.gost) {
+    line-height: 0;
+}
+
+.small {
+    /*width: 60mm;*/
+    /*height: 58mm;*/
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*.small p {*/
+/*    font-size: 12px;*/
+/*}*/
+
+.small p.gost {
+    line-height: 23px;
+    margin-bottom: -12px;
+    margin-top: -10px;
+}
+
+.small p:not(.gost) {
+    line-height: 0;
+}
+
+.small img.barcode {
+    /*height: 70px;*/
+    margin-bottom: 12px;
+    /*margin-left: 10px;*/
+    height: 14mm;
+    width: 14mm;
+}
+
+.small img.logo {
+    height: 20mm;
+    width: 42mm;
+}
+
+.small span {
+    font-weight: bold;
+}
+
+.big img.logo {
+    height: 140px;
+}
+
+.big img.barcode {
+    height: 120px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.big span {
+    font-weight: bold;
+}
+
+.big p {
+    font-size: 25px;
+}
+
+.mainbar_card {
+    /*margin-top: 150px;*/
+    /*padding-right: 7%;*/
+}
+
+.logo-card {
+    width: 495px;
+    height: 425px;
+    /*width: 60mm;*/
+    /*height: 58mm;*/
+    /*float: left;*/
+    /*margin-left: 5%;*/
+}
+
+.no-logo-card {
+    width: 495px;
+    height: 425px;
+    /*margin-left: 55%;*/
+}
+
+.print-button-container {
+    margin-top: 50px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+}
+
+.printButton {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    width: 140px;
+    border: none;
+    border-radius: 6px;
+    background-color: #3b4da3;
+    color: white;
+}
+
+.printButton:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.printButton:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}

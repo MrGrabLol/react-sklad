@@ -71,6 +71,7 @@ export function RegisterStepTwo({
             setGeneralError(error)
         } else {
             try {
+                event.preventDefault()
                 const response = await axios.post('http://localhost:8081/api/v1/registration', {
                     positions: cardArray,
                     pack: packPrint
