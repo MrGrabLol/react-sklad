@@ -5,21 +5,21 @@ import '../css/CardIdViewShow.css'
 import {CardView} from "./CardView";
 import {BACKEND_URL} from "../ConstConfig";
 
-// @ts-ignore
+//@ts-ignore
 export async function loader({params}) {
-    let card;
-    await axios.get<IModelsCard>(BACKEND_URL + '/api/v1/search/' + params.id, {
+    const response = await axios.get('http://localhost:8081/api/v1/search/' + params.id, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem("token")
         }
-    }).then(response => card = response.data);
+    })
+    const card = response.data
     return {card}
 }
 
 export function PositionDetails() {
 
-    // @ts-ignore
-    const {card} = useLoaderData();
+    //@ts-ignore
+    const {card} = useLoaderData()
 
     function checkComment() {
         return card.comment !== '';

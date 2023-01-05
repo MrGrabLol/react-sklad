@@ -12,7 +12,7 @@ export const ArrayOfPrintableCards = React.forwardRef(({object, classname}: Arra
         return (
             <div //@ts-ignore
                 ref={ref}>
-                {object.map(obj => <PrintableCard object={obj} classname={classname}/>)}
+                {object.map((obj, index) => <PrintableCard object={obj} classname={classname} key={index}/>)}
             </div>
         )
     }

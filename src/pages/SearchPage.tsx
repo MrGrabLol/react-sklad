@@ -23,7 +23,7 @@ export function SearchPage() {
         if (request.length > 0) {
             try {
                 setError('')
-                const response = await axios.post(BACKEND_URL + '/api/v1/search', {
+                const response = await axios.post('http://localhost:8081/api/v1/search', {
                     positions: request
                 }, {
                     headers: {

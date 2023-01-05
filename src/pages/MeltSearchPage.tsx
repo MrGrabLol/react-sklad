@@ -26,7 +26,7 @@ export function MeltSearchPage() {
         event.preventDefault()
         try {
             setError('')
-            const response = await axios.post(BACKEND_URL + '/api/v1/search/params', {
+            const response = await axios.post('http://localhost:8081/api/v1/search/params', {
                 query: state.userInput
             }, {
                 headers: {

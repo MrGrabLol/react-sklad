@@ -39,7 +39,7 @@ const JSXRoutes = (
         <Route path='/position/:id' element={<PositionPage/>} children={
             <>
                 <Route path='/position/:id' loader={cardIdLoader} element={<PositionDetails/>}/>
-                <Route path='/position/:id/print' element={<PositionPrint/>}/>
+                <Route path='/position/:id/print' loader={cardIdLoader} element={<PositionPrint/>}/>
             </>
         }/>
 

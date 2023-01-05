@@ -20,7 +20,7 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
     })
 
 
-    const [select, setSelect] = useState<string>('small')
+    const [selectedClass, setSelectedClass] = useState<string>('small')
 
     // const templateObject: PrintViewProps = {
     //     mark: 'МАРКА123',
@@ -71,26 +71,12 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
         borderRadius: ''
     })
 
-    // if (select === 'small') {
-    //     stylesSmall = {
-    //         boxShadow: '0 0 5px 5px green',
-    //         borderRadius: '16px'
-    //     }
-    //     stylesBig = {}
-    // } else if (select === 'big') {
-    //     stylesBig = {
-    //         boxShadow: '0 0 5px 5px green',
-    //         borderRadius: '16px'
-    //     }
-    //     stylesSmall = {}
-    // }
-
     return (
         <div className='printable-container'>
             <div className='printable'>
                 <div className='print-block margin-top'>
                     <div id='printChoiceSmall' style={stylesSmall} className='small-card' onClick={() => {
-                        setSelect('small')
+                        setSelectedClass('small')
                         setStylesBig({boxShadow: '', borderRadius: ''})
                         setStylesSmall({
                             boxShadow: '0 0 5px 5px #5b38a3', borderRadius: '16px'
@@ -101,7 +87,7 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
                 </div>
                 <div className='print-block'>
                     <div id='printChoiceBig' style={stylesBig} className='big-card' onClick={() => {
-                        setSelect('big')
+                        setSelectedClass('big')
                         setStylesSmall({boxShadow: '', borderRadius: ''})
                         setStylesBig({
                             boxShadow: '0 0 5px 5px #5b38a3', borderRadius: '16px'
@@ -126,9 +112,9 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
             </div>
             <div style={{display: 'none'}}>
                 {pack !== null &&
-                    <PrintableCard ref={packRef} object={pack} classname={select}/>
+                    <PrintableCard ref={packRef} object={pack} classname={selectedClass}/>
                 }
-                <ArrayOfPrintableCards ref={positionsRef} object={positions} classname={select}/>
+                <ArrayOfPrintableCards ref={positionsRef} object={positions} classname={selectedClass}/>
             </div>
         </div>
     )
