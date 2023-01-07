@@ -1,7 +1,7 @@
 import '../css/ModalWindow.css'
 import ReactDom from 'react-dom'
 import {useState} from "react";
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,20 +17,23 @@ export function ModalWindow({openModal}: ModalWindowProps) {
     const portalElement: HTMLElement = document.getElementById('portal')!
 
     async function sendRequest() {
-        const response = await axios.post('http://localhost:8081/api/v1/standard', {
-            mark: newMark,
-            standard: newStandard
-        }, {
-            headers: {
-                Authorizatiion: 'Bearer ' + localStorage.getItem('token')
-            }
-        })
-        if (response.status === 200) {
+        setError('')
+        setNewMark(newMark.trim())
+        setNewStandard(newStandard.trim())
+        try {
+            const response = await axios.post('http://localhost:8081/api/v1/standard', {
+                mark: newMark,
+                standard: newStandard
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            })
             window.location.reload()
-        } else {
-            setError('Ошибка сервера: не удалось добавить стандарт')
+        } catch (e: unknown) {
+            const error = e as AxiosError
+            setError(error.message)
         }
-
     }
 
     return ReactDom.createPortal(
@@ -42,6 +45,7 @@ export function ModalWindow({openModal}: ModalWindowProps) {
                 </div>
                 <div className='title'>
                     <h1>Добавление стандарта</h1>
+                    {error && <h3 style={{color: 'red'}}>Ошибка доавления стандарта: {error}</h3>}
                 </div>
                 <div className='body'>
                     <div className='modalInput'>

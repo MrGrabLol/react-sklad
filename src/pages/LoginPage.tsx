@@ -1,7 +1,6 @@
 import '../css/Login.css'
 import React, {useState} from "react";
 import axios, {AxiosError} from "axios";
-import PropTypes from 'prop-types'
 import {ErrorMessage} from "../components/ErrorMessage";
 import {useNavigate} from 'react-router-dom';
 import icon from "../assets/logo_new.png"
@@ -31,24 +30,21 @@ export function LoginPage() {
     }
 
     return (
-        <>
-            <div className='login'>
-                {error && <ErrorMessage error={error}/>}
-                <form onSubmit={submitHandler} className='login-panel'>
-                    <img src={icon} alt={'Logo'}/>
-                    <h1>Авторизация</h1>
-                    <span className='field'>
+        <div className='login'>
+            {error && <ErrorMessage error={error}/>}
+            <form onSubmit={submitHandler} className='login-panel'>
+                <img src={icon} alt={'Logo'}/>
+                <h1>Авторизация</h1>
+                <span className='field'>
                     <p>Логин:</p>
                     <input type="text" value={login} onChange={event => setLogin(event.target.value)}/>
                 </span>
-                    <span className='field'>
+                <span className='field'>
                     <p>Пароль:</p>
                     <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 </span>
-                    <br/>
-                    <button type='submit' className='btn-login'>Войти</button>
-                </form>
-            </div>
-        </>
+                <button type='submit' className='btn-login'>Войти</button>
+            </form>
+        </div>
     )
 }

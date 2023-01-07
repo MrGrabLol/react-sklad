@@ -9,10 +9,6 @@ interface ModelCardProps {
 
 export function Card({card}: ModelCardProps) {
 
-    function isComment() {
-        return card.comment !== '';
-    }
-
     return (
         <Link className="card-item" target="_blank" to={ '/position/' + card.id }>
             <div>
@@ -23,7 +19,7 @@ export function Card({card}: ModelCardProps) {
                 <p className="card-item__text"><span>Партия:</span> {card.part}</p>
                 <p className="card-item__text"><span>Плавка:</span> {card.plav}</p>
                 <p className="card-item__text"><span>Вес:</span> {card.weight}</p>
-                {isComment() && <p className="card-item__text"><span>Комментарий:</span> {card.comment}</p>}
+                {card.comment && <p className="card-item__text"><span>Комментарий:</span> {card.comment}</p>}
                 <p className="card-item__text"><span>Статус:</span> {card.status}</p>
                 <p className="card-item__text"><span>Склад:</span> {card.location}</p>
             </div>

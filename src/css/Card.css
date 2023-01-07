@@ -6,20 +6,24 @@
     text-decoration: none;
     color: black;
 }
+
 .card-item:hover {
     background-color: #eaeaea;
     opacity: 0.89;
 }
+
 .card-item__title {
     font-size: 1.3rem;
     margin: 0 auto 0.6rem;
 }
+
 .card-item__text {
     font-size: 1.1rem;
     padding-top: 0.4rem;
     text-align: start;
     word-break: break-all;
 }
+
 span {
     font-style: normal;
 }

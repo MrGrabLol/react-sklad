@@ -1,6 +1,5 @@
 /*main form, fields etc*/
 
-
 .margin-block .register-block-button {
     margin-top: 140px;
 }
@@ -282,12 +281,13 @@
 
 .switchbar-reg {
     float: left;
-    width: 19%;
+    width: 20%;
 }
 
 .switchbar-reg p {
     float: left;
     font-size: 19px;
+    margin-left: 15px;
 }
 
 .switch-reg {

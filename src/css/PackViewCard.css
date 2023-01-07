@@ -1,0 +1,33 @@
+.card-item-ship {
+    border: 3px solid #3b4da3;
+    border-radius: 1rem;
+    padding: 1.2rem 1.2rem;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+
+.card-item__title-ship {
+    font-size: 1.5rem;
+    margin: 0 auto 0.6rem;
+    font-weight: bold;
+}
+
+.card-item__text-ship {
+    font-size: 1.2rem;
+    text-align: start;
+    word-break: break-all;
+}
+
+.span-ship {
+    font-style: normal;
+    font-weight: bold;
+}
+
+.card-item-ship input {
+    width: 100%;
+    height: 32px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    font-size: 20px;
+}

@@ -9,37 +9,39 @@ export interface IModels {
 
 export interface IModelsCard {
     id: number,
-    date: string,
-    manufacturer: string,
-    type: string,
     mark: string,
     diameter: string,
     packing: string,
+    date: string,
+    comment: string,
     part: string,
     plav: string,
+    manufacturer: string,
     weight: string,
-    comment: string,
     status: string,
     location: string,
+    type: string,
+    standards: string[]
     createdFrom: string,
     pack: number,
-    positions: IModelsCardPackage[]
+    positions: IModelsCardForPackage[]
 }
 
-export interface IModelsCardPackage {
+export interface IModelsCardForPackage {
     id: number,
-    date: string,
-    manufacturer: string,
-    type: string,
     mark: string,
     diameter: string,
     packing: string,
+    date: string,
+    comment: string,
     part: string,
     plav: string,
+    manufacturer: string,
     weight: string,
-    comment: string,
     status: string,
     location: string,
+    type: string,
+    standards: string[]
     createdFrom: string,
     pack: number
 }
@@ -137,11 +139,45 @@ export interface IPackResponse {
     status: string,
     location: string,
     type: string,
-    "standards": string[],
-    "positions": IPositionsResponse[]
+    standards: string[],
+    positions: IPositionsResponse[]
 }
 
 export interface IRegisterResponse {
     positions: IPositionsResponse[],
     pack: IPackResponse
+}
+
+// export interface IShipmentPackage {
+//     id: number,
+//     mark: string,
+//     diameter: string,
+//     date: string,
+//     packing: string,
+//     comment: string,
+//     part: string,
+//     plav: string,
+//     manufacturer: string,
+//     weight: string,
+//     status: string,
+//     location: string,
+//     type: string,
+//     standards: string[],
+//     positions: IPositionsResponse[]
+// }
+
+export interface IShipmentResponse {
+    packages: IPackResponse[],
+    positions: IPositionsResponse[]
+}
+
+export interface IShipping {
+    id: number,
+    weight: number
+}
+
+export interface ISecondStepShipping {
+    positions: IShipping[],
+    bill: string,
+    customer: string
 }

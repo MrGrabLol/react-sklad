@@ -1,0 +1,86 @@
+.shipping-page {
+    width: 100%;
+    height: fit-content;
+}
+
+.shipping-block {
+    display: inline-block;
+    width: 55%;
+    height: fit-content;
+    margin-top: 10%;
+}
+
+.card-container-ship {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 19%);
+    grid-gap: 12px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.shipping-input {
+    margin-top: 4%;
+    width: 100%;
+}
+
+.shipping-view-container {
+    width: 100%;
+    height: fit-content;
+}
+
+.shipping-block input {
+    width: 100%;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    height: 30px;
+    font-size: 18px;
+    margin-top: 16px;
+}
+
+.customer-bill {
+    display: inline-block;
+    width: 49%;
+    height: fit-content;
+}
+
+.customer-bill input {
+    width: 92%;
+}
+
+.shipping-block label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.shipping-btn {
+    margin-top: 6%;
+    color: white;
+    background-color: #3b4da3;
+    font-size: 18px;
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+}
+
+.shipping-btn:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.shipping-btn:active {
+    border: 2px solid #3b4da3;
+    background-color: white;
+    color: #3b4da3;
+}
+
+.bigger {
+    height: 45px;
+    font-size: 20px;
+    width: 350px;
+    margin-bottom: 25px;
+}
+
+.shipping-margin {
+    margin-top: -3.5%;
+}
