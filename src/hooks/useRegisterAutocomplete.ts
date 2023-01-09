@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios, {AxiosError} from "axios";
 import {IStandards, IStandardsRequest} from "../interfaces/exportedInterfaces";
+import {BACKEND_URL} from "../ConstConfig";
 
 export function useRegisterAutocomplete() {
     const [marks, setMarks] = useState<string[]>([])
@@ -12,22 +13,22 @@ export function useRegisterAutocomplete() {
     async function fetchAutocomplete() {
         try {
             setError('')
-            const responsePacks = await axios.get<string[]>('http://localhost:8081/api/v1/filter/packings', {
+            const responsePacks = await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/packings', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             })
-            const responseMarks =  await axios.get<string[]>('http://localhost:8081/api/v1/filter/marks', {
+            const responseMarks =  await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/marks', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             })
-            const responseManufacturers =  await axios.get<string[]>('http://localhost:8081/api/v1/search/manufacturer', {
+            const responseManufacturers =  await axios.get<string[]>(BACKEND_URL + '/api/v1/search/manufacturer', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             })
-            const responseStandards = await axios.get<IStandardsRequest>('http://localhost:8081/api/v1/standard/all', {
+            const responseStandards = await axios.get<IStandardsRequest>(BACKEND_URL + '/api/v1/standard/all', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }

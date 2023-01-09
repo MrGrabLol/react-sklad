@@ -4,6 +4,7 @@ import {useState} from "react";
 import axios, {AxiosError} from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {BACKEND_URL} from "../ConstConfig";
 
 interface ModalWindowProps {
     openModal: (prop: boolean) => void
@@ -16,12 +17,13 @@ export function ModalWindow({openModal}: ModalWindowProps) {
 
     const portalElement: HTMLElement = document.getElementById('portal')!
 
-    async function sendRequest() {
+    async function sendRequest(event: { preventDefault: () => void; }) {
+        event.preventDefault()
         setError('')
         setNewMark(newMark.trim())
         setNewStandard(newStandard.trim())
         try {
-            const response = await axios.post('http://localhost:8081/api/v1/standard', {
+            const response = await axios.post(BACKEND_URL + '/api/v1/standard', {
                 mark: newMark,
                 standard: newStandard
             }, {
@@ -45,7 +47,7 @@ export function ModalWindow({openModal}: ModalWindowProps) {
                 </div>
                 <div className='title'>
                     <h1>Добавление стандарта</h1>
-                    {error && <h3 style={{color: 'red'}}>Ошибка доавления стандарта: {error}</h3>}
+                    {error && <h3 style={{color: 'red'}}>Ошибка добавления стандарта: {error}</h3>}
                 </div>
                 <div className='body'>
                     <div className='modalInput'>

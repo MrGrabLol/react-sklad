@@ -181,3 +181,16 @@ export interface ISecondStepShipping {
     bill: string,
     customer: string
 }
+
+export interface IThirdStepShipping {
+    print: IPositionsResponse[],
+    new: IPositionsResponse[]
+}
+
+export interface IShippingHistory {
+    id: number,
+    customer: string,
+    bill: string,
+    weight: number,
+    date: string
+}

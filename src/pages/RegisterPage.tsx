@@ -7,6 +7,7 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import {RegisterStepTwo} from "../components/RegisterStepTwo";
 import {ModalWindow} from "../components/ModalWindow";
+import {useNavigate} from "react-router-dom";
 
 interface SelectFields {
     value: string,

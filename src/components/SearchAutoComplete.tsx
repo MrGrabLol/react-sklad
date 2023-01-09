@@ -2,6 +2,7 @@ import React from "react";
 import "../css/SearchAutoComplete.css"
 import axios from "axios";
 import {ISearchAutoComplete, SearchAutocompleteResponse} from '../interfaces/exportedInterfaces'
+import {BACKEND_URL} from "../ConstConfig";
 
 interface SearchAutoCompleteProps {
     state: ISearchAutoComplete,
@@ -13,7 +14,7 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
     async function onChangeHandler(event: { currentTarget: { value: any; }; }) {
         const userInput = event.currentTarget.value;
 
-        const response = await axios.post<SearchAutocompleteResponse>("http://localhost:8081/api/v1/search/autocomplete", {
+        const response = await axios.post<SearchAutocompleteResponse>(BACKEND_URL + '/api/v1/search/autocomplete', {
             query: userInput
         }, {
             headers: {
@@ -161,6 +162,8 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
                 onChange={onChangeHandler}
                 onKeyDown={onKeyDownHandler}
                 value={state.userInput}
+                placeholder='Начните ввод: плавка/партия/марка'
+                style={{fontSize: '16px'}}
             />
             {suggestList()}
         </>

@@ -19,19 +19,7 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
         content: () => componentRef.current
     })
 
-
     const [selectedClass, setSelectedClass] = useState<string>('small')
-
-    // const templateObject: PrintViewProps = {
-    //     mark: 'МАРКА123',
-    //     standards: ['ГОСТ-123123', 'ГОСТ-456456'],
-    //     diameter: '20',
-    //     packing: 'УПАКОВКА-1',
-    //     part: '12345678',
-    //     plav: '123-456-789',
-    //     weight: '20',
-    //     id: 1
-    // }
 
     const [positions] = useState<PrintViewProps[]>(() => {
         let temp: PrintViewProps[] = []
@@ -119,26 +107,3 @@ export function RegisterStepThree({registerResponse, packPrint}: RegisterStepThr
         </div>
     )
 }
-
-// export default function PositionPrint() {
-//     let cardNoLogo = useRef(null);
-//     let cardWithLogo = useRef(null);
-//     const { card } = useLoaderData();
-//
-//     return (
-//         <div className={'mainbar_card'}>
-//             <div className={'logo-card card-print'}>
-//                 <ReactToPrint
-//                     trigger={() => <button>Печать с лого</button>}
-//                     content={() => cardNoLogo }/>
-//                 <PrintableCard ref={el => (cardNoLogo = el)} card={card} logo={true}  />
-//             </div>
-//             <div className={'no-logo-card card-print'}>
-//                 <ReactToPrint
-//                     trigger={() => <button>Печать без лого</button>}
-//                     content={() => cardWithLogo }/>
-//                 <PrintableCard ref={el => (cardWithLogo = el)} card={card} />
-//             </div>
-//         </div>
-//     )
-// }

@@ -5,6 +5,7 @@ import '../css/CardIdView.css'
 
 // @ts-ignore
 export function PositionPage() {
+
     return (
         <div className='container'>
             <div className='sidebar'>

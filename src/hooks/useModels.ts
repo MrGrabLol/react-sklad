@@ -16,27 +16,27 @@ export function useModels(accessToken: string) {
         try {
             setError('')
             setLoading(true)
-            const response = await axios.get<IModels[]>('http://localhost:8081/api/v1/filter/table', {
+            const response = await axios.get<IModels[]>(BACKEND_URL + '/api/v1/filter/table', {
                 headers: {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
-            const responseCards = await axios.get<IModelsCard[]>('http://localhost:8081/api/v1/position', {
+            const responseCards = await axios.get<IModelsCard[]>(BACKEND_URL + '/api/v1/position', {
                 headers: {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
-            const responsePacks = await axios.get<string[]>('http://localhost:8081/api/v1/filter/packings', {
+            const responsePacks = await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/packings', {
                 headers: {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
-            const responseMarks =  await axios.get<string[]>('http://localhost:8081/api/v1/filter/marks', {
+            const responseMarks =  await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/marks', {
                 headers: {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
-            const responseDiameter = await axios.get('http://localhost:8081/api/v1/filter/diameter', {
+            const responseDiameter = await axios.get(BACKEND_URL + '/api/v1/filter/diameter', {
                 headers: {
                     Authorization: 'Bearer ' + accessToken
                 }

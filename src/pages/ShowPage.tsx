@@ -7,6 +7,7 @@ import {FilterPanel} from "../components/FilterPanel";
 import {TableView} from "../components/TableView";
 import {CardView} from "../components/CardView";
 import useToken from "../hooks/useToken";
+import {useNavigate} from "react-router-dom";
 
 export function ShowPage() {
     const {token, setToken} = useToken()
@@ -16,6 +17,7 @@ export function ShowPage() {
     const [selectedPacks, setSelectedPacks] = useState<string[]>([])
     const [selectedDiameterLeft, setSelectedDiameterLeft] = useState(0.3)
     const [selectedDiameterRight, setSelectedDiameterRight] = useState(20)
+
     function packsHandler(item: string[]) {
         setSelectedPacks(item)
     }

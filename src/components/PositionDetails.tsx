@@ -1,13 +1,12 @@
 import {Link, useLoaderData} from "react-router-dom";
 import axios from "axios";
-import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/CardIdViewShow.css'
 import {CardView} from "./CardView";
 import {BACKEND_URL} from "../ConstConfig";
 
 //@ts-ignore
 export async function loader({params}) {
-    const response = await axios.get('http://localhost:8081/api/v1/search/' + params.id, {
+    const response = await axios.get(BACKEND_URL + '/api/v1/search/' + params.id, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem("token")
         }

@@ -7,6 +7,7 @@ import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
 import {BACKEND_URL} from "../ConstConfig";
 import useToken from "../hooks/useToken";
+import {useNavigate} from "react-router-dom";
 
 export function MeltSearchPage() {
     const {token, setToken} = useToken()
@@ -26,7 +27,7 @@ export function MeltSearchPage() {
         event.preventDefault()
         try {
             setError('')
-            const response = await axios.post('http://localhost:8081/api/v1/search/params', {
+            const response = await axios.post(BACKEND_URL + '/api/v1/search/params', {
                 query: state.userInput
             }, {
                 headers: {
@@ -44,7 +45,7 @@ export function MeltSearchPage() {
     return (
         <div>
             <form className='input-block' onSubmit={submitHandler}>
-                <button type='submit'>Найти</button>
+                <button type='submit' style={{fontSize: '16px'}}>Найти</button>
                 <SearchAutoComplete state={state} setState={setState}/>
             </form>
             {error && <ErrorMessage error={error}/>}

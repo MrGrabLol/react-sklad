@@ -39,6 +39,7 @@
 
 .input-block button:hover {
     opacity: 0.89;
+    cursor: pointer;
 }
 
 .input-block button:active {

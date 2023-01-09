@@ -1,9 +1,9 @@
-import {IPositionModel, IRegisterModel, IRegisterResponse} from "../interfaces/exportedInterfaces";
-import {CardView} from "./CardView";
+import {IPositionModel, IRegisterResponse} from "../interfaces/exportedInterfaces";
 import {CardRegister} from "./CardRegister";
 import React, {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {RegisterStepThree} from "./RegisterStepThree";
+import {BACKEND_URL} from "../ConstConfig";
 
 interface RegisterStepTwoProps {
     quantity: number,
@@ -72,7 +72,7 @@ export function RegisterStepTwo({
         } else {
             try {
                 event.preventDefault()
-                const response = await axios.post('http://localhost:8081/api/v1/registration', {
+                const response = await axios.post(BACKEND_URL + '/api/v1/registration', {
                     positions: cardArray,
                     pack: packPrint
                 }, {

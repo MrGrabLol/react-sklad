@@ -17,12 +17,12 @@ export function LoginPage() {
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8081/api/v1/auth/login', {
+            const response = await axios.post(BACKEND_URL + '/api/v1/auth/login', {
                 login,
                 password
             })
             setToken(response.data.accessToken)
-            navigate("/sklad")
+            navigate("/")
         } catch (e: unknown) {
             const error = e as AxiosError
             setError(error.message)

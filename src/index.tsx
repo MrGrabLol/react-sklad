@@ -17,21 +17,21 @@ import {SendPage} from "./pages/SendPage";
 import {PositionPage} from "./pages/PositionPage";
 import {loader as cardIdLoader, PositionDetails} from "./components/PositionDetails";
 import {PositionPrint} from "./components/PositionPrint";
+import {PositionShipping} from "./components/PositionShipping";
 
 const JSXRoutes = (
     <>
-        <Route path='/' element={<Navigate to='/sklad'/>}/>
-        <Route path='/sklad' element={<SkladPage></SkladPage>} children={
+        <Route path='/' element={<SkladPage></SkladPage>} children={
             <>
-                <Route path='/sklad/register' element={<RegisterPage></RegisterPage>}/>
-                <Route path='/sklad/show' element={<ShowPage />}/>
-                <Route path='/sklad/search' element={<SearchPage/>}/>
-                <Route path='/sklad/melt-search' element={<MeltSearchPage/>}/>
-                <Route path='/sklad/combine' element={<CombinePage></CombinePage>}/>
-                <Route path='/sklad/shipment' element={<ShipmentPage></ShipmentPage>}/>
-                <Route path='/sklad/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}/>
-                <Route path='/sklad/admission' element={<AdmissionPage></AdmissionPage>}/>
-                <Route path='/sklad/send' element={<SendPage></SendPage>}/>
+                <Route path='/register' element={<RegisterPage></RegisterPage>}/>
+                <Route path='/show' element={<ShowPage/>}/>
+                <Route path='/search' element={<SearchPage/>}/>
+                <Route path='/melt-search' element={<MeltSearchPage/>}/>
+                <Route path='/combine' element={<CombinePage></CombinePage>}/>
+                <Route path='/shipment' element={<ShipmentPage></ShipmentPage>}/>
+                <Route path='/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}/>
+                <Route path='/admission' element={<AdmissionPage></AdmissionPage>}/>
+                <Route path='/send' element={<SendPage></SendPage>}/>
             </>
         }/>
         <Route path='/login' element={<LoginPage/>}/>
@@ -40,6 +40,7 @@ const JSXRoutes = (
             <>
                 <Route path='/position/:id' loader={cardIdLoader} element={<PositionDetails/>}/>
                 <Route path='/position/:id/print' loader={cardIdLoader} element={<PositionPrint/>}/>
+                <Route path='/position/:id/dispatch' loader={cardIdLoader} element={<PositionShipping/>}/>
             </>
         }/>
 
