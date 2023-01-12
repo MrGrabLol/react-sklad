@@ -68,7 +68,7 @@ export function PositionPrint() {
                 <button className='printButton' onClick={() => {
                     setClicked(true)
                     printHandler()
-                }}>Печать карточек</button>
+                }}>Печать карточки</button>
             </div>
         </div>
     )
