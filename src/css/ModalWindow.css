@@ -1,0 +1,267 @@
+/*.darkBG {*/
+/*    background-color: rgba(0, 0, 0, 0.2);*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*    z-index: 0;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    position: absolute;*/
+/*}*/
+
+/*.centered {*/
+/*    position: fixed;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
+
+/*.modal {*/
+/*    width: 250px;*/
+/*    height: 170px;*/
+/*    background: white;*/
+/*    color: white;*/
+/*    z-index: 10;*/
+/*    border-radius: 16px;*/
+/*    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);*/
+/*}*/
+
+/*.modalHeader {*/
+/*    height: 50px;*/
+/*    background: white;*/
+/*    overflow: hidden;*/
+/*    border-top-left-radius: 16px;*/
+/*    border-top-right-radius: 16px;*/
+/*}*/
+
+/*.heading {*/
+/*    margin: 0;*/
+/*    padding: 10px;*/
+/*    color: #2c3e50;*/
+/*    font-weight: 500;*/
+/*    font-size: 18px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.modalContent {*/
+/*    padding: 10px;*/
+/*    font-size: 14px;*/
+/*    color: #2c3e50;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.modalActions {*/
+/*    position: absolute;*/
+/*    bottom: 2px;*/
+/*    margin-bottom: 10px;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.actionsContainer {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.closeBtn {*/
+/*    cursor: pointer;*/
+/*    font-weight: 500;*/
+/*    padding: 4px 8px;*/
+/*    border-radius: 8px;*/
+/*    border: none;*/
+/*    font-size: 18px;*/
+/*    color: #2c3e50;*/
+/*    background: white;*/
+/*    transition: all 0.25s ease;*/
+/*    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    top: 0;*/
+/*    align-self: flex-end;*/
+/*    margin-top: -7px;*/
+/*    margin-right: -7px;*/
+/*}*/
+
+/*.closeBtn:hover {*/
+/*    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);*/
+/*    transform: translate(-4px, 4px);*/
+/*}*/
+
+/*.deleteBtn {*/
+/*    margin-top: 10px;*/
+/*    cursor: pointer;*/
+/*    font-weight: 500;*/
+/*    padding: 11px 28px;*/
+/*    border-radius: 12px;*/
+/*    font-size: 0.8rem;*/
+/*    border: none;*/
+/*    color: #fff;*/
+/*    background: #ff3e4e;*/
+/*    transition: all 0.25s ease;*/
+/*}*/
+
+/*.deleteBtn:hover {*/
+/*    box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);*/
+/*    transform: translateY(-5px);*/
+/*    background: #ff3e4e;*/
+/*}*/
+
+/*.cancelBtn {*/
+/*    margin-top: 10px;*/
+/*    cursor: pointer;*/
+/*    font-weight: 500;*/
+/*    padding: 11px 28px;*/
+/*    border-radius: 12px;*/
+/*    font-size: 0.8rem;*/
+/*    border: none;*/
+/*    color: #2c3e50;*/
+/*    background: #fcfcfc;*/
+/*    transition: all 0.25s ease;*/
+/*}*/
+
+/*.cancelBtn:hover {*/
+/*    box-shadow: none;*/
+/*    transform: none;*/
+/*    background: whitesmoke;*/
+/*}*/
+.modalWindow {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBackground {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    z-index: 100;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modalContainer .body {
+    /*flex: 50%;*/
+    /*display: flex;*/
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modalInput {
+    /*display: inline-block;*/
+    width: 100%;
+    height: fit-content;
+    padding: 15px 0;
+}
+
+.modalInput label {
+    float: left;
+    padding: 6px 0;
+    margin-left: -4px;
+}
+
+.modalInput input {
+    font-size: 16px;
+    width: 100%;
+    height: 32px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    margin-left: -4px;
+}
+
+#cancelBtn {
+    background-color: crimson;
+    /*box-shadow: 0 0 5px 5px crimson;*/
+}
+
+#cancelBtn:active {
+    background-color: white;
+    color: crimson;
+    border: 2px solid crimson;
+    box-shadow: 0 0 5px 5px crimson;
+}
+
+#confirmBtn {
+    background-color: #30b730;
+}
+
+#confirmBtn:active {
+    background-color: white;
+    color: #30b730;
+    border: 2px solid #30b730;
+    box-shadow: 0 0 5px 5px #30b730;
+}
+
+#cancelBtn:hover, #confirmBtn:hover {
+    opacity: 0.8;
+}
+
+#closeBtn {
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    transition: background-color 0.5s ease;
+}
+
+#closeBtn:hover {
+    background-color: crimson;
+    color: white;
+}
+
+#closeBtn:active {
+    background-color: white;
+    color: crimson;
+    box-shadow: 0 0 5px 5px crimson;
+}

@@ -5,15 +5,18 @@ export function Navigation() {
     return (
         <nav>
             <span className='block'>
-                <Link className='sidebar-btn' to='/sklad/register'>Регистрация</Link>
-                <Link className='sidebar-btn' to='/sklad/show'>Наличие</Link>
-                <Link className='sidebar-btn' to='/sklad/search'>Сканирование</Link>
-                <Link className='sidebar-btn' to='/sklad/melt-search'>Поиск</Link>
-                <Link className='sidebar-btn' to='/sklad/combine'>Объединить</Link>
-                <Link className='sidebar-btn' to='/sklad/shipment'>Отгрузка</Link>
-                <Link className='sidebar-btn' to='/sklad/shipment-history'>История отгрузок</Link>
-                <Link className='sidebar-btn' to='/sklad/admission'>Приёмка</Link>
-                <Link className='sidebar-btn' to='/sklad/send'>Отправка на другой склад</Link>
+                <Link className='sidebar-btn' to='/register'>Регистрация</Link>
+                <Link className='sidebar-btn' to='/show'>Наличие</Link>
+                <Link className='sidebar-btn' to='/search'>Сканирование</Link>
+                <Link className='sidebar-btn' to='/melt-search'>Поиск</Link>
+                {/*// @ts-ignore*/}
+                <Link className='sidebar-btn' style={{backgroundColor: 'grey', border: '2px solid grey'}}>Объединить</Link>
+                <Link className='sidebar-btn' to='/shipment'>Отгрузка</Link>
+                <Link className='sidebar-btn' to='/shipment-history'>История отгрузок</Link>
+                {/*// @ts-ignore*/}
+                <Link className='sidebar-btn' style={{backgroundColor: 'grey', border: '2px solid grey'}}>Приёмка</Link>
+                {/*// @ts-ignore*/}
+                <Link className='sidebar-btn' style={{backgroundColor: 'grey', border: '2px solid grey'}}>Отправка на другой склад</Link>
             </span>
         </nav>
     )

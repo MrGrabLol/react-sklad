@@ -2,19 +2,19 @@ import '../css/SearchPage.css'
 import {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
-import {IModelsCard} from "../interfaces/models";
+import {IModelsCard} from "../interfaces/exportedInterfaces";
 import '../css/Checkbox.css'
 import {CardView} from "../components/CardView";
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
+import {useNavigate} from "react-router-dom";
 
-interface SearchPageProps {
-    token: string
-}
-
-export function SearchPage({token}: SearchPageProps) {
+export function SearchPage() {
     const [id, setId] = useState<string>('')
     const [error, setError] = useState('')
     const [cards, setCards] = useState<IModelsCard[]>()
     const [checked, setChecked] = useState(false)
+    const {token, setToken} = useToken()
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
@@ -24,7 +24,7 @@ export function SearchPage({token}: SearchPageProps) {
         if (request.length > 0) {
             try {
                 setError('')
-                const response = await axios.post('http://localhost:8081/api/v1/search', {
+                const response = await axios.post(BACKEND_URL + '/api/v1/search', {
                     positions: request
                 }, {
                     headers: {
@@ -51,12 +51,12 @@ export function SearchPage({token}: SearchPageProps) {
                 <label className='check-label'>
                     <input type="checkbox" className='check-input' checked={checked} onChange={() => setChecked(!checked)}/>
                     <span className='checkmark'></span>
-                    <p>Ввод нескольких позиций</p>
+                    <p style={{marginLeft: '14px'}}>Ввод нескольких позиций</p>
                 </label>
                 <form onSubmit={submitHandler}>
-                    <input type="text" placeholder='Введите ID' value={id}
+                    <input type="text" style={{fontSize: '16px'}} placeholder='Введите ID' value={id}
                            onChange={event => setId(event.target.value.replace(/[^,1234567890]+/g, ''))} />
-                    <button type='submit'>Найти</button>
+                    <button type='submit' style={{fontSize: '16px'}}>Найти</button>
                 </form>
                 {error && <ErrorMessage error={error}/>}
             </div>

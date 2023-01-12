@@ -8,7 +8,7 @@ export function PositionNavigation() {
                 <Link className='sidebar-btn' to=''>Информация</Link>
                 <Link className='sidebar-btn' to='dispatch' >Отгрузка</Link>
                 <Link className='sidebar-btn' to='print'>Печать</Link>
-                <Link className='sidebar-btn' to=''>История</Link>
+                <Link className='sidebar-btn' to='history'>История</Link>
             </span>
         </nav>
     )

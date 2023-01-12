@@ -2,15 +2,15 @@ import '../css/SearchPage.css'
 import {SearchAutoComplete} from "../components/SearchAutoComplete";
 import {useState} from "react";
 import {SearchTableView} from "../components/SearchTableView";
-import {ISearchAutoComplete, ISearchModels} from "../interfaces/models";
+import {ISearchAutoComplete, ISearchModels} from "../interfaces/exportedInterfaces";
 import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
+import {useNavigate} from "react-router-dom";
 
-interface MeltSearchPageProps {
-    token: string
-}
-
-export function MeltSearchPage({token}: MeltSearchPageProps) {
+export function MeltSearchPage() {
+    const {token, setToken} = useToken()
     const [request, setRequest] = useState(false)
     const [state, setState] = useState<ISearchAutoComplete>({
         activeSuggestion: 0,
@@ -27,7 +27,7 @@ export function MeltSearchPage({token}: MeltSearchPageProps) {
         event.preventDefault()
         try {
             setError('')
-            const response = await axios.post('http://localhost:8081/api/v1/search/params', {
+            const response = await axios.post(BACKEND_URL + '/api/v1/search/params', {
                 query: state.userInput
             }, {
                 headers: {
@@ -45,7 +45,7 @@ export function MeltSearchPage({token}: MeltSearchPageProps) {
     return (
         <div>
             <form className='input-block' onSubmit={submitHandler}>
-                <button type='submit'>Найти</button>
+                <button type='submit' style={{fontSize: '16px'}}>Найти</button>
                 <SearchAutoComplete state={state} setState={setState}/>
             </form>
             {error && <ErrorMessage error={error}/>}

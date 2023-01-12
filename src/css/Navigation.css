@@ -6,7 +6,7 @@
     vertical-align: middle;
 }
 
-.sidebar-btn {
+.sidebar-btn, .sidebar-btn button {
     display: inline-block;
     border: 2px solid #3b4da3;
     text-decoration: none;

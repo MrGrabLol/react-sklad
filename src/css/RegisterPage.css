@@ -1,0 +1,306 @@
+/*main form, fields etc*/
+
+.margin-block .register-block-button {
+    margin-top: 140px;
+}
+
+.register-block {
+    display: inline-block;
+    border: 4px solid #3b4da3;
+    padding: 20px;
+    width: 70%;
+    height: fit-content;
+    border-radius: 12px;
+}
+
+.register-block input {
+    height: 30px;
+}
+
+.register-input {
+    width: 50%;
+    display: inline-block;
+}
+
+.register-input input {
+    width: 95%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #b6b6b6;
+    border-radius: 6px;
+}
+
+.register-input select {
+    width: 95%;
+    height: 30px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #b6b6b6;
+    border-radius: 6px;
+}
+
+.register-input label {
+    float: left;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.register-input .warn-label {
+    margin-right: 10px;
+    opacity: 0.5;
+    color: #ff0000;
+}
+
+.register-input-quantity {
+    width: 20%;
+    display: inline-block;
+}
+
+.register-input-quantity label {
+    display: inline-block;
+    margin-top: 7px;
+}
+
+.register-input-quantity input {
+    width: 40%;
+    float: left;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #b6b6b6;
+    border-radius: 6px;
+}
+
+.register-input-textarea textarea {
+    width: 97%;
+    margin-top: 10px;
+    height: 80px;
+    border: 2px solid #b6b6b6;
+    border-radius: 6px;
+}
+
+.register-input-textarea label {
+    float: left;
+    margin-left: 14px;
+    display: inline-block;
+}
+
+.register-block input:disabled, textarea:disabled {
+    background-color: #d2d2d2;
+}
+
+/*buttons*/
+
+.register-block button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.quantity-input-buttons {
+    width: 74%;
+    display: inline-block;
+}
+
+.form-btns {
+    display: inline-block;
+    float: right;
+    margin-top: 11px;
+}
+
+.form-btns button {
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+    background-color: #3b4da3;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.form-btns button:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}
+
+.lock-btn,
+.lock-btn-comment {
+    height: 22px;
+    width: 145px;
+    background-color: #d5d5d5;
+    border: none;
+    border-radius: 6px;
+    color: black;
+    float: right;
+}
+
+.lock-btn {
+    margin-right: 10px;
+}
+
+.lock-btn-comment {
+    margin-right: 14px;
+}
+
+.lock-btn:active,
+.lock-btn-comment:active {
+    border: 2px solid #b7b7b7;
+    background-color: white;
+}
+
+.form-main-button {
+    width: 33%;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-top: 22px;
+    background-color: #3b4da3;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.register-block-button {
+    display: inline-block;
+    width: 70%;
+    height: fit-content;
+
+}
+
+.add-standard-button {
+    float: right;
+    width: 13.5%;
+    height: 32px;
+    font-size: 14px;
+    background-color: #3b4da3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-right: -20px;
+    margin-bottom: 6px;
+}
+
+.add-standard-button:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.add-standard-button:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}
+
+.form-main-button:active {
+    color: #3b4da3;
+    background-color: white;
+    border: 2px solid #3b4da3;
+}
+
+/*errors*/
+
+.reg-error {
+    color: red;
+}
+
+.error-label {
+    color: red;
+    font-weight: bolder;
+}
+
+/*AUTOCOMPLETE*/
+
+.no-suggestions-reg {
+    color: #999;
+    width: 27%;
+    position: absolute;
+}
+
+.suggestions-reg {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: -12px;
+    overflow-y: auto;
+    padding-left: 0;
+    margin-left: 8px;
+    width: 27%;
+    border-radius: 6px;
+    position: absolute;
+    background-color: white;
+}
+
+.suggestions-reg li {
+    padding: 0.5rem;
+}
+
+.suggestion-title-reg,
+.suggestion-title-reg:hover {
+    font-weight: bold;
+    background-color: #d8d8d8;
+}
+
+.suggestion-active-reg,
+.suggestion-hoverable-reg:hover {
+    background-color: #3b4da3;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.suggestions-reg li:not(:last-of-type) {
+    border-bottom: 1px solid #d8d8d8;
+}
+
+/*select field*/
+
+.basic-multi-select, .select {
+    width: 96%;
+    display: inline-block;
+}
+
+/*comment label*/
+
+.comment-add-info {
+    color: #bdbdbd;
+}
+
+.checkbox-reg-step-two {
+    float: left;
+    width: 17%;
+    margin-bottom: 30px;
+    font-size: 19px;
+}
+
+.checkbox-reg-step-two .checkmark {
+    margin-top: 2px;
+}
+
+/*pack controller switch*/
+
+.switchbar-reg {
+    float: left;
+    width: 20%;
+}
+
+.switchbar-reg p {
+    float: left;
+    font-size: 19px;
+    margin-left: 15px;
+}
+
+.switch-reg {
+    position: relative;
+    display: flex;
+    width: 60px;
+    height: 34px;
+    float: right;
+    margin-top: 1.05rem;
+}
+
+.switch-reg input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}

@@ -1,24 +1,24 @@
 import {Link, useLoaderData} from "react-router-dom";
 import axios from "axios";
-import {IModelsCard} from "../interfaces/models";
 import '../css/CardIdViewShow.css'
 import {CardView} from "./CardView";
+import {BACKEND_URL} from "../ConstConfig";
 
-// @ts-ignore
+//@ts-ignore
 export async function loader({params}) {
-    let card;
-    await axios.get<IModelsCard>('http://localhost:8081/api/v1/search/' + params.id, {
+    const response = await axios.get(BACKEND_URL + '/api/v1/search/' + params.id, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem("token")
         }
-    }).then(response => card = response.data);
+    })
+    const card = response.data
     return {card}
 }
 
 export function PositionDetails() {
 
-    // @ts-ignore
-    const {card} = useLoaderData();
+    //@ts-ignore
+    const {card} = useLoaderData()
 
     function checkComment() {
         return card.comment !== '';
@@ -83,7 +83,7 @@ export function PositionDetails() {
                         card.type === 'Позиция' && card.pack !== null &&
                         <tr>
                             <td className='header'>Поддон</td>
-                            <td><Link to={'/position/' + card.pack + '/show'}>{card.pack}</Link></td>
+                            <td><Link to={'/position/' + card.pack}>{card.pack}</Link></td>
                         </tr>
                     }
                 </table>
