@@ -18,8 +18,8 @@ export function ShipmentPage() {
     async function getCards(event: { preventDefault: () => void; }) {
         event.preventDefault()
         setError('')
-        const requestInc: number[] = includedArray.split(',').filter(element => element.length !== 0).map(el => Number(el))
-        const requestEx: number[] = excludedArray.split(',').filter(element => element.length !== 0).map(el => Number(el))
+        const requestInc: string[] = includedArray.split(',').filter(element => element.length !== 0)
+        const requestEx: string[] = excludedArray.split(',').filter(element => element.length !== 0)
         if (requestInc.length === 0) {
             setError('Введите корректные значения')
         } else {
