@@ -148,24 +148,6 @@ export interface IRegisterResponse {
     pack: IPackResponse
 }
 
-// export interface IShipmentPackage {
-//     id: number,
-//     mark: string,
-//     diameter: string,
-//     date: string,
-//     packing: string,
-//     comment: string,
-//     part: string,
-//     plav: string,
-//     manufacturer: string,
-//     weight: string,
-//     status: string,
-//     location: string,
-//     type: string,
-//     standards: string[],
-//     positions: IPositionsResponse[]
-// }
-
 export interface IShipmentResponse {
     packages: IPackResponse[],
     positions: IPositionsResponse[]

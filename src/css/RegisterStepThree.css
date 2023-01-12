@@ -20,9 +20,16 @@
 }
 
 .small p {
+    font-weight: 500;
     padding-left: 2mm;
     font-size: 3mm;
     line-height: 0;
+}
+
+.big p {
+    font-weight: 500;
+    font-size: 5mm;
+    padding-left: 2mm;
 }
 
 .small p.gost {
@@ -50,8 +57,8 @@
 img.otk {
     width: 32%;
     float: right;
-    margin-right: 10%;
-    margin-top: -6%;
+    margin-right: 6%;
+    margin-top: -14%;
     transform: rotate(-12deg);
 }
 
@@ -75,11 +82,6 @@ img.otk {
 
 .big span {
     font-weight: bold;
-}
-
-.big p {
-    font-size: 5.5mm;
-    padding-left: 2mm;
 }
 
 .big {

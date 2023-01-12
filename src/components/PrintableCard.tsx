@@ -2,6 +2,7 @@ import React, {ForwardedRef} from "react";
 import logo from "../assets/logo_new_v2.png";
 import otk from '../assets/otk.png'
 import '../css/PrintableCard.css'
+import {BACKEND_URL} from "../ConstConfig";
 
 export interface PrintViewProps {
     mark: string,
@@ -25,7 +26,7 @@ export const PrintableCard = React.forwardRef(({object, classname}: PrintableCar
         <div //@ts-ignore
              ref={ref} className={'card ' + classname}>
             <img src={logo} className='logo' alt='logo'/>
-            <img src={'http://localhost:8081/api/v1/code/' + object.id} className='barcode' alt='barcode'/>
+            <img src={BACKEND_URL + '/api/v1/code/' + object.id} className='barcode' alt='barcode'/>
             <p className="card-item__text"><span>Марка:</span> {object.mark}</p>
             <p className="card-item__text gost">{object.standards.join('\n')}</p>
             <p className="card-item__text"><span>Диаметр:</span> {object.diameter}</p>

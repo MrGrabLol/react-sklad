@@ -31,3 +31,8 @@
     border-radius: 6px;
     font-size: 20px;
 }
+
+.card-item-ship input:disabled {
+    border: 2px solid #d7d7d7;
+    background-color: #d7d7d7;
+}

@@ -63,15 +63,19 @@
     border: none;
 }
 
-.shipping-btn:hover {
+.shipping-btn:hover:not(:disabled) {
     cursor: pointer;
     opacity: 0.89;
 }
 
-.shipping-btn:active {
+.shipping-btn:active:not(:disabled) {
     border: 2px solid #3b4da3;
     background-color: white;
     color: #3b4da3;
+}
+
+.shipping-btn:disabled {
+    background-color: #bbbbbb;
 }
 
 .bigger {

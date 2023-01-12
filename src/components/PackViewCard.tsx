@@ -5,10 +5,11 @@ import '../css/PackViewCard.css'
 interface PackViewCardProps {
     position: IPositionsResponse,
     index: number,
-    idWeightArray: IShipping[]
+    idWeightArray: IShipping[],
+    disabledField: boolean
 }
 
-export function PackViewCard({position, index, idWeightArray}: PackViewCardProps) {
+export function PackViewCard({position, index, idWeightArray, disabledField}: PackViewCardProps) {
     const [customWeight, setCustomWeight] = useState<string>(position.weight)
     const [initialWeight] = useState(position.weight)
     const [idx, setIdx] = useState(() => {
@@ -26,8 +27,12 @@ export function PackViewCard({position, index, idWeightArray}: PackViewCardProps
             <p className='card-item__text-ship'><span className='span-ship'>Партия: </span>{position.part}</p>
             <p className='card-item__text-ship'><span className='span-ship'>Плавка: </span>{position.plav}</p>
             <div className='input-block-step-two'>
-                <p className='card-item__text-ship'><span className='span-ship'>Вес: </span> {Number(customWeight) > Number(initialWeight) && <div style={{color: 'red'}}>вес больше допустимого</div>}</p>
-                <input type="text" value={customWeight} onChange={(event) => setCustomWeight(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
+                <p className='card-item__text-ship'><span className='span-ship'>Вес: </span>
+                    {Number(customWeight) > Number(initialWeight) && <div style={{color: 'red'}}>вес больше допустимого</div>}
+                    {Number(customWeight) === 0 && <div style={{color: 'red'}}>вес не может равняться 0</div>}
+                </p>
+                <input type="text" value={customWeight} onChange={(event) => setCustomWeight(event.target.value.replace(/[^.1234567890]+/g, ''))}
+                       disabled={disabledField} required/>
             </div>
             <p className='card-item__text-ship'><span className='span-ship'>Производитель: </span>{position.manufacturer}</p>
             {position.comment && <p className='card-item__text-ship'><span className='span-ship'>Комментарий: </span>{position.comment}</p>}

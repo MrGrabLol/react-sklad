@@ -5,12 +5,14 @@
 /*}*/
 
 .dispatch-container-form {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     display: inline-block;
 }
 
 .dispatch-input-field {
+    display: inline-block;
+    width: 53%;
     height: fit-content;
     margin-bottom: 30px;
     margin-top: 15px;
@@ -23,6 +25,11 @@
     border: 2px solid #3b4da3;
     border-radius: 6px;
     margin-top: 15px;
+}
+
+.dispatch-container-form input:disabled {
+    border: 2px solid #d7d7d7;
+    background-color: #d7d7d7;
 }
 
 .dispatch-input-field label {
@@ -44,13 +51,17 @@
     background-color: #3b4da3;
 }
 
-.dispatch-btn button:hover {
+.dispatch-btn button:hover:not(:disabled) {
     cursor: pointer;
     opacity: 0.89;
 }
 
-.dispatch-btn button:active {
+.dispatch-btn button:active:not(:disabled) {
     color: #3b4da3;
     background-color: white;
     border: 2px solid #3b4da3;
+}
+
+.dispatch-btn button:disabled {
+    background-color: #bbbbbb;
 }

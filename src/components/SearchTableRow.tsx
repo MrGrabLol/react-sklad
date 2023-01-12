@@ -1,5 +1,6 @@
 import React from "react";
 import {ISearchModels} from "../interfaces/exportedInterfaces";
+import {Link} from "react-router-dom";
 
 interface SearchTableRowProps {
     model: ISearchModels
@@ -13,9 +14,9 @@ export function SearchTableRow({model}: SearchTableRowProps) {
             <td>{model.pack}</td>
             <td>{model.part}</td>
             <td>{model.plav}</td>
-            <td>{model.solnechnogorsk}</td>
-            <td>{model.belSklad}</td>
-            <td>{model.manufacture}</td>
+            <td><Link to='/sklad-info'>{model.solnechnogorsk}</Link></td>
+            <td><Link to='/sklad-info'>{model.belSklad}</Link></td>
+            <td><Link to='/sklad-info'>{model.manufacture}</Link></td>
         </tr>
     )
 

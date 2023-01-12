@@ -32,8 +32,12 @@ export function ShipmentPage() {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
                     }
                 })
-                setShipmentResponse(response.data)
-                setSecondStepShipping(true)
+                if (response.data.packages.length === 0 && response.data.positions.length === 0 ) {
+                    setError('Эти позиции уже отгружены')
+                } else {
+                    setShipmentResponse(response.data)
+                    setSecondStepShipping(true)
+                }
             } catch (e: unknown) {
                 const error = e as AxiosError
                 setError(error.message)
