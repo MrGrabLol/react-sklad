@@ -32,8 +32,8 @@ export function RegisterStepTwo({
 
     const [cardArray, setCardArray] = useState<IPositionModel[]>([])
     const [generalError, setGeneralError] = useState('')
-    const [packView, setPackView] = useState(() => {
-        return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock;
+    const [packView] = useState(() => {
+        return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock && quantity > 1;
     })
     const [packPrint, setPackPrint] = useState(() => {
         return packView;
@@ -57,6 +57,7 @@ export function RegisterStepTwo({
     }
 
     async function submitHandler(event: { preventDefault: () => void; }) {
+        event.preventDefault()
         setGeneralError('')
         let error = ''
         for (let i = 0; i < quantity; i++) {
@@ -67,11 +68,9 @@ export function RegisterStepTwo({
         }
 
         if (error.length) {
-            event.preventDefault()
             setGeneralError(error)
         } else {
             try {
-                event.preventDefault()
                 const response = await axios.post(BACKEND_URL + '/api/v1/registration', {
                     positions: cardArray,
                     pack: packPrint
@@ -83,7 +82,6 @@ export function RegisterStepTwo({
                 setRegisterResponse(response.data)
                 setThirdStepRegister(true)
             } catch (e: unknown) {
-                event.preventDefault()
                 const requestError = e as AxiosError
                 setGeneralError('Ошибка сервера: ' + requestError.message + ', повторите попытку позже')
             }

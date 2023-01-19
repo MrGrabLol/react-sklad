@@ -2,6 +2,8 @@ import {IPositionModel} from "../interfaces/exportedInterfaces";
 import '../css/CardRegister.css'
 import '../css/RegisterPage.css'
 import React, {useState} from "react";
+import {BACKEND_URL} from "../ConstConfig";
+import axios, {AxiosError} from "axios";
 
 interface CardRegisterProps {
     card: IPositionModel,
@@ -43,6 +45,37 @@ export function CardRegister({card, diameterBlock, packageBlock, plavBlock, part
     const [customPackingBoolean, setCustomPackingBoolean] = useState(false)
     const [customManufacturerBoolean, setCustomManufacturerBoolean] = useState(false)
 
+    const [requestError, setRequestError] = useState('')
+    const [partError, setPartError] = useState('')
+    const [partAccept, setPartAccept] = useState('')
+    const [partCheck, setPartCheck] = useState({valid: true, data: {mark: '', plav: '', diameter: '', packing: ''}})
+
+    async function checkPart() {
+        try {
+            const response = await axios.post(BACKEND_URL + '/api/v1/registration/validate', {
+                part: customPart,
+                data: {
+                    mark: card.mark,
+                    plav: customPlav,
+                    diameter: Number(customDiameter),
+                    packing: customPacking
+                }
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+            setPartCheck(response.data)
+            if (response.data.valid === true) {
+                setPartAccept('партия валидна')
+            } else {
+                setPartError('некорректная партия')
+            }
+        } catch (e: unknown) {
+            setRequestError('ошибка сервера')
+        }
+    }
+
     mainArray[arrayIndex].diameter = customDiameter
     mainArray[arrayIndex].packing = customPacking.trim()
     mainArray[arrayIndex].part = customPart.trim()
@@ -50,6 +83,14 @@ export function CardRegister({card, diameterBlock, packageBlock, plavBlock, part
     mainArray[arrayIndex].weight = Number(customWeight)
     mainArray[arrayIndex].manufacturer = customManufacturer.trim()
     mainArray[arrayIndex].comment = customComment.trim()
+
+    // onBlur={() => {
+    //     if (customPart !== '') {
+    //         checkPart()
+    //     } else {
+    //         return
+    //     }
+    // }}
 
     return (
             <div className='card-item-reg'>

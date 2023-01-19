@@ -1,6 +1,7 @@
 table {
     width: 80%;
     float: left;
+    table-layout: fixed;
 }
 
 table thead th {

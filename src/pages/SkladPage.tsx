@@ -22,7 +22,7 @@ export function SkladPage() {
     return (
             <div className='container'>
                 <div className='sidebar'>
-                    <img className='image' src={icon} alt="Ферротрейд"/>
+                    <img className='image' src={icon} alt="Ферротрейд" onClick={() => {navigate('/')}}/>
                     <Navigation/>
                 </div>
                 <div className='mainbar'>

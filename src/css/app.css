@@ -19,6 +19,12 @@
     margin-bottom: 30px;
 }
 
+.image:hover {
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 5px 5px #adadad;
+}
+
 .btn-exit {
     background-color: #3b4da3;
     color: white;

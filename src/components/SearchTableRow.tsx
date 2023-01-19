@@ -14,9 +14,9 @@ export function SearchTableRow({model}: SearchTableRowProps) {
             <td>{model.pack}</td>
             <td>{model.part}</td>
             <td>{model.plav}</td>
-            <td><Link to='/sklad-info'>{model.solnechnogorsk}</Link></td>
-            <td><Link to='/sklad-info'>{model.belSklad}</Link></td>
-            <td><Link to='/sklad-info'>{model.manufacture}</Link></td>
+            <td><Link to={'/weights/' + model.mark + '/' + model.diameter + '/' + model.pack + '/' + model.plav + '/' + model.part.replace('/', '+')}>{model.solnechnogorsk}</Link></td>
+            <td><Link to={'/weights/' + model.mark + '/' + model.diameter + '/' + model.pack + '/' + model.plav + '/' + model.part.replace('/', '+')}>{model.belSklad}</Link></td>
+            <td><Link to={'/weights/' + model.mark + '/' + model.diameter + '/' + model.pack + '/' + model.plav + '/' + model.part.replace('/', '+')}>{model.manufacture}</Link></td>
         </tr>
     )
 

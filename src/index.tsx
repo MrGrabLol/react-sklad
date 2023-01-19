@@ -18,6 +18,7 @@ import {PositionPage} from "./pages/PositionPage";
 import {loader as cardIdLoader, PositionDetails} from "./components/PositionDetails";
 import {PositionPrint} from "./components/PositionPrint";
 import {PositionShipping} from "./components/PositionShipping";
+import {MeltSearchWeights, weightLoader} from "./components/MeltSearchWeights";
 
 const JSXRoutes = (
     <>
@@ -27,6 +28,7 @@ const JSXRoutes = (
                 <Route path='/show' element={<ShowPage/>}/>
                 <Route path='/search' element={<SearchPage/>}/>
                 <Route path='/melt-search' element={<MeltSearchPage/>}/>
+                <Route path='/weights/:mark/:diameter/:packing/:plav/:part' loader={weightLoader} element={<MeltSearchWeights/>}/>
                 <Route path='/combine' element={<CombinePage></CombinePage>}/>
                 <Route path='/shipment' element={<ShipmentPage></ShipmentPage>}/>
                 <Route path='/shipment-history' element={<ShipmentHistoryPage></ShipmentHistoryPage>}/>
