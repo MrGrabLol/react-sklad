@@ -26,8 +26,6 @@ export async function weightLoader({params}) {
         }
     })
     const weight = response.data
-    console.log('loader is working')
-    console.log(weight)
     return {weight}
 }
 
@@ -35,13 +33,13 @@ export function MeltSearchWeights() {
     //@ts-ignore
     const {weight} = useLoaderData()
 
-    const [state, setState] = useState('bel')
+    const [state, setState] = useState('sol')
 
     return (
         <div style={{marginTop: '90px'}}>
             <div className='triple-switch-container'>
                 <div className='triple-switch'>
-                    <span id='span-one' className='item-notclicked item-clicked' onClick={() => {
+                    <span id='span-one' className='item-notclicked' onClick={() => {
                         setState('bel')
                         const element1 = document.getElementById('span-one')!
                         const element2 = document.getElementById('span-two')!
@@ -50,7 +48,7 @@ export function MeltSearchWeights() {
                         element2.classList.remove('item-clicked')
                         element3.classList.remove('item-clicked')
                     }}><label>Белорецк</label></span>
-                    <span id='span-two' className='item-notclicked'  onClick={() => {
+                    <span id='span-two' className='item-notclicked item-clicked'  onClick={() => {
                         setState('sol')
                         const element1 = document.getElementById('span-one')!
                         const element2 = document.getElementById('span-two')!
