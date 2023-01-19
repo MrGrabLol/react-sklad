@@ -135,7 +135,7 @@ export function RegisterPage() {
                         setSecondStepRegister(true)
                     } else {
                         setPartError('Невалидная партия')
-                        setPartDetails(response.data)
+                        setPartDetails(response.data.data)
                     }
                 } catch (e: unknown) {
                     const error = e as AxiosError
