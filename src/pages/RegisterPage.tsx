@@ -7,9 +7,18 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import {RegisterStepTwo} from "../components/RegisterStepTwo";
 import {ModalWindow} from "../components/ModalWindow";
-import {useNavigate} from "react-router-dom";
 import axios, {AxiosError} from "axios";
 import {BACKEND_URL} from "../ConstConfig";
+
+interface PartValidation {
+    valid: boolean,
+    data: {
+        mark: string,
+        plav: string
+        diameter: number,
+        packing: string,
+    }
+}
 
 interface SelectFields {
     value: string,
@@ -55,7 +64,7 @@ export function RegisterPage() {
     const [gost, setGost] = useState<SelectFields[]>([])
     const [quantity, setQuantity] = useState<number>(1)
 
-    const [partDetails, setPartDetails] = useState({mark: '', plav: '', diameter: 0, packing: ''})
+    const [partDetails, setPartDetails] = useState<PartValidation>({valid: false, data: {mark: '', diameter: 0, packing: '', plav: ''}})
 
     const [quantityError, setQuantityError] = useState('')
     const [fieldsError, setFieldsError] = useState('')
@@ -107,7 +116,7 @@ export function RegisterPage() {
                         data: {
                             mark: mark.trim(),
                             plav: plav.trim(),
-                            diameter: Number(diameter.trim()),
+                            diameter: Number(diameter.trim()).toFixed(2),
                             packing: packing.trim()
                         }
                     }, {
@@ -135,7 +144,7 @@ export function RegisterPage() {
                         setSecondStepRegister(true)
                     } else {
                         setPartError('Невалидная партия')
-                        setPartDetails(response.data.data)
+                        setPartDetails(response.data)
                     }
                 } catch (e: unknown) {
                     const error = e as AxiosError
@@ -213,10 +222,10 @@ export function RegisterPage() {
                         <div className='part-error-wrapper'>
                             <div className='part-error'>
                                 <h3>Корректные поля для указанной партии</h3>
-                                <p><span>Марка: </span>{partDetails.mark}</p>
-                                <p><span>Плавка: </span>{partDetails.plav}</p>
-                                <p><span>Диаметр: </span>{partDetails.diameter}</p>
-                                <p><span>Упаковка: </span>{partDetails.packing}</p>
+                                <p><span>Марка: </span>{partDetails.data.mark}</p>
+                                <p><span>Плавка: </span>{partDetails.data.plav}</p>
+                                <p><span>Диаметр: </span>{partDetails.data.diameter.toFixed(2)}</p>
+                                <p><span>Упаковка: </span>{partDetails.data.packing}</p>
                             </div>
                         </div>}
                     <div className='register-block-button'>

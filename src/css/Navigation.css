@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
 
+/*nav {*/
+/*    */
+/*}*/
+
 .block {
     align-items: center;
     text-align: center;
     vertical-align: middle;
 }
 
-.sidebar-btn, .sidebar-btn button {
+.sidebar-btn {
     display: inline-block;
     border: 2px solid #3b4da3;
     text-decoration: none;
@@ -14,11 +18,12 @@
     vertical-align: middle;
     padding-top: 18px;
     padding-bottom: 18px;
-    width: 200px;
+    width: 60%;
     margin-top: 8px;
     border-radius: 10px;
     background-color: #3b4da3;
     color: white;
+    font-size: 105%;
     font-family: 'Open Sans', regular;
 }
 
