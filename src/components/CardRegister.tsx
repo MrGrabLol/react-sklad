@@ -238,11 +238,6 @@ export function CardRegister({
                     <input type="text" value={customComment} onChange={event => setCustomComment(event.target.value)}/>
                 }
             </div>
-            {partBlock &&
-                <div className='part-button'>
-                    <button className='partBtn'>Проверить партию</button>
-                </div>
-            }
         </div>
     )
 }

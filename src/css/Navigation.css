@@ -18,8 +18,8 @@
     background-color: #3b4da3;
     color: white;
     font-size: 102%;
-    /*font-family: 'Open Sans', regular;*/
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
 }
 
 .sidebar-btn:active {
