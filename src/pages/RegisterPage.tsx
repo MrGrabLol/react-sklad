@@ -91,7 +91,7 @@ export function RegisterPage() {
         } else if ((Number(diameter) === 0 || isNaN(Number(diameter))) && !disabledDiameter) {
             setDiameterError('Диаметр не может быть равен 0')
         } else {
-            if (disabledPart) {
+            if (disabledPart || disabledDiameter || disabledHeat || disabledPack) {
                 let gostArray: string[] = []
                 gost.map(gost => gostArray = [...gostArray, gost.label])
                 setRegister({
