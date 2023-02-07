@@ -6,7 +6,7 @@ import {ErrorMessage} from "../components/ErrorMessage";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import {RegisterStepTwo} from "../components/RegisterStepTwo";
-import {ModalWindow} from "../components/ModalWindow";
+import {ModalWindowAddStandard} from "../components/ModalWindowAddStandard";
 import axios, {AxiosError} from "axios";
 import {BACKEND_URL} from "../ConstConfig";
 
@@ -215,7 +215,7 @@ export function RegisterPage() {
 
     return (
         <div>
-            {modal && <ModalWindow openModal={setModal}/>}
+            {modal && <ModalWindowAddStandard openModal={setModal}/>}
             {!secondStepRegister &&
                 <div className='margin-block'>
                     {partError &&

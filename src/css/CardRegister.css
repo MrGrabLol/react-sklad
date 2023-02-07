@@ -1,8 +1,8 @@
 .card-container-reg {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 32%);
-    grid-gap: 12px;
+    grid-template-columns: repeat(auto-fill, 31.85%);
+    grid-gap: 2%;
     grid-auto-rows: minmax(100px, auto);
 }
 

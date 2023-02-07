@@ -1,10 +1,10 @@
 import '../css/Card.css'
-import {IModelsCard} from "../interfaces/exportedInterfaces";
+import {IModelsCard, IPositionsResponse} from "../interfaces/exportedInterfaces";
 import {Link} from "react-router-dom";
 import React from "react";
 
 interface ModelCardProps {
-    card: IModelsCard
+    card: IPositionsResponse
 }
 
 export function Card({card}: ModelCardProps) {

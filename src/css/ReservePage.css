@@ -1,0 +1,30 @@
+.reserve-button {
+    margin-bottom: 20px;
+    width: 31.85%;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    background-color: #3b4da3;
+    color: white;
+    border-radius: 6px;
+    float: left;
+}
+
+.reserve-font {
+    font-size: 20px;
+}
+
+.reserve-header {
+    font-weight: bold;
+}
+
+.reserve-button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.reserve-button:active {
+    color: #3b4da3;
+    background-color: white;
+    border: 2px solid #3b4da3;
+}

@@ -48,7 +48,7 @@ export function MeltSearchWeights() {
                         element2.classList.remove('item-clicked')
                         element3.classList.remove('item-clicked')
                     }}><label>Белорецк</label></span>
-                    <span id='span-two' className='item-notclicked item-clicked'  onClick={() => {
+                    <span id='span-two' className='item-notclicked item-clicked' onClick={() => {
                         setState('sol')
                         const element1 = document.getElementById('span-one')!
                         const element2 = document.getElementById('span-two')!
@@ -57,7 +57,7 @@ export function MeltSearchWeights() {
                         element1.classList.remove('item-clicked')
                         element3.classList.remove('item-clicked')
                     }}><label>Солнечногорск</label></span>
-                    <span id='span-three' className='item-notclicked'  onClick={() => {
+                    <span id='span-three' className='item-notclicked' onClick={() => {
                         setState('manu')
                         const element1 = document.getElementById('span-one')!
                         const element2 = document.getElementById('span-two')!
@@ -70,25 +70,25 @@ export function MeltSearchWeights() {
             </div>
             <div className='search-cards'>
                 {state === 'bel' &&
-                <div>
-                    <h2>Белорецк</h2>
-                    {weight.belSklad.length !== 0 ? <CardView cards={weight.belSklad}/>
-                        : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
-                </div>
+                    <div>
+                        <h2>Белорецк</h2>
+                        {weight.belSklad.length !== 0 ? <CardView cards={weight.belSklad}/>
+                            : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
+                    </div>
                 }
                 {state === 'sol' &&
-                <div>
-                    <h2>Солнечногорск</h2>
-                    {weight.solnechnogorsk.length !== 0 ? <CardView cards={weight.solnechnogorsk}/>
-                        : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
-                </div>
+                    <div>
+                        <h2>Солнечногорск</h2>
+                        {weight.solnechnogorsk.length !== 0 ? <CardView cards={weight.solnechnogorsk}/>
+                            : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
+                    </div>
                 }
                 {state === 'manu' &&
-                <div>
-                    <h2>Производство</h2>
-                    {weight.manufacture.length !== 0 ? <CardView cards={weight.manufacture}/>
-                        : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
-                </div>
+                    <div>
+                        <h2>Производство</h2>
+                        {weight.manufacture.length !== 0 ? <CardView cards={weight.manufacture}/>
+                            : <h4 style={{color: 'rgb(253, 185, 0)'}}>Нет позиций в данной категории</h4>}
+                    </div>
                 }
             </div>
         </div>

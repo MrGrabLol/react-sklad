@@ -4,6 +4,12 @@
     width: 20%;
     height: 100%;
     text-align: center;
+    /*background-color: #d9d9d9;*/
+    background: linear-gradient(45deg, #737373, #d9d9d9);
+    border-bottom-right-radius: 18px;
+    border-top-right-radius: 18px;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
 .mainbar {
@@ -11,6 +17,7 @@
     height: 100%;
     float: right;
     text-align: center;
+    transition: width 0.5s;
 }
 
 .image {
@@ -22,7 +29,7 @@
 .image:hover {
     cursor: pointer;
     border-radius: 6px;
-    box-shadow: 0 0 5px 5px #adadad;
+    box-shadow: 0 0 5px 5px #3b4da3;
 }
 
 .btn-exit {
@@ -52,4 +59,46 @@
     background-color: white;
     color: #3b4da3;
     border: 2px solid #3b4da3;
+}
+
+/* The sidebar links */
+.a-container a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.a-container a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #3b4da3;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    float: left;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    transition: opacity 0.3s, width 0.5s;
+}
+
+.openbtn:hover {
+    opacity: 0.89;
 }
