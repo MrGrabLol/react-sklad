@@ -1,0 +1,49 @@
+.dispatch-reserve-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.dispatch-reserve-button-container {
+    width: 100%;
+    height: fit-content;
+    margin-top: 70px;
+}
+
+.dispatch-reserve-button-container button {
+    width: 30%;
+    height: 40px;
+    font-size: 24px;
+    background-color: #3b4da3;
+    color: white;
+    border-radius: 6px;
+    border: none;
+}
+
+.dispatch-reserve-button-container button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.dispatch-reserve-button-container button:active {
+    color: #3b4da3;
+    background-color: white;
+    border: 2px solid #3b4da3;
+}
+
+.bill-customer-field {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.bill-customer-field-column {
+    width: 33%;
+}
+
+.bill-customer-field span {
+    font-weight: bold;
+}

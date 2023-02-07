@@ -30,10 +30,16 @@ export function RegisterStepTwo({
                                     showAutocomplete
                                 }: RegisterStepTwoProps) {
 
-    const [cardArray, setCardArray] = useState<IPositionModel[]>([])
+    const [cardArray] = useState<IPositionModel[]>(() => {
+        let tempArray: IPositionModel[] = []
+        for (let i = 0; i < quantity; i++) {
+            tempArray = [...tempArray, {...registerProp}]
+        }
+        return tempArray
+    })
     const [generalError, setGeneralError] = useState('')
-    const [packView, setPackView] = useState(() => {
-        return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock;
+    const [packView] = useState(() => {
+        return !diameterBlock && !packageBlock && !partBlock && !plavBlock && !manufacturerBlock && quantity > 1;
     })
     const [packPrint, setPackPrint] = useState(() => {
         return packView;
@@ -45,33 +51,50 @@ export function RegisterStepTwo({
             weight: '', status: '', location: '', type: '', standards: [], positions: []
         }
     })
-
-    const [once, setOnce] = useState(false)
-    if (!once) {
-        let tempArray: IPositionModel[] = []
+    const [validArray] = useState<boolean[]>(() => {
+        let tempArray: boolean[] = []
         for (let i = 0; i < quantity; i++) {
-            tempArray = [...tempArray, {...registerProp}]
+            tempArray = [...tempArray, false]
         }
-        setCardArray(tempArray)
-        setOnce(true)
-    }
+        return tempArray
+    })
 
     async function submitHandler(event: { preventDefault: () => void; }) {
+        console.log('-----first part-----')
+        event.preventDefault()
         setGeneralError('')
+        console.log('error is empty')
+
         let error = ''
         for (let i = 0; i < quantity; i++) {
             if (cardArray[i].weight === 0 || isNaN(cardArray[i].weight) || Number(cardArray[i].diameter) === 0 || isNaN(Number(cardArray[i].diameter))) {
+                console.log('incorrect fields')
                 error = 'Введите корректные значения'
                 break
             }
         }
 
+        console.log('-------checked fields--------')
+        console.log('bool array current state: ', validArray)
+
+        if (partBlock || plavBlock || diameterBlock || packageBlock) {
+            for (let i = 0; i < quantity; i++) {
+                if (!validArray[i]) {
+                    console.log('incorrect part details')
+                    error = 'Ошибка валидации партии у некоторых карточек'
+                    break
+                }
+            }
+        }
+
+        console.log('------checked part valid-------')
+
         if (error.length) {
-            event.preventDefault()
             setGeneralError(error)
+            console.log('error has length')
         } else {
+            console.log('error is empty in try block')
             try {
-                event.preventDefault()
                 const response = await axios.post(BACKEND_URL + '/api/v1/registration', {
                     positions: cardArray,
                     pack: packPrint
@@ -83,7 +106,6 @@ export function RegisterStepTwo({
                 setRegisterResponse(response.data)
                 setThirdStepRegister(true)
             } catch (e: unknown) {
-                event.preventDefault()
                 const requestError = e as AxiosError
                 setGeneralError('Ошибка сервера: ' + requestError.message + ', повторите попытку позже')
             }
@@ -119,6 +141,7 @@ export function RegisterStepTwo({
                                                                   manufacturers={manufacturers}
                                                                   ulFocus={ulFocus}
                                                                   showAutocomplete={showAutocomplete}
+                                                                  validArray={validArray}
                     />)}
                 </div>
                 <button type='submit' className='form-main-button-step-two'>Подтвердить</button>

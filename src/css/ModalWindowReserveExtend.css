@@ -1,0 +1,37 @@
+.extend-button {
+    margin-top: 8px;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    background-color: #3b4da3;
+    color: white;
+    font-size: 20px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.extend-button:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.extend-button:active {
+    color: #3b4da3;
+    background-color: white;
+}
+
+.extend-input {
+    margin-right: 6px;
+    width: 25%;
+    margin-top: 8px;
+    height: 32px;
+    border-radius: 6px;
+    border: 2px solid #3b4da3;
+    font-size: 22px;
+    text-align: center;
+}
+
+.extend-margin {
+    margin-bottom: 20px;
+}

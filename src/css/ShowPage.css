@@ -16,7 +16,8 @@
 
 .switchbar p {
     float: left;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
 }
 
 .switch input {

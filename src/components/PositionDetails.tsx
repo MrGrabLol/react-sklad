@@ -6,13 +6,18 @@ import {BACKEND_URL} from "../ConstConfig";
 
 //@ts-ignore
 export async function loader({params}) {
-    const response = await axios.get(BACKEND_URL + '/api/v1/search/' + params.id, {
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem("token")
-        }
-    })
-    const card = response.data
-    return {card}
+    if (!localStorage.getItem('token')) {
+        const card = {mark: '', diameter: '', type: '', date: '', location: '', packing: '', part: '', plav: '', weight: '', status: '', manufacturer: '', comment: ''}
+        return {card}
+    } else {
+        const response = await axios.get(BACKEND_URL + '/api/v1/search/' + params.id, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem("token")
+            }
+        })
+        const card = response.data
+        return {card}
+    }
 }
 
 export function PositionDetails() {

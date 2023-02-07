@@ -6,8 +6,19 @@ import {ErrorMessage} from "../components/ErrorMessage";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import {RegisterStepTwo} from "../components/RegisterStepTwo";
-import {ModalWindow} from "../components/ModalWindow";
-import {useNavigate} from "react-router-dom";
+import {ModalWindowAddStandard} from "../components/ModalWindowAddStandard";
+import axios, {AxiosError} from "axios";
+import {BACKEND_URL} from "../ConstConfig";
+
+interface PartValidation {
+    valid: boolean,
+    data: {
+        mark: string,
+        plav: string
+        diameter: number,
+        packing: string,
+    }
+}
 
 interface SelectFields {
     value: string,
@@ -53,48 +64,93 @@ export function RegisterPage() {
     const [gost, setGost] = useState<SelectFields[]>([])
     const [quantity, setQuantity] = useState<number>(1)
 
+    const [partDetails, setPartDetails] = useState<PartValidation>({valid: false, data: {mark: '', diameter: 0, packing: '', plav: ''}})
+
     const [quantityError, setQuantityError] = useState('')
     const [fieldsError, setFieldsError] = useState('')
     const [weightError, setWeightError] = useState('')
     const [diameterError, setDiameterError] = useState('')
+    const [partError, setPartError] = useState('')
+    const [axiosError, setAxiosError] = useState('')
 
-    function submitHandler(event: { preventDefault: () => void; }) {
+    async function submitHandler(event: { preventDefault: () => void; }) {
+        event.preventDefault()
         setFieldsError('')
         setQuantityError('')
         setWeightError('')
         setDiameterError('')
+        setPartError('')
         if (quantity === 0) {
-            event.preventDefault()
             setQuantityError('Введите количество больше 0')
         } else if ((diameter === '' && !disabledDiameter) || (packing === '' && !disabledPack) ||
             (plav === '' && !disabledHeat) || (part === '' && !disabledPart) || (weight === '' && !disabledWeight) ||
             (manufacturer === '' && !disabledManufacturer)) {
-            event.preventDefault()
             setFieldsError('Заполните пустые поля или заблокируйте их для заполнения на следующем шаге')
         } else if ((Number(weight) === 0 || isNaN(Number(weight))) && !disabledWeight) {
-            event.preventDefault()
             setWeightError('Вес не может быть равен 0')
         } else if ((Number(diameter) === 0 || isNaN(Number(diameter))) && !disabledDiameter) {
-            event.preventDefault()
             setDiameterError('Диаметр не может быть равен 0')
         } else {
-            let gostArray: string[] = []
-            gost.map(gost => gostArray = [...gostArray, gost.label])
-            setRegister({
-                mark: mark.trim(),
-                part: part.trim(),
-                packing: packing.trim(),
-                plav: plav.trim(),
-                manufacturer: manufacturer.trim(),
-                weight: Number(weight),
-                diameter: String(Number(diameter)),
-                comment: comment.trim(),
-                standard: {
+            if (disabledPart || disabledDiameter || disabledHeat || disabledPack) {
+                let gostArray: string[] = []
+                gost.map(gost => gostArray = [...gostArray, gost.label])
+                setRegister({
                     mark: mark.trim(),
-                    standards: gostArray
+                    part: part.trim(),
+                    packing: packing.trim(),
+                    plav: plav.trim(),
+                    manufacturer: manufacturer.trim(),
+                    weight: Number(weight),
+                    diameter: String(Number(diameter)),
+                    comment: comment.trim(),
+                    standard: {
+                        mark: mark.trim(),
+                        standards: gostArray
+                    }
+                })
+                setSecondStepRegister(true)
+            } else {
+                try {
+                    const response = await axios.post(BACKEND_URL + '/api/v1/registration/validate', {
+                        part: part.trim(),
+                        data: {
+                            mark: mark.trim(),
+                            plav: plav.trim(),
+                            diameter: Number(diameter.trim()).toFixed(2),
+                            packing: packing.trim()
+                        }
+                    }, {
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
+                        }
+                    })
+                    if (response.data.valid === true) {
+                        let gostArray: string[] = []
+                        gost.map(gost => gostArray = [...gostArray, gost.label])
+                        setRegister({
+                            mark: mark.trim(),
+                            part: part.trim(),
+                            packing: packing.trim(),
+                            plav: plav.trim(),
+                            manufacturer: manufacturer.trim(),
+                            weight: Number(weight),
+                            diameter: String(Number(diameter)),
+                            comment: comment.trim(),
+                            standard: {
+                                mark: mark.trim(),
+                                standards: gostArray
+                            }
+                        })
+                        setSecondStepRegister(true)
+                    } else {
+                        setPartError('Невалидная партия')
+                        setPartDetails(response.data)
+                    }
+                } catch (e: unknown) {
+                    const error = e as AxiosError
+                    setAxiosError('Ошибка соединения с сервером: ' + error.message)
                 }
-            })
-            setSecondStepRegister(true)
+            }
         }
     }
 
@@ -159,17 +215,33 @@ export function RegisterPage() {
 
     return (
         <div>
-            {modal && <ModalWindow openModal={setModal}/>}
+            {modal && <ModalWindowAddStandard openModal={setModal}/>}
             {!secondStepRegister &&
                 <div className='margin-block'>
+                    {partError &&
+                        <div className='part-error-wrapper'>
+                            <div className='part-error'>
+                                <h3>Корректные поля для указанной партии</h3>
+                                <p><span>Марка: </span>{partDetails.data.mark}</p>
+                                <p><span>Плавка: </span>{partDetails.data.plav}</p>
+                                <p><span>Диаметр: </span>{partDetails.data.diameter.toFixed(2)}</p>
+                                <p><span>Упаковка: </span>{partDetails.data.packing}</p>
+                            </div>
+                        </div>}
                     <div className='register-block-button'>
-                        <button className='add-standard-button' onClick={() => setModal(true)}>Добавить стандарт</button>
+                        <button className='add-standard-button' onClick={() => setModal(true)}>Добавить стандарт
+                        </button>
                     </div>
                     <form className='register-block' onSubmit={submitHandler}>
                         {
                             error && <div>
                                 <ErrorMessage error={error}/>
                                 <h4 className='reg-error'>Автозаполнение не работает</h4>
+                            </div>
+                        }
+                        {
+                            axiosError && <div>
+                                <ErrorMessage error={axiosError}/>
                             </div>
                         }
                         {fieldsError && <h4 className='reg-error'>{fieldsError}</h4>}
@@ -252,6 +324,7 @@ export function RegisterPage() {
                             }}>Заблокировать поле
                             </button>
                             <label htmlFor="part">Партия:</label>
+                            {partError && <label htmlFor="part" className='error-label'>{partError}</label>}
                             <input type="text" name="" id="part" value={part}
                                    onChange={event => setPart(event.target.value)}
                                    disabled={disabledPart}/>

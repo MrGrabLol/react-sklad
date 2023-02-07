@@ -6,11 +6,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {BACKEND_URL} from "../ConstConfig";
 
-interface ModalWindowProps {
+export interface ModalWindowProps {
     openModal: (prop: boolean) => void
 }
 
-export function ModalWindow({openModal}: ModalWindowProps) {
+export function ModalWindowAddStandard({openModal}: ModalWindowProps) {
     const [newMark, setNewMark] = useState('')
     const [newStandard, setNewStandard] = useState('')
     const [error, setError] = useState('')
@@ -43,7 +43,7 @@ export function ModalWindow({openModal}: ModalWindowProps) {
             <div className='modalBackground' id='bg' onClick={() => openModal(false)}/>
             <div className='modalContainer' id='container'>
                 <div className='titleCloseBtn'>
-                    <button id='closeBtn' onClick={() => openModal(false)}> X</button>
+                    <button type='button' id='closeBtn' onClick={() => openModal(false)}>X</button>
                 </div>
                 <div className='title'>
                     <h1>Добавление стандарта</h1>
@@ -62,7 +62,7 @@ export function ModalWindow({openModal}: ModalWindowProps) {
                     </div>
                 </div>
                 <div className='footer'>
-                    <button id='cancelBtn' onClick={() => openModal(false)}>Отменить</button>
+                    <button type='button' id='cancelBtn' onClick={() => openModal(false)}>Отменить</button>
                     <button type='submit' id='confirmBtn'>Добавить</button>
                 </div>
             </div>
