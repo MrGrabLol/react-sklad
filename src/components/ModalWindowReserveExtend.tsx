@@ -7,7 +7,7 @@ import ReactDom from "react-dom";
 import '../css/ModalWindowReserveExtend.css'
 import {ReserveCancelExtendProps} from "./ModalWindowReserveCancel";
 
-export function ModalWindowReserveExtend({openModal, id}: ReserveCancelExtendProps) {
+export function ModalWindowReserveExtend({openModal, id, status}: ReserveCancelExtendProps) {
     const navigate = useNavigate()
     const portalElement: HTMLElement = document.getElementById('portal')!
     const [error, setError] = useState<string>('')
@@ -50,28 +50,38 @@ export function ModalWindowReserveExtend({openModal, id}: ReserveCancelExtendPro
                 </div>
                 <div className='body'>
                     <div className='reserve-input-container extend-margin'>
-                        <div className='modalInputReserve'>
-                            <label htmlFor="extend" style={{fontSize: '30px'}}>
-                                Продлить на: <span style={{color: 'gray', fontStyle: 'italic'}}>дней</span>
-                            </label>
-                            <div className='reserve-input-container'>
-                                <input type="text" className='extend-input' required value={days}
-                                       onChange={(event) => setDays(Number(event.target.value.replace(/[^1234567890]+/g, '')))}/>
-                                <button type='button' className='extend-button' onClick={() => setDays(days + 1)}>+</button>
-                                <button type='button' className='extend-button' onClick={() => {
-                                    if (days <= 1) {
-                                        return
-                                    } else {
-                                        setDays(days - 1)
-                                    }
-                                }}>-</button>
+                        {status === 'Отменен' &&
+                            <h2>Нельзя продлить отмененный резерв</h2>
+                        }
+                        {status === 'Отгружен' &&
+                            <h2>Нельзя продлить отгруженный резерв</h2>
+                        }
+                        {(status === 'Создан' || status === 'Подтвержден' || status === 'Истек срок') &&
+                            <div className='modalInputReserve'>
+                                <label htmlFor="extend" style={{fontSize: '30px'}}>
+                                    Продлить на: <span style={{color: 'gray', fontStyle: 'italic'}}>дней</span>
+                                </label>
+                                <div className='reserve-input-container'>
+                                    <input type="text" className='extend-input' required value={days}
+                                           onChange={(event) => setDays(Number(event.target.value.replace(/[^1234567890]+/g, '')))}/>
+                                    <button type='button' className='extend-button' onClick={() => setDays(days + 1)}>+</button>
+                                    <button type='button' className='extend-button' onClick={() => {
+                                        if (days <= 1) {
+                                            return
+                                        } else {
+                                            setDays(days - 1)
+                                        }
+                                    }}>-</button>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
                 <div className='footer'>
                     <button type='button' id='cancelBtn' onClick={() => openModal(false)}>Назад</button>
-                    <button type='submit' id='confirmBtn'>Продлить</button>
+                    {(status === 'Создан' || status === 'Подтвержден' || status === 'Истек срок') &&
+                        <button type='submit' id='confirmBtn'>Продлить</button>
+                    }
                 </div>
             </div>
         </form>,

@@ -22,11 +22,17 @@
     font-weight: 500;
 }
 
-.sidebar-btn:active {
-    background-color: white;
-    color: #3b4da3;
+@media {
+    .sidebar-btn {
+        min-width: 142px;
+    }
 }
 
 .sidebar-btn:hover {
     opacity: 0.89;
+}
+
+nav .active {
+    background-color: white;
+    color: #3b4da3;
 }

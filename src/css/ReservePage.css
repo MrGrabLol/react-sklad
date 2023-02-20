@@ -18,6 +18,10 @@
     font-weight: bold;
 }
 
+.reserve-header-warning {
+    margin-top: 100px;
+}
+
 .reserve-button:hover {
     opacity: 0.89;
     cursor: pointer;

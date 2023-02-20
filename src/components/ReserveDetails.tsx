@@ -1,4 +1,4 @@
-import {Link, useLoaderData} from "react-router-dom";
+import {useLoaderData} from "react-router-dom";
 import {CardView} from "./CardView";
 import {IReserve} from "../interfaces/exportedInterfaces";
 
@@ -26,10 +26,13 @@ export function ReserveDetails() {
                         <td className='header'>Упаковка</td>
                         <td>{reserve.packing}</td>
                     </tr>
-                    <tr>
-                        <td className='header'>Партия</td>
-                        <td>{reserve.part}</td>
-                    </tr>
+                    {
+                        reserve.part &&
+                        <tr>
+                            <td className='header'>Партия</td>
+                            <td>{reserve.part}</td>
+                        </tr>
+                    }
                     <tr>
                         <td className='header'>Вес</td>
                         <td>{reserve.weight}</td>
@@ -60,10 +63,6 @@ export function ReserveDetails() {
                     <tr>
                         <td className='header'>Дата отмены</td>
                         <td>{reserve.dueDate}</td>
-                    </tr>
-                    <tr>
-                        <td className='header'>Осталось дней</td>
-                        <td>{reserve.days}</td>
                     </tr>
                     <tr>
                         <td className='header'>Статус</td>

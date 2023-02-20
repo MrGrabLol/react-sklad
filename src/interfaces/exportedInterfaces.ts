@@ -4,7 +4,10 @@ export interface IModels {
     packing: string,
     manufacture: string,
     solnechnogorsk: string,
-    belSklad: string
+    belSklad: string,
+    manufactureReserve: string,
+    solnechnogorskReserve: string,
+    belSkladReserve: string
 }
 
 export interface IModelsCard {
@@ -193,6 +196,12 @@ export interface IReserve {
     positions: IPositionsResponse[],
     location: string,
     status: string
+}
+
+export interface IWorker {
+    roles: string[],
+    name: string,
+    lastName: string,
 }
 // [
 //     {

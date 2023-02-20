@@ -23,7 +23,7 @@ export function Reserve({reserve}: ReserveProps) {
     })
 
     return (
-        <Link className="card-item" style={{border: style}} target="_blank" to={ '/reserve/' + reserve.id }>
+        <Link className="card-item" style={{border: style}} target="_blank" to={ '/reserve/' + reserve.id + '/info' }>
             <div>
                 <p className="card-item__title reserve-header">{reserve.mark}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Диаметр:</span> {reserve.diameter}</p>

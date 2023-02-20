@@ -1,3 +1,23 @@
+.sklad-container {
+    width: 100%;
+    height: 100%;
+}
+
+/*#root {*/
+/*    height: 0;*/
+/*    width: 400px;*/
+/*}*/
+
+/*html {*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*}*/
+
+/*#root {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
 .sidebar {
     position: fixed;
     float: left;
@@ -6,8 +26,8 @@
     text-align: center;
     /*background-color: #d9d9d9;*/
     background: linear-gradient(45deg, #737373, #d9d9d9);
-    border-bottom-right-radius: 18px;
-    border-top-right-radius: 18px;
+    /*border-bottom-right-radius: 18px;*/
+    /*border-top-right-radius: 18px;*/
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -24,12 +44,12 @@
     height: 11.5%;
     margin-top: 40px;
     margin-bottom: 30px;
+    transition: filter 0.25s;
 }
 
 .image:hover {
     cursor: pointer;
-    border-radius: 6px;
-    box-shadow: 0 0 5px 5px #3b4da3;
+    filter: invert(1);
 }
 
 .btn-exit {
@@ -86,19 +106,24 @@
 }
 
 .openbtn {
+    opacity: 0;
     font-size: 22px;
     cursor: pointer;
     background-color: #3b4da3;
     color: white;
-    width: 50px;
+    width: 0;
     height: 50px;
     border: none;
     float: left;
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
-    transition: opacity 0.3s, width 0.5s;
+    transition: opacity 0.3s, width 0.5s, background-color 0.2s, color 0.2s, border 0.2s;
 }
 
 .openbtn:hover {
-    opacity: 0.89;
+    background-color: white;
+    color: #3b4da3;
+    border-right: 2px solid #3b4da3;
+    border-top: 2px solid #3b4da3;
+    border-bottom: 2px solid #3b4da3;
 }

@@ -11,17 +11,25 @@ export function LoginPage() {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const {token, setToken} = useToken()
+    const {setToken} = useToken()
     const navigate = useNavigate();
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
         try {
-            const response = await axios.post(BACKEND_URL + '/api/v1/auth/login', {
+            const responseLogin = await axios.post(BACKEND_URL + '/api/v1/auth/login', {
                 login,
                 password
             })
-            setToken(response.data.accessToken)
+            setToken(responseLogin.data.accessToken)
+            localStorage.setItem('expireTime', responseLogin.data.expireTime)
+            const responseWorker = await axios.get(BACKEND_URL + '/api/v1/worker', {
+                headers: {
+                    Authorization: 'Bearer ' + responseLogin.data.accessToken
+                }
+            })
+            localStorage.setItem('worker', responseWorker.data.name + ' ' + responseWorker.data.lastName)
+            localStorage.setItem('roles', responseWorker.data.roles)
             navigate("/")
         } catch (e: unknown) {
             const error = e as AxiosError

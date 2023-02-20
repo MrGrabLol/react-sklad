@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import axios, {AxiosError} from "axios";
 import {BACKEND_URL} from "../ConstConfig";
 import {IPositionsResponse, IShipping, IThirdStepShipping} from "../interfaces/exportedInterfaces";
-import {PositionShippingPrint} from "./PositionShippingPrint";
 import '../css/PositionShipping.css'
 import {PackView} from "./PackView";
 import {ThirdStepShipping} from "./ThirdStepShipping";

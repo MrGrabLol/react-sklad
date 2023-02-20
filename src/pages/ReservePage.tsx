@@ -18,7 +18,9 @@ export function ReservePage() {
             {loader && <Loader/>}
             {!error && !loader &&
                 <div>
-                    <button className='reserve-button' onClick={() => setModal(true)}>Добавить резерв</button>
+                    {(!localStorage.getItem('roles')!.includes('WAREHOUSE_USER') || localStorage.getItem('roles')!.includes('ADMIN')) &&
+                        <button className='reserve-button' onClick={() => setModal(true)}>Добавить резерв</button>
+                    }
                     <div className='card-container-reg'>
                         {reserves.map(reserve => <Reserve reserve={reserve}/>)}
                     </div>

@@ -7,10 +7,11 @@ import {useNavigate} from "react-router-dom";
 
 export interface ReserveCancelExtendProps {
     id: number,
+    status: string,
     openModal: (prop: boolean) => void
 }
 
-export function ModalWindowReserveCancel({id, openModal}: ReserveCancelExtendProps) {
+export function ModalWindowReserveCancel({id, openModal, status}: ReserveCancelExtendProps) {
     const navigate = useNavigate()
     const portalElement: HTMLElement = document.getElementById('portal')!
     const [error, setError] = useState('')
@@ -45,11 +46,25 @@ export function ModalWindowReserveCancel({id, openModal}: ReserveCancelExtendPro
                     {error && <h2 style={{color: 'red'}}>{error}</h2>}
                 </div>
                 <div className='body'>
-                    <h3>Вы уверены, что хотите <span style={{color: 'red', fontStyle: 'italic'}}>отменить</span> резерв?</h3>
+                    {status === 'Отменен' &&
+                        <h2>Резерв уже отменен</h2>
+                    }
+                    {status === 'Отгружен' &&
+                        <h2>Резерв уже был отгружен</h2>
+                    }
+                    {status === 'Истек срок' &&
+                        <h2>У резерва уже истек срок</h2>
+                    }
+                    {(status === 'Создан' || status === 'Подтвержден') &&
+                        <h3>Вы уверены, что хотите <span
+                            style={{color: 'red', fontStyle: 'italic'}}>отменить</span> резерв?</h3>
+                    }
                 </div>
                 <div className='footer'>
                     <button type='button' id='cancelBtn' onClick={() => openModal(false)}>Назад</button>
-                    <button type='submit' id='confirmBtn'>Отменить</button>
+                    {(status === 'Создан' || status === 'Подтвержден') &&
+                        <button type='submit' id='confirmBtn'>Отменить</button>
+                    }
                 </div>
             </div>
         </form>,
