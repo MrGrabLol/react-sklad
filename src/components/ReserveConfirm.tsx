@@ -14,7 +14,7 @@ export function ReserveConfirm() {
     const [weightError, setWeightError] = useState<string>('')
     const [correspondError, setCorrespondError] = useState<string>('')
     const [cards, setCards] = useState<IModelsCard[]>()
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(true)
     const [confirmedReserve, setConfirmedReserve] = useState<string[]>([])
     const [overallWeight, setOverallWeight] = useState<number>(0)
     const [buttonDisable, setButtonDisable] = useState<boolean>(false)
@@ -50,7 +50,7 @@ export function ReserveConfirm() {
                     }
                 }
                 if (ids !== '') {
-                    setCorrespondError('неподходящие значения для резерва у следующих позиций - ' + ids)
+                    setCorrespondError('неподходящие значения для резерва у следующих id позиций - ' + ids)
                     setButtonDisable(true)
                 }
                 if (response.data.reduce((acc, card) => acc + Number(card.weight), 0) > reserve.weight + reserve.weight / 100 * 10 ||

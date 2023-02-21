@@ -50,13 +50,13 @@ export function ModalWindowReserveExtend({openModal, id, status}: ReserveCancelE
                 </div>
                 <div className='body'>
                     <div className='reserve-input-container extend-margin'>
-                        {status === 'Отменен' &&
+                        {(status === 'Отменен' || status === 'Истек срок') &&
                             <h2>Нельзя продлить отмененный резерв</h2>
                         }
                         {status === 'Отгружен' &&
                             <h2>Нельзя продлить отгруженный резерв</h2>
                         }
-                        {(status === 'Создан' || status === 'Подтвержден' || status === 'Истек срок') &&
+                        {(status === 'Создан' || status === 'Подтвержден') &&
                             <div className='modalInputReserve'>
                                 <label htmlFor="extend" style={{fontSize: '30px'}}>
                                     Продлить на: <span style={{color: 'gray', fontStyle: 'italic'}}>дней</span>

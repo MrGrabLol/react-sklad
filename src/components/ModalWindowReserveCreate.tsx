@@ -32,7 +32,7 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
         event.preventDefault()
         setRequestError('')
         setFieldError('')
-        if (Number(reserveDays) < 1 || Number(reserveDiameter) < 0 || Number(reserveWeight) < 0) {
+        if (Number(reserveDays) < 1 || Number(reserveDiameter) <= 0 || Number(reserveWeight) <= 0) {
             setFieldError('Введите корректные данные в поля с весом/диаметром/днями')
         } else {
             try {

@@ -17,7 +17,7 @@ export function ReserveDispatch() {
     async function dispatchReserve() {
         setError('')
         try {
-            const response = await axios.post(BACKEND_URL + '/api/v1/' + reserve.id + '/dispatch', {}, {
+            const response = await axios.post(BACKEND_URL + '/api/v1/reserve/' + reserve.id + '/dispatch', {}, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
