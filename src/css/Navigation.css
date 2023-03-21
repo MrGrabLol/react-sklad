@@ -2,6 +2,7 @@
     align-items: center;
     text-align: center;
     vertical-align: middle;
+    /*float: left;*/
 }
 
 .sidebar-btn {
@@ -41,6 +42,7 @@
     font-size: 170%;
     font-family: 'Open Sans', sans-serif;
     transition: color 0.3s, background-color 0.3s;
+    /*float: left;*/
 }
 
 .span-hoverable-active,
@@ -69,3 +71,4 @@ nav .active {
     background-color: white;
     color: #3b4da3;
 }
+
