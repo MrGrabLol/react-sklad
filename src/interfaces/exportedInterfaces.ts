@@ -203,42 +203,18 @@ export interface IWorker {
     name: string,
     lastName: string,
 }
-// [
-//     {
-//         "id": 0,
-//         "mark": "string",
-//         "diameter": "string",
-//         "packing": "string",
-//         "part": "string",
-//         "weight": 0,
-//         "days": 0,
-//         "customer": "string",
-//         "bill": "string",
-//         "comment": "string",
-//         "creationDate": "string",
-//         "dueDate": "string",
-//         "positions": [
-//             {
-//                 "id": 0,
-//                 "mark": "string",
-//                 "diameter": "string",
-//                 "packing": "string",
-//                 "date": "string",
-//                 "comment": "string",
-//                 "part": "string",
-//                 "plav": "string",
-//                 "manufacturer": "string",
-//                 "weight": "string",
-//                 "status": "string",
-//                 "location": "string",
-//                 "type": "string",
-//                 "standards": [
-//                     "string"
-//                 ],
-//                 "createdFrom": "string",
-//                 "pack": 0
-//             }
-//         ],
-//         "location": "string"
-//     }
-// ]
+
+export interface ISendHistoryFields {
+    id: number,
+    source: string,
+    destination: string,
+    createdDate: string,
+    creator: string,
+    carPlate: string,
+    status: string,
+    positions: IPositionsResponse[]
+}
+
+export interface ISendHistory {
+    transfers: ISendHistoryFields[]
+}

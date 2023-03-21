@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "../css/SearchAutoComplete.css"
 import axios from "axios";
 import {ISearchAutoComplete, SearchAutocompleteResponse} from '../interfaces/exportedInterfaces'
@@ -10,16 +10,27 @@ interface SearchAutoCompleteProps {
 }
 
 export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) {
+    const controllerRef = useRef<AbortController | null>();
+    const [checking, setChecking] = useState('')
 
-    async function onChangeHandler(event: { currentTarget: { value: any; }; }) {
-        const userInput = event.currentTarget.value;
+    useEffect(() => {
+        onChangeHandler()
+    }, [checking])
+
+    async function onChangeHandler() {
+        if (controllerRef.current) {
+            controllerRef.current.abort()
+        }
+        const controller = new AbortController()
+        controllerRef.current = controller
 
         const response = await axios.post<SearchAutocompleteResponse>(BACKEND_URL + '/api/v1/search/autocomplete', {
-            query: userInput
+            query: checking
         }, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem("token")
-            }
+            },
+            signal: controllerRef.current?.signal
         })
         const partSug = response.data.part
         const plavSug = response.data.plav
@@ -29,8 +40,9 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
             partSuggestions: partSug,
             heatSuggestions : plavSug,
             showSuggestions: true,
-            userInput: userInput
-        });
+            userInput: checking
+        })
+        controllerRef.current = null
     }
 
     function onClickHandler(event: { currentTarget: { innerText: any; }; }) {
@@ -159,9 +171,9 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
         <>
             <input
                 type="text"
-                onChange={onChangeHandler}
+                onChange={event => setChecking(event.target.value)}
                 onKeyDown={onKeyDownHandler}
-                value={state.userInput}
+                value={checking}
                 placeholder='Начните ввод: плавка/партия/марка'
                 style={{fontSize: '16px'}}
             />

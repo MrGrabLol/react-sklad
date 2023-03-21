@@ -1,5 +1,5 @@
 import '../css/Card.css'
-import {IModelsCard, IPositionsResponse} from "../interfaces/exportedInterfaces";
+import {IPositionsResponse} from "../interfaces/exportedInterfaces";
 import {Link} from "react-router-dom";
 import React from "react";
 
@@ -9,8 +9,20 @@ interface ModelCardProps {
 
 export function Card({card}: ModelCardProps) {
 
+    const borderStyle = () => {
+        if (card.status === 'В наличии') {
+            return '3px solid #3b4da3'
+        } else if (card.status === 'Отгружено') {
+            return '3px solid gray'
+        } else if (card.status === 'Резерв') {
+            return '3px solid rgb(253, 185, 0)'
+        } else {
+            return '3px dashed #3b4da3'
+        }
+    }
+
     return (
-        <Link className="card-item" target="_blank" to={ '/position/' + card.id + '/info' }>
+        <Link className="card-item" target="_blank" to={'/position/' + card.id + '/info'} style={{border: borderStyle()}}>
             <div>
                 <p className="card-item__title">{card.type}</p>
                 <p className="card-item__text"><span>Марка:</span> {card.mark}</p>

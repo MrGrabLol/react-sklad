@@ -2,15 +2,14 @@ import React from "react";
 import {useShippingHistory} from "../hooks/useShippingHistory";
 import {Loader} from "../components/Loader";
 import {ShipmentHistoryTableRow} from "../components/ShipmentHistoryTableRow";
-import {useNavigate} from "react-router-dom";
 
-export function ShipmentHistoryPage() {
+export function DispatchHistoryPage() {
     const {shippingHistory, error, loading} = useShippingHistory()
 
     return (
         <div>
             {loading && <Loader/>}
-            {error && <h1>Ошибка загрузки: {error}</h1>}
+            {error && <h1 style={{color: 'red'}}>Ошибка загрузки: {error}</h1>}
             {!loading &&
                 <table style={{marginTop: '6%', width: '94.5%'}}>
                     <thead>

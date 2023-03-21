@@ -60,10 +60,8 @@ export function RegisterStepTwo({
     })
 
     async function submitHandler(event: { preventDefault: () => void; }) {
-        console.log('-----first part-----')
         event.preventDefault()
         setGeneralError('')
-        console.log('error is empty')
 
         let error = ''
         for (let i = 0; i < quantity; i++) {
@@ -73,9 +71,6 @@ export function RegisterStepTwo({
                 break
             }
         }
-
-        console.log('-------checked fields--------')
-        console.log('bool array current state: ', validArray)
 
         if (partBlock || plavBlock || diameterBlock || packageBlock) {
             for (let i = 0; i < quantity; i++) {
@@ -87,13 +82,9 @@ export function RegisterStepTwo({
             }
         }
 
-        console.log('------checked part valid-------')
-
         if (error.length) {
             setGeneralError(error)
-            console.log('error has length')
         } else {
-            console.log('error is empty in try block')
             try {
                 const response = await axios.post(BACKEND_URL + '/api/v1/registration', {
                     positions: cardArray,
@@ -118,7 +109,7 @@ export function RegisterStepTwo({
                 <h2 className='header-reg'>Введите незаполненные поля</h2>
                 {packView &&
                     <div className='switchbar-reg'>
-                        <p>Объединить в поддон:</p>
+                        <p style={{marginRight: '14px'}}>Объединить в поддон:</p>
                         <label className='switch-reg'>
                             <input type='checkbox' checked={packPrint} onChange={() => setPackPrint(!packPrint)}/>
                             <span className='slider round'></span>

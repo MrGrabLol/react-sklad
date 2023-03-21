@@ -25,6 +25,7 @@ export const exitHandler = () => {
     localStorage.removeItem('worker')
     localStorage.removeItem('roles')
     localStorage.removeItem('expireTime')
+    localStorage.removeItem('location')
 }
 
 export function SkladPage() {

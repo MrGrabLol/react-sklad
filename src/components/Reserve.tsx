@@ -36,7 +36,15 @@ export function Reserve({reserve}: ReserveProps) {
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Локация:</span> {reserve.location}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Дата создания:</span> {reserve.creationDate}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Дата отмены:</span> {reserve.dueDate}</p>
-                <p className="card-item__text reserve-font"><span className='reserve-header'>Осталось дней:</span> {reserve.days}</p>
+
+                    {/*(reserve.status === 'Создан' || reserve.status === 'Подтвержден') &&*/}
+                    {/*<p className="card-item__text reserve-font">*/}
+                    {/*    <span className='reserve-header'>*/}
+                    {/*        Осталось дней:*/}
+                    {/*    </span>*/}
+                    {/*    {(Date.parse(reserve.dueDate) - Date.parse(reserve.creationDate)) / 24 * 3600 * 1000 }*/}
+                    {/*</p>*/}
+
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Статус:</span> {reserve.status}</p>
             </div>
         </Link>

@@ -10,8 +10,8 @@ import {ShowPage} from "./pages/ShowPage";
 import {ScanPage} from "./pages/ScanPage";
 import {SearchPage} from "./pages/SearchPage";
 import {CombinePage} from "./pages/CombinePage";
-import {ShipmentPage} from "./pages/ShipmentPage";
-import {ShipmentHistoryPage} from "./pages/ShipmentHistoryPage";
+import {DispatchPage} from "./pages/DispatchPage";
+import {DispatchHistoryPage} from "./pages/DispatchHistoryPage";
 import {AdmissionPage} from "./pages/AdmissionPage";
 import {SendPage} from "./pages/SendPage";
 import {PositionPage} from "./pages/PositionPage";
@@ -25,6 +25,7 @@ import {ReserveConfirm} from "./components/ReserveConfirm";
 import {ReserveDispatch} from "./components/ReserveDispatch";
 import {ReserveDetails} from "./components/ReserveDetails";
 import {WelcomePage} from "./pages/WelcomePage";
+import {SendHistoryPage} from "./pages/SendHistoryPage";
 
 const JSXRoutes = (
     <>
@@ -37,10 +38,11 @@ const JSXRoutes = (
                 <Route path='/melt-search' element={<SearchPage/>}/>
                 <Route path='/weights/:mark/:diameter/:packing/:plav/:part' loader={weightLoader} element={<MeltSearchWeights/>}/>
                 <Route path='/combine' element={<CombinePage/>}/>
-                <Route path='/shipment' element={<ShipmentPage/>}/>
-                <Route path='/shipment-history' element={<ShipmentHistoryPage/>}/>
+                <Route path='/dispatch' element={<DispatchPage/>}/>
+                <Route path='/dispatch-history' element={<DispatchHistoryPage/>}/>
                 <Route path='/admission' element={<AdmissionPage/>}/>
                 <Route path='/send' element={<SendPage/>}/>
+                <Route path='/send-history' element={<SendHistoryPage/>}/>
                 <Route path='/reserve' element={<ReservePage/>}/>
             </>
         }/>

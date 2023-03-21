@@ -101,7 +101,9 @@ export function PositionShipping() {
         <div>
             {(card.status === 'Отгружено' || card.status === 'отгружено') &&
                 <h2 style={{marginTop: '50px'}}>Позиция уже отгружена</h2>}
-            {card.status !== 'Отгружено' && card.status !== 'отгружено' &&
+            {(card.status === 'Резерв' || card.status === 'резерв') &&
+                <h2 style={{marginTop: '50px', color: 'rgb(253, 185, 0)'}}>Позиция находится в резерве</h2>}
+            {card.status !== 'Отгружено' && card.status !== 'отгружено' && card.status !== 'Резерв' && card.status !== 'резерв' &&
                 <div className='dispatch-container'>
                     {secondStepFullDispatch && <h2 style={{color: 'green'}}>Позиция успешно отгружена</h2>}
                     {error && <h2 style={{color: 'red'}}>Ошибка: {error}</h2>}

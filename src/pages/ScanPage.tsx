@@ -13,7 +13,7 @@ export function ScanPage() {
     const [error, setError] = useState('')
     const [cards, setCards] = useState<IModelsCard[]>()
     const [checked, setChecked] = useState(false)
-    const {token, setToken} = useToken()
+    const {token} = useToken()
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()

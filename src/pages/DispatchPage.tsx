@@ -6,7 +6,7 @@ import {SecondStepShipping} from "../components/SecondStepShipping";
 import {BACKEND_URL} from "../ConstConfig";
 import {useNavigate} from "react-router-dom";
 
-export function ShipmentPage() {
+export function DispatchPage() {
     const [customer, setCustomer] = useState('')
     const [bill, setBill] = useState('')
     const [secondStepShipping, setSecondStepShipping] = useState(false)
@@ -33,7 +33,7 @@ export function ShipmentPage() {
                     }
                 })
                 if (response.data.packages.length === 0 && response.data.positions.length === 0 ) {
-                    setError('Эти позиции уже отгружены')
+                    setError('Эти позиции уже отгружены или зарезервированы')
                 } else {
                     setShipmentResponse(response.data)
                     setSecondStepShipping(true)

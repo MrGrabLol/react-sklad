@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios, {AxiosError} from "axios";
+import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
 import {BACKEND_URL} from "../ConstConfig";
 import ReactDom from "react-dom";
 import {ModalWindowProps} from "./ModalWindowAddStandard";
@@ -21,9 +21,9 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
     const [reserveCustomer, setReserveCustomer] = useState('')
     const [reserveComment, setReserveComment] = useState('')
     const [reserveLocation, setReserveLocation] = useState('Солнечногорск')
-    const [reserveDays, setReserveDays] = useState('')
+    const [reserveDays, setReserveDays] = useState<number>(7)
 
-    const {marks, packs, error} = useRegisterAutocomplete()
+    const {reserveMarks, packs, error} = useRegisterAutocomplete()
     const [markAutocomplete, setMarkAutocomplete] = useState(false)
     const [packingAutocomplete, setPackingAutocomplete] = useState(false)
     const [ulFocus, setUlFocus] = useState(false)
@@ -46,7 +46,7 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
                     bill: reserveBill.trim(),
                     comment: reserveComment.trim(),
                     location: reserveLocation,
-                    days: Number(reserveDays)
+                    days: reserveDays
                 }, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -54,6 +54,8 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
                 })
                 if (response.status === 200) {
                     window.location.reload()
+                } else if (response.status === 400) {
+                    setRequestError(response.data.message)
                 }
             } catch (e: unknown) {
                 const error = e as AxiosError
@@ -96,7 +98,7 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
     return ReactDom.createPortal(
         <form className='modalWindow' onSubmit={sendRequest}>
             <div className='modalBackground' id='bg' onClick={() => openModal(false)}/>
-            <div className='modalContainerReserve'>
+            <div className='modalContainerReserve adding-reserve'>
                 <div className='titleCloseBtn'>
                     <button type='button' id='closeBtn' onClick={() => openModal(false)}>X</button>
                 </div>
@@ -117,7 +119,7 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
                                     setMarkAutocomplete(false)
                                 }
                             }}/>
-                            {reserveMark !== '' && markAutocomplete && !error && showAutocomplete(reserveMark, marks, setReserveMark, setMarkAutocomplete,
+                            {reserveMark !== '' && markAutocomplete && !error && showAutocomplete(reserveMark, reserveMarks, setReserveMark, setMarkAutocomplete,
                                 'suggestions-reg-reserve', 'suggestion-hoverable-reg-reserve', 'no-suggestions-reg-reserve')}
                         </div>
                         <div className='modalInputReserve'>
@@ -148,8 +150,20 @@ export function ModalWindowReserveCreate({openModal}: ModalWindowProps) {
                             <input type="text" id='part' value={reservePart} onChange={(event) => setReservePart(event.target.value)}/>
                         </div>
                         <div className='modalInputReserveSmall'>
-                            <label htmlFor="days" className='reserve-label'>Сколько дней</label>
-                            <input type="text" id='days' value={reserveDays} required onChange={(event) => setReserveDays(event.target.value.replace(/[^1234567890]+/g, ''))}/>
+                            <label htmlFor="days" id='except-input-label' className='reserve-label'>Сколько дней</label>
+                            <div className='days-container' id='days'>
+                                <input type="text" id='except-input' value={reserveDays} required onChange={(event) => setReserveDays(Number(event.target.value.replace(/[^1234567890]+/g, '')))}/>
+                                <button type='button' onClick={() => {
+                                    setReserveDays(reserveDays + 1)
+                                }}>+</button>
+                                <button type='button' onClick={() => {
+                                    if (reserveDays > 1) {
+                                        setReserveDays(reserveDays - 1)
+                                    } else {
+                                        return
+                                    }
+                                }}>-</button>
+                            </div>
                         </div>
                     </div>
                     <div className='reserve-input-container'>

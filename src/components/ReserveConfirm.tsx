@@ -14,7 +14,6 @@ export function ReserveConfirm() {
     const [weightError, setWeightError] = useState<string>('')
     const [correspondError, setCorrespondError] = useState<string>('')
     const [cards, setCards] = useState<IModelsCard[]>()
-    const [checked, setChecked] = useState(true)
     const [confirmedReserve, setConfirmedReserve] = useState<string[]>([])
     const [overallWeight, setOverallWeight] = useState<number>(0)
     const [buttonDisable, setButtonDisable] = useState<boolean>(false)
@@ -45,7 +44,7 @@ export function ReserveConfirm() {
                 let ids = ''
                 for (const el of response.data) {
                     if (el.mark !== reserve.mark || el.diameter !== reserve.diameter || el.packing !== reserve.packing ||
-                        (reserve.part !== '' && (el.part !== reserve.part)) || el.status === 'Отгружено') {
+                        (reserve.part !== '' && (el.part !== reserve.part)) || el.status === 'Отгружено' || el.status === 'Резерв') {
                         ids = ids + String(el.id) + ' '
                     }
                 }
@@ -64,11 +63,7 @@ export function ReserveConfirm() {
                 setCards(undefined)
             }
         }
-        if (checked) {
-            setId(id.concat(','))
-        } else {
-            setId('')
-        }
+        setId(id.concat(','))
     }
 
     const sendRequest = async () => {
@@ -104,12 +99,6 @@ export function ReserveConfirm() {
             {reserve.status === 'Создан' &&
                 <div className='card-id-confirm-scan'>
                     <div className='input-block'>
-                        <label className='check-label'>
-                            <input type="checkbox" className='check-input' checked={checked}
-                                   onChange={() => setChecked(!checked)}/>
-                            <span className='checkmark'></span>
-                            <p style={{marginLeft: '14px'}}>Ввод нескольких позиций</p>
-                        </label>
                         <form onSubmit={submitHandler}>
                             <input type="text" style={{fontSize: '16px'}} placeholder='Введите ID' value={id}
                                    onChange={event => setId(event.target.value.replace(/[^,1234567890]+/g, ''))}/>

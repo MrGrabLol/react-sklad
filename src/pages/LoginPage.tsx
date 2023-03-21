@@ -30,6 +30,7 @@ export function LoginPage() {
             })
             localStorage.setItem('worker', responseWorker.data.name + ' ' + responseWorker.data.lastName)
             localStorage.setItem('roles', responseWorker.data.roles)
+            localStorage.setItem('location', responseWorker.data.locations)
             navigate("/")
         } catch (e: unknown) {
             const error = e as AxiosError

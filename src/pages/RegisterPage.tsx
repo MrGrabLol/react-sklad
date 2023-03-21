@@ -326,7 +326,7 @@ export function RegisterPage() {
                             <label htmlFor="part">Партия:</label>
                             {partError && <label htmlFor="part" className='error-label'>{partError}</label>}
                             <input type="text" name="" id="part" value={part}
-                                   onChange={event => setPart(event.target.value)}
+                                   onChange={event => setPart(event.target.value.toUpperCase())}
                                    disabled={disabledPart}/>
                         </div>
                         <div className='register-input'>
@@ -368,18 +368,16 @@ export function RegisterPage() {
                         <div className='register-input-quantity'>
                             {quantityError && <h4 className='reg-error'>{quantityError}</h4>}
                             <label htmlFor="quantity">Количество:</label>
-                            <div className='quantity-input-buttons'>
-                                <input type="text" name="" id="quantity" value={quantity}
+                            <div className='quantity-input-buttons' id="quantity">
+                                <input type="text" name="" value={quantity}
                                        onChange={event => setQuantity(Number(event.target.value.replace(/[^1234567890]+/g, '')))}
                                        required/>
                                 <div className='form-btns'>
-                                    <button className='form-btn' onClick={(event) => {
-                                        event.preventDefault()
+                                    <button type='button' className='form-btn' onClick={(event) => {
                                         setQuantity(quantity + 1)
                                     }}>+
                                     </button>
-                                    <button className='form-btn' onClick={(event) => {
-                                        event.preventDefault()
+                                    <button type='button' className='form-btn' onClick={(event) => {
                                         if (quantity <= 1) {
                                             return
                                         } else {

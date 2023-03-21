@@ -5,10 +5,11 @@ import {BACKEND_URL} from "../ConstConfig";
 
 export function useRegisterAutocomplete() {
     const [marks, setMarks] = useState<string[]>([])
+    const [reserveMarks, setReserveMarks] = useState<string[]>([])
     const [packs, setPacks] = useState<string[]>([])
     const [standards, setStandards] = useState<IStandards[]>([])
     const [manufacturers, setManufacturers] = useState<string[]>([])
-    const [error, setError] = useState('')
+    const [error, setError] = useState<string>('')
 
     async function fetchAutocomplete() {
         try {
@@ -18,7 +19,7 @@ export function useRegisterAutocomplete() {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             })
-            const responseMarks =  await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/marks', {
+            const responseReserveMarks =  await axios.get<string[]>(BACKEND_URL + '/api/v1/filter/marks', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -33,10 +34,11 @@ export function useRegisterAutocomplete() {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
             })
-            setMarks(responseMarks.data)
+            setMarks(responseStandards.data.marks.map(el => el.mark))
             setPacks(responsePacks.data)
             setStandards(responseStandards.data.marks)
             setManufacturers(responseManufacturers.data)
+            setReserveMarks(responseReserveMarks.data)
         } catch (e: unknown) {
             const error = e as AxiosError
             setError(error.message)
@@ -47,5 +49,5 @@ export function useRegisterAutocomplete() {
         fetchAutocomplete()
     }, [])
 
-    return {marks, packs, standards, error, manufacturers}
+    return {marks, reserveMarks, packs, standards, error, manufacturers}
 }

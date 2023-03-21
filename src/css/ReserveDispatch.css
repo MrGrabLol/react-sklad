@@ -1,12 +1,13 @@
 .dispatch-reserve-container {
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 .dispatch-reserve-button-container {
     width: 100%;
     height: fit-content;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 .dispatch-reserve-button-container button {
@@ -17,6 +18,7 @@
     color: white;
     border-radius: 6px;
     border: none;
+    margin-bottom: 30px;
 }
 
 .dispatch-reserve-button-container button:hover {

@@ -7,10 +7,9 @@ import axios, {AxiosError} from "axios";
 import {ErrorMessage} from "../components/ErrorMessage";
 import {BACKEND_URL} from "../ConstConfig";
 import useToken from "../hooks/useToken";
-import {useNavigate} from "react-router-dom";
 
 export function SearchPage() {
-    const {token, setToken} = useToken()
+    const {token} = useToken()
     const [request, setRequest] = useState(false)
     const [state, setState] = useState<ISearchAutoComplete>({
         activeSuggestion: 0,

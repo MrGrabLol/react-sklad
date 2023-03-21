@@ -32,6 +32,39 @@
     opacity: 0.89;
 }
 
+.span-hoverable-sidebar {
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 170%;
+    font-family: 'Open Sans', sans-serif;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.span-hoverable-active,
+.span-hoverable-sidebar:hover {
+    background-color: white;
+    color: #3b4da3;
+}
+
+.sidebar-submenu {
+    display: inline-block;
+    transition: height 0.3s;
+}
+
+.sidebar-submenu-active {
+    height: fit-content;
+}
+
+.sidebar-span {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
 nav .active {
     background-color: white;
     color: #3b4da3;

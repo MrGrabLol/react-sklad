@@ -6,6 +6,7 @@ import '../css/ReserveDispatch.css'
 import axios, {AxiosError} from "axios";
 import {useState} from "react";
 import {BACKEND_URL} from "../ConstConfig";
+import {Card} from "./Card";
 
 export function ReserveDispatch() {
 
@@ -57,7 +58,9 @@ export function ReserveDispatch() {
                         </div>
                     </div>
                     <h1>Позиции:</h1>
-                    <CardView cards={reserve.positions}/>
+                    <div className='card-container-reg'>
+                        {reserve.positions.map((pos, index) => <Card card={pos} key={index}/>)}
+                    </div>
                     <div className='dispatch-reserve-button-container'>
                         <button onClick={dispatchReserve}>Отгрузить</button>
                     </div>

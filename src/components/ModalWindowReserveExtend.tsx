@@ -79,7 +79,7 @@ export function ModalWindowReserveExtend({openModal, id, status}: ReserveCancelE
                 </div>
                 <div className='footer'>
                     <button type='button' id='cancelBtn' onClick={() => openModal(false)}>Назад</button>
-                    {(status === 'Создан' || status === 'Подтвержден' || status === 'Истек срок') &&
+                    {(status === 'Создан' || status === 'Подтвержден') &&
                         <button type='submit' id='confirmBtn'>Продлить</button>
                     }
                 </div>

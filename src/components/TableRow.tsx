@@ -11,9 +11,9 @@ export function TableRow({model}: ModelsProps) {
             <td>{model.mark}</td>
             <td>{model.diameter}</td>
             <td>{model.packing}</td>
-            <td>{model.solnechnogorsk} ({model.solnechnogorskReserve})</td>
-            <td>{model.belSklad} ({model.belSkladReserve})</td>
-            <td>{model.manufacture} ({model.manufactureReserve})</td>
+            <td>{model.solnechnogorsk} / <span style={{fontWeight: model.solnechnogorskReserve === '0' ? 'normal' : "bold"}}>{model.solnechnogorskReserve}</span></td>
+            <td>{model.belSklad} / <span style={{fontWeight: model.solnechnogorskReserve === '0' ? 'normal' : "bold"}}>{model.belSkladReserve}</span></td>
+            <td>{model.manufacture} / <span style={{fontWeight: model.solnechnogorskReserve === '0' ? 'normal' : "bold"}}>{model.manufactureReserve}</span></td>
         </tr>
     )
 }
