@@ -1,4 +1,5 @@
 import {ISendHistoryFields} from "../interfaces/exportedInterfaces";
+import {Link} from "react-router-dom";
 
 interface SendHistoryTableRowProps {
     item: ISendHistoryFields
@@ -7,12 +8,13 @@ interface SendHistoryTableRowProps {
 export function SendHistoryTableRow({item}: SendHistoryTableRowProps) {
     return (
         <tr>
-            <td>{item.id}</td>
-            <td>{item.source}</td>
-            <td>{item.destination}</td>
+            <Link to={'/send-details/' + item.id}>
+                <td>{item.id}</td>
+            </Link>
+            <td>{item.source} &#8594; {item.destination}</td>
             <td>{item.createdDate}</td>
             <td>{item.creator}</td>
-            <td>{item.carPlate}</td>
+            <td>{item.carPlate.length > 0 ? item.carPlate : 'Не указан'}</td>
             <td>{item.status}</td>
         </tr>
     )

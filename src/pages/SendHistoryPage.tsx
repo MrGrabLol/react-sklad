@@ -15,8 +15,7 @@ export function SendHistoryPage() {
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th style={{width: '20%'}}>Откуда</th>
-                        <th style={{width: '20%'}}>Куда</th>
+                        <th style={{width: '40%'}}>Местоположение</th>
                         <th>Дата создания</th>
                         <th style={{width: '20%'}}>Создатель</th>
                         <th>Номер машины</th>

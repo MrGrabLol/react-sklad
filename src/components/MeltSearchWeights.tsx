@@ -8,7 +8,6 @@ import {useState} from "react";
 //@ts-ignore
 export async function weightLoader({params}) {
     const part = params.part.replace('+', '/')
-    console.log(part)
     const response = await axios.post(BACKEND_URL + '/api/v1/search/weight', {
         mark: params.mark,
         diameter: Number(params.diameter),
