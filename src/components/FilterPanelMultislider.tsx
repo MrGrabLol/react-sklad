@@ -1,5 +1,5 @@
 import '../css/Multislider.css'
-import {Diameter} from "../interfaces/models";
+import {Diameter} from "../interfaces/exportedInterfaces";
 import {useState} from "react";
 
 interface FilterPanelMultisliderProps {

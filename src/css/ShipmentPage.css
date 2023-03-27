@@ -1,0 +1,237 @@
+.shipping-page {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*width: fit-content;*/
+    /*height: fit-content;*/
+}
+
+.shipping-block-container {
+    display: flex;
+    justify-content: center;
+}
+
+.shipping-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*display: inline-block;*/
+    width: 80%;
+    /*height: 55%;*/
+    margin-top: 10%;
+}
+
+.card-container-ship {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 19%);
+    grid-gap: 12px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.shipping-input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+    width: 100%;
+}
+
+.shipping-input-lower {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 4%;
+    width: 100%;
+}
+
+.shipping-view-container {
+    width: 100%;
+    height: fit-content;
+}
+
+.shipping-block input {
+    width: 100%;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    height: 30px;
+    font-size: 18px;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customer-bill {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: fit-content;
+}
+
+.customer-bill input {
+    width: 92%;
+}
+
+.customer-bill input:disabled {
+    border: 2px solid #d7d7d7;
+    background-color: #d7d7d7;
+}
+
+.shipping-block label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.shipping-btn {
+    display: inline-block;
+    margin-top: 6%;
+    /*margin: auto;*/
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #3b4da3;
+    font-size: 18px;
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+}
+
+.shipping-btn:hover:not(:disabled) {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.shipping-btn:active:not(:disabled) {
+    border: 2px solid #3b4da3;
+    background-color: white;
+    color: #3b4da3;
+}
+
+.shipping-btn:disabled {
+    background-color: #bbbbbb;
+}
+
+.bigger {
+    height: 45px;
+    font-size: 20px;
+    width: 350px;
+    margin-bottom: 25px;
+}
+
+.double-switch-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.double-switch {
+    display: flex;
+    flex-direction: row;
+    height: 36px;
+    align-items: center;
+    /*justify-content: space-evenly;*/
+    /*display: inline-block;*/
+    /*justify-content: center;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*width: 50%;*/
+    /*height: fit-content;*/
+    /*margin: auto;*/
+    border-radius: 6px;
+    border: 2px solid #3b4da3;
+}
+
+.double-switch-span {
+    width: 50%;
+    height: 100%;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #e3e3e3;
+    transition: background-color 0.2s linear;
+}
+
+.double-switch span:first-child {
+    border-right: 1px solid #3b4da3;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.double-switch span:last-child {
+    border-left: 1px solid #3b4da3;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.double-switch span:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+/*.form-container {*/
+/*    width: 1000px;*/
+/*    height: fit-content;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.form-input-field {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*.form-subinput-field {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+/*.form-container button {*/
+/*    !*display: inline-block;*!*/
+/*    width: 200px;*/
+/*    height: 35px;*/
+/*}*/
+
+/*.chck {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 100%;*/
+/*    !*justify-content: center;*!*/
+/*    border: 1px solid red;*/
+/*}*/
+
+/*.cont30 {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*justify-content: center;*!*/
+/*    width: 30%;*/
+/*}*/
+
+/*.cont40 {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*justify-content: center;*!*/
+/*    width: 40%;*/
+/*}*/
+
+/*.perc20 {*/
+/*    width: 20%;*/
+/*}*/
+
+/*.perc40 {*/
+/*    width: 40%;*/
+/*}*/
+
+/*.perc25 {*/
+/*    width: 25%;*/
+/*}*/
+
+/*.cont {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/

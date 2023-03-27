@@ -1,0 +1,138 @@
+.modalWindow {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBackground {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    z-index: 100;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modalContainer .body {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modalInput {
+    width: 100%;
+    height: fit-content;
+    padding: 15px 0;
+}
+
+.modalInput label {
+    float: left;
+    padding: 6px 0;
+    margin-left: -4px;
+}
+
+.modalInput input {
+    font-size: 16px;
+    width: 100%;
+    height: 32px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    margin-left: -4px;
+}
+
+#cancelBtn {
+    background-color: crimson;
+    /*box-shadow: 0 0 5px 5px crimson;*/
+}
+
+#cancelBtn:active {
+    background-color: white;
+    color: crimson;
+    border: 2px solid crimson;
+    box-shadow: 0 0 5px 5px crimson;
+}
+
+#confirmBtn {
+    background-color: #30b730;
+}
+
+#confirmBtn:active {
+    background-color: white;
+    color: #30b730;
+    border: 2px solid #30b730;
+    box-shadow: 0 0 5px 5px #30b730;
+}
+
+#cancelBtn:hover, #confirmBtn:hover {
+    opacity: 0.8;
+}
+
+#closeBtn {
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    transition: background-color 0.5s ease;
+}
+
+#closeBtn:hover {
+    background-color: crimson;
+    color: white;
+}
+
+#closeBtn:active {
+    background-color: white;
+    color: crimson;
+    box-shadow: 0 0 5px 5px crimson;
+}

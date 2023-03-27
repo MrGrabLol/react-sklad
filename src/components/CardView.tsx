@@ -1,10 +1,10 @@
 import {Card} from "./Card";
 import React from "react";
-import {IModelsCard} from "../interfaces/models";
+import {IPositionsResponse} from "../interfaces/exportedInterfaces";
 import '../css/CardView.css'
 
 interface CardViewProps {
-    cards: IModelsCard[]
+    cards: IPositionsResponse[]
 }
 
 export function CardView({cards}: CardViewProps) {

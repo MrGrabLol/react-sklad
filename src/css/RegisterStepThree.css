@@ -1,0 +1,141 @@
+.printable {
+    margin-top: 140px;
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+}
+
+.print-block {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.margin-top {
+    margin-top: 73px;
+}
+
+.small {
+    width: 58mm;
+    height: 59.5mm;
+}
+
+.small p {
+    font-weight: 500;
+    padding-left: 2mm;
+    font-size: 3mm;
+    line-height: 0;
+}
+
+.big p {
+    font-weight: 500;
+    font-size: 5mm;
+    padding-left: 2mm;
+}
+
+.small p.gost {
+    line-height: 3.5mm;
+    margin-bottom: -2.5mm;
+    margin-top: -9px;
+}
+
+.small img.barcode {
+    padding-left: 3mm;
+    margin-bottom: -2.8mm;
+    margin-top: 2mm;
+    height: 15mm;
+    width: 15mm;
+}
+
+.small img.logo {
+    margin-left: 2mm;
+    margin-bottom: -2.8mm;
+    margin-top: 2mm;
+    height: 15mm;
+    width: 35mm;
+}
+
+img.otk {
+    width: 32%;
+    float: right;
+    margin-right: 6%;
+    margin-top: -14%;
+    transform: rotate(-12deg);
+}
+
+.small span {
+    font-weight: bold;
+}
+
+.big img.logo {
+    width: 54mm;
+    height: 27mm;
+    padding-top: 10px;
+    margin-bottom: -6px;
+}
+
+.big img.barcode {
+    height: 25mm;
+    width: 25mm;
+    margin-bottom: -5px;
+    margin-left: 10px;
+}
+
+.big span {
+    font-weight: bold;
+}
+
+.big {
+    width: 85mm;
+    height: 99mm;
+}
+
+.big p.gost {
+    line-height: 24px;
+    margin-bottom: -15px;
+    margin-top: -12px;
+}
+
+.big p:not(.gost) {
+    line-height: 0;
+}
+
+.small-card, .big-card {
+    width: fit-content;
+    height: fit-content;
+}
+
+.small-card:hover, .big-card:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/*BUTTONS*/
+
+.print-button-container {
+    margin-top: 80px;
+    width: 100%;
+    height: 40px;
+}
+
+.printButton {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 45px;
+    width: 220px;
+    border: none;
+    border-radius: 6px;
+    background-color: #3b4da3;
+    color: white;
+}
+
+.printButton:hover {
+    cursor: pointer;
+    opacity: 0.89;
+}
+
+.printButton:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}

@@ -1,0 +1,56 @@
+.input-block {
+    text-align: center;
+    display: inline-block;
+    margin-top: 110px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.search-cards .card-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 19%);
+    grid-gap: 12px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.input-block .check-label {
+    width: 250px;
+    height: 32px;
+}
+
+.input-block input {
+    height: 32px;
+    width: 700px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+}
+
+.input-block button {
+    float: right;
+    height: 38px;
+    width: 104px;
+    margin-left: 14px;
+    background-color: #3b4da3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.input-block button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.input-block button:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}
+
+.card-id-confirm-scan {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}

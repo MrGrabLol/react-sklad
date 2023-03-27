@@ -1,0 +1,156 @@
+.modalContainerReserve {
+    width: 60%;
+    height: fit-content;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.adding-reserve {
+    height: 85%;
+}
+
+.titleReserve {
+    display: inline-block;
+    text-align: center;
+}
+
+.titleReserve h1 {
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.modalContainerReserve .body {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modalContainerReserve .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainerReserve .footer button {
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.reserve-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalInputReserve {
+    width: 48%;
+    height: fit-content;
+    padding: 15px 0;
+}
+
+.modalInputReserve label {
+    padding: 6px 0;
+}
+
+.modalInputReserve input:not(.extend-input) {
+    font-size: 16px;
+    width: 95%;
+    height: 32px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+
+.modalInputReserveSmall {
+    width: 23.5%;
+    height: fit-content;
+    padding: 15px 0;
+}
+
+.modalInputReserveSmall input:not(#except-input) {
+    font-size: 16px;
+    width: 90%;
+    height: 32px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.days-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.days-container button {
+    width: 32px;
+    height: 32px;
+    background-color: #3b4da3;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    margin-left: 4px;
+    text-align: center;
+}
+
+.days-container button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.days-container button:active {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}
+
+#except-input {
+    height: 32px;
+    font-size: 16px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    width: 55%;
+    text-align: center;
+}
+
+.modalInputReserveComment {
+    width: 98%;
+    height: fit-content;
+    padding: 15px 0;
+}
+
+.modalInputReserveComment textarea {
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    width: 90%;
+    margin-top: 8px;
+}
+
+.modalInputReserveLocation {
+    width: 98%;
+    height: fit-content;
+    padding: 15px 0;
+}
+

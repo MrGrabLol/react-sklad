@@ -1,9 +1,34 @@
+.sklad-container {
+    width: 100%;
+    height: 100%;
+}
+
+/*#root {*/
+/*    height: 0;*/
+/*    width: 400px;*/
+/*}*/
+
+/*html {*/
+/*    filter: invert();*/
+/*}*/
+
+/*#root {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
 .sidebar {
     position: fixed;
     float: left;
     width: 20%;
     height: 100%;
     text-align: center;
+    /*background-color: #d9d9d9;*/
+    background: linear-gradient(45deg, #737373, #d9d9d9);
+    /*border-bottom-right-radius: 18px;*/
+    /*border-top-right-radius: 18px;*/
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
 .mainbar {
@@ -11,12 +36,19 @@
     height: 100%;
     float: right;
     text-align: center;
+    transition: width 0.5s;
 }
 
 .image {
-    height: 105px;
+    height: 11.5%;
     margin-top: 40px;
     margin-bottom: 30px;
+    transition: filter 0.25s;
+}
+
+.image:hover {
+    cursor: pointer;
+    filter: invert(1);
 }
 
 .btn-exit {
@@ -24,11 +56,11 @@
     color: white;
     height: 40px;
     width: 100px;
-    font-family: 'Open Sans', regular;
-    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
     font-weight: 400;
     border-radius: 6px;
-    border: 0px;
+    border: 0;
     margin-top: 25px;
     margin-bottom: 30px;
     margin-right: 60px;
@@ -46,4 +78,51 @@
     background-color: white;
     color: #3b4da3;
     border: 2px solid #3b4da3;
+}
+
+/* The sidebar links */
+.a-container a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.a-container a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    opacity: 0;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #3b4da3;
+    color: white;
+    width: 0;
+    height: 50px;
+    border: none;
+    float: left;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    transition: opacity 0.3s, width 0.5s, background-color 0.2s, color 0.2s, border 0.2s;
+}
+
+.openbtn:hover {
+    background-color: white;
+    color: #3b4da3;
+    border-right: 2px solid #3b4da3;
+    border-top: 2px solid #3b4da3;
+    border-bottom: 2px solid #3b4da3;
 }

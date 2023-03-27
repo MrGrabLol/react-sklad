@@ -1,45 +1,45 @@
 .login {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
     width: 100%;
     height: 100%;
 }
 
 .login-panel {
-    left: 795px;
-    top: 315px;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    vertical-align: center;
-    display: block;
-    width: 350px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 3%;
 }
 
-.field {
-    display: inline-block;
+.login-panel p {
+    font-size: 20px;
 }
 
-.field input {
-    height: 20px;
-    background-color: gainsboro;
+.login-panel input {
+    font-size: 18px;
+    height: 28px;
     margin-left: 2px;
     margin-right: 2px;
-    width: 190px;
-    border: none;
-    border-radius: 2px;
+    width: 250px;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
 }
 
 .btn-login {
-    height: 35px;
-    width: 85px;
+    font-size: 20px;
+    height: 38px;
+    width: 120px;
     border-radius: 6px;
     border: none;
     background-color: #3b4da3;
     color: white;
-    cursor: pointer;
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .btn-login:active {
@@ -49,5 +49,6 @@
 }
 
 .btn-login:hover {
+    cursor: pointer;
     opacity: 0.89;
 }

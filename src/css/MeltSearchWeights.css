@@ -1,0 +1,54 @@
+.triple-switch-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.triple-switch {
+    display: flex;
+    width: 90%;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+}
+
+.triple-switch span {
+    display: flex;
+    /*border: 1px solid red;*/
+    width: 33.3%;
+    height: 40px;
+    align-items: center;
+    /*background-color: #e3e3e3;*/
+    transition: background-color 0.2s linear;
+}
+
+.triple-switch span:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.triple-switch span:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.item-notclicked {
+    background-color: #e3e3e3;
+}
+
+.triple-switch span:not(:last-child) {
+    border-right: 2px solid #3b4da3;
+}
+
+.triple-switch span label {
+    width: 100%;
+    font-size: 18px;
+}
+
+.triple-switch label:hover,
+.triple-switch span:hover{
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.item-clicked {
+    background-color: rgba(38, 130, 255, 0.49);
+}

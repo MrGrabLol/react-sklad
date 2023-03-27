@@ -1,60 +1,37 @@
 import '../css/Login.css'
 import React, {useState} from "react";
 import axios, {AxiosError} from "axios";
-import PropTypes from 'prop-types'
 import {ErrorMessage} from "../components/ErrorMessage";
+import {useNavigate} from 'react-router-dom';
+import icon from "../assets/logo_new.png"
+import {BACKEND_URL} from "../ConstConfig";
+import useToken from "../hooks/useToken";
 
-interface LoginPageProps {
-    setToken: (item: string) => void
-}
-
-export function LoginPage({setToken}: LoginPageProps) {
+export function LoginPage() {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
-    // const submitHandler = async () => {
-    //     try {
-    //         console.log(login)
-    //         console.log(password)
-    //         console.log(login)
-    //         console.log(1234567899877)
-    //         const response = await axios.post<ResponseBody>('http://localhost:8081/api/v1/auth/login', {
-    //             login: login,
-    //             password: password
-    //         })
-    //         console.log(login)
-    //         console.log(password)
-    //         console.log(response)
-    //         // doLogin(response.data)
-    //     } catch (e: unknown) {
-    //         const error = e as AxiosError
-    //         setError(error.message)
-    //     }
-    //     if (!error) {
-    //         redirect('/sklad')
-    //     }
-    // }
-
-    // async function logIn(credentials: { login: string; password: string; }) {
-    //     return fetch('http://localhost:8081/api/v1/auth/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(credentials)
-    //     })
-    //         .then(data => data.json())
-    // }
+    const {setToken} = useToken()
+    const navigate = useNavigate();
 
     const submitHandler = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8081/api/v1/auth/login', {
+            const responseLogin = await axios.post(BACKEND_URL + '/api/v1/auth/login', {
                 login,
                 password
             })
-            setToken(response.data.accessToken)
+            setToken(responseLogin.data.accessToken)
+            localStorage.setItem('expireTime', responseLogin.data.expireTime)
+            const responseWorker = await axios.get(BACKEND_URL + '/api/v1/worker', {
+                headers: {
+                    Authorization: 'Bearer ' + responseLogin.data.accessToken
+                }
+            })
+            localStorage.setItem('worker', responseWorker.data.name + ' ' + responseWorker.data.lastName)
+            localStorage.setItem('roles', responseWorker.data.roles)
+            localStorage.setItem('location', responseWorker.data.locations)
+            navigate("/")
         } catch (e: unknown) {
             const error = e as AxiosError
             setError(error.message)
@@ -62,28 +39,21 @@ export function LoginPage({setToken}: LoginPageProps) {
     }
 
     return (
-        <>
-            <div className='login'>
-                {error && <ErrorMessage error={error}/>}
-                <form onSubmit={submitHandler} className='login-panel'>
-                    <h1>Авторизация</h1>
-                    <span className='field'>
+        <div className='login'>
+            {error && <ErrorMessage error={error}/>}
+            <form onSubmit={submitHandler} className='login-panel'>
+                <img src={icon} alt={'Logo'}/>
+                <h1>Авторизация</h1>
+                <span className='field'>
                     <p>Логин:</p>
                     <input type="text" value={login} onChange={event => setLogin(event.target.value)}/>
                 </span>
-                    <span className='field'>
+                <span className='field'>
                     <p>Пароль:</p>
                     <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                 </span>
-                    <br/>
-                    <button type='submit' className='btn-login'>Войти</button>
-                </form>
-            </div>
-        </>
+                <button type='submit' className='btn-login'>Войти</button>
+            </form>
+        </div>
     )
-}
-
-
-LoginPage.propTypes = {
-    setToken: PropTypes.func.isRequired
 }

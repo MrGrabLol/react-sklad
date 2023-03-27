@@ -1,0 +1,28 @@
+.confirm-reserve-btn {
+    height: 40px;
+    width: 350px;
+    border: none;
+    background-color: #3b4da3;
+    color: white;
+    font-size: 20px;
+    border-radius: 6px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.confirm-reserve-btn:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.confirm-reserve-btn:active {
+    color: #3b4da3;
+    background-color: white;
+    border: 2px solid #3b4da3;
+}
+
+.confirm-reserve-btn:disabled {
+    background-color: gray;
+    border: none;
+    opacity: 0.8;
+}

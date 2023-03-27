@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
-
 .block {
     align-items: center;
     text-align: center;
     vertical-align: middle;
+    /*float: left;*/
 }
 
 .sidebar-btn {
@@ -14,19 +13,62 @@
     vertical-align: middle;
     padding-top: 18px;
     padding-bottom: 18px;
-    width: 200px;
+    width: 60%;
     margin-top: 8px;
     border-radius: 10px;
     background-color: #3b4da3;
     color: white;
-    font-family: 'Open Sans', regular;
+    font-size: 102%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
 }
 
-.sidebar-btn:active {
-    background-color: white;
-    color: #3b4da3;
+@media {
+    .sidebar-btn {
+        min-width: 142px;
+    }
 }
 
 .sidebar-btn:hover {
     opacity: 0.89;
 }
+
+.span-hoverable-sidebar {
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 170%;
+    font-family: 'Open Sans', sans-serif;
+    transition: color 0.3s, background-color 0.3s;
+    /*float: left;*/
+}
+
+.span-hoverable-active,
+.span-hoverable-sidebar:hover {
+    background-color: white;
+    color: #3b4da3;
+}
+
+.sidebar-submenu {
+    display: inline-block;
+    transition: height 0.3s;
+}
+
+.sidebar-submenu-active {
+    height: fit-content;
+}
+
+.sidebar-span {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav .active {
+    background-color: white;
+    color: #3b4da3;
+}
+

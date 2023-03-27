@@ -1,0 +1,181 @@
+.send-page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-page-input-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.send-page-input {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.send-page-input input:not(.car-plate-left input, .car-plate-right input),
+.send-page-input-plate input:not(.car-plate-left input, .car-plate-right input) {
+    width: 100%;
+    height: 28px;
+    border-radius: 6px;
+    border: 2px solid #3b4da3;
+    font-size: 16px;
+}
+
+.send-page-input label,
+.send-page-input-plate label {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.plate {
+    width: 16%;
+}
+
+/*.plate input {*/
+/*    text-align: center;*/
+/*}*/
+
+.find-button {
+    width: 11%;
+}
+
+.send-page-input-button {
+    height: 30px;
+    border-radius: 6px;
+    border: 2px solid #3b4da3;
+    background-color: #3b4da3;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+}
+
+.send-page-confirm-button {
+    height: 48px;
+    font-size: 26px;
+    width: 320px;
+    background-color: #3b4da3;
+    color: white;
+    border: 2px solid #3b4da3;
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.send-page-confirm-button:hover:not(:disabled),
+.send-page-input-button:hover {
+    opacity: 0.89;
+    cursor: pointer;
+}
+
+.send-page-input-button:active,
+.send-page-confirm-button:active:not(:disabled) {
+    background-color: white;
+    color: #3b4da3;
+    border: 2px solid #3b4da3;
+}
+
+.send-page-confirm-button:disabled {
+    background-color: gray;
+    border: 2px solid gray;
+}
+
+.car-plate-div {
+    /*display: inline-block;*/
+    height: 38px;
+    width: 190px;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.car-plate-left {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.car-plate-left input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    text-align: center;
+    font-size: 29px;
+    text-transform: uppercase;
+}
+
+.car-plate-right {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.car-plate-right input {
+    box-sizing: border-box;
+    height: 23px;
+    width: 100%;
+    border-top-right-radius: 4px;
+    border-bottom: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.lower-plate-part {
+    display: flex;
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lower-plate-part span {
+    display: inline-block;
+    font-size: 10px;
+    width: 50%;
+    /*height: 100%;*/
+    float: left;
+    margin-left: -5px;
+}
+
+.lower-plate-part .flag-container {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid black;
+    height: 68%;
+    width: 25%;
+    /*margin-bottom: 1px;*/
+    /*float: right;*/
+}
+
+.rus-flag {
+    /*border-bottom-right-radius: 4px;*/
+
+    /*box-sizing: border-box;*/
+    /*display: inline-block;*/
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Russia.png);
+}
