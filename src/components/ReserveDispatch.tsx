@@ -1,7 +1,5 @@
 import {useLoaderData, useNavigate} from "react-router-dom";
-import {IReserve} from "../interfaces/exportedInterfaces";
 import {ReserveDetailsProps} from "./ReserveDetails";
-import {CardView} from "./CardView";
 import '../css/ReserveDispatch.css'
 import axios, {AxiosError} from "axios";
 import {useState} from "react";

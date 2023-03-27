@@ -71,10 +71,12 @@ export function ReserveDetails() {
                 </table>
             </div>
             {reserve.positions.length !== 0 &&
-                <div className='search-cards'>
-                    <div>
-                        <h2>Содержит:</h2>
-                        <CardView cards={reserve.positions}/>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className='search-cards' style={{width: '97%'}}>
+                        <div>
+                            <h2>Содержит:</h2>
+                            <CardView cards={reserve.positions}/>
+                        </div>
                     </div>
                 </div>
             }

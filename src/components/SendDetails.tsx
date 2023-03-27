@@ -62,9 +62,11 @@ export function SendDetails() {
                     </tr>
                 </table>
             </div>
-            <div className='search-cards' style={{marginTop: '10px'}}>
-                <h2>Перевозятся:</h2>
-                <CardView cards={transfer.positions}/>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div className='search-cards' style={{marginTop: '10px', width: '97%'}}>
+                    <h2>Перевозятся:</h2>
+                    <CardView cards={transfer.positions}/>
+                </div>
             </div>
         </>
     )

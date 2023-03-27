@@ -1,19 +1,19 @@
 import '../css/ShipmentPage.css'
 import {useState} from "react";
 import axios, {AxiosError} from "axios";
-import {ISecondStepShipping, IShipmentResponse, IShipping} from "../interfaces/exportedInterfaces";
+import {IShipmentResponse} from "../interfaces/exportedInterfaces";
 import {SecondStepShipping} from "../components/SecondStepShipping";
 import {BACKEND_URL} from "../ConstConfig";
-import {useNavigate} from "react-router-dom";
 
 export function DispatchPage() {
-    const [customer, setCustomer] = useState('')
-    const [bill, setBill] = useState('')
-    const [secondStepShipping, setSecondStepShipping] = useState(false)
+    const [customer, setCustomer] = useState<string>('')
+    const [bill, setBill] = useState<string>('')
+    const [secondStepShipping, setSecondStepShipping] = useState<boolean>(false)
     const [includedArray, setIncludedArray] = useState<string>('')
     const [excludedArray, setExcludedArray] = useState<string>('')
     const [shipmentResponse, setShipmentResponse] = useState<IShipmentResponse>({packages: [], positions: []})
-    const [error, setError] = useState('')
+    const [error, setError] = useState<string>('')
+    const [workStatus, setWorkStatus] = useState<boolean>(false)
 
     async function getCards(event: { preventDefault: () => void; }) {
         event.preventDefault()
@@ -32,7 +32,7 @@ export function DispatchPage() {
                         Authorization: 'Bearer ' + localStorage.getItem('token')
                     }
                 })
-                if (response.data.packages.length === 0 && response.data.positions.length === 0 ) {
+                if (response.data.packages.length === 0 && response.data.positions.length === 0) {
                     setError('Эти позиции уже отгружены или зарезервированы')
                 } else {
                     setShipmentResponse(response.data)
@@ -47,10 +47,24 @@ export function DispatchPage() {
 
     return (
         <div className='shipping-page'>
-            {!secondStepShipping &&
-            <form className='shipping-block' onSubmit={getCards}>
-                {error && <h2 style={{color: 'red'}}>{error}</h2>}
-                    <div>
+            <div className='shipping-block-container'>
+                {!secondStepShipping &&
+                    <form className='shipping-block' onSubmit={getCards}>
+                        {error && <h2 style={{color: 'red'}}>{error}</h2>}
+                        <div className='double-switch'>
+                            <span id='double-switch-one' className='double-switch-span item-clicked' onClick={() => {
+                                document.getElementById('double-switch-one')!.classList.add('item-clicked')
+                                document.getElementById('double-switch-two')!.classList.remove('item-clicked')
+                                setWorkStatus(false)
+                                setCustomer('')
+                            }}>Отгрузка</span>
+                            <span id='double-switch-two' className='double-switch-span' onClick={() => {
+                                document.getElementById('double-switch-one')!.classList.remove('item-clicked')
+                                document.getElementById('double-switch-two')!.classList.add('item-clicked')
+                                setWorkStatus(true)
+                                setCustomer('В работу')
+                            }}>В работу</span>
+                        </div>
                         <div className='shipping-input'>
                             <label htmlFor="ship">Отгрузить</label>
                             <input id='ship' type="text" value={includedArray} onKeyDown={(event) => {
@@ -73,28 +87,29 @@ export function DispatchPage() {
                                 setExcludedArray(event.target.value.replace(/[^,1234567890]+/g, ''))
                             }} placeholder=' ID позиций'/>
                         </div>
-                        <div className='shipping-input'>
+                        <div className='shipping-input-lower'>
                             <div className='customer-bill'>
                                 <label htmlFor="customer">Покупатель</label>
-                                <input id='customer' type="text" value={customer} onChange={(event) => setCustomer(event.target.value)}
-                                       required placeholder=' Наименование организации/ФИО/...'/>
+                                <input id='customer' type="text" value={customer}
+                                       onChange={(event) => setCustomer(event.target.value)}
+                                       required placeholder=' Организация/ФИО/...' disabled={workStatus}/>
                             </div>
                             <div className='customer-bill'>
                                 <label htmlFor="bill">Счёт</label>
                                 <input id='bill' type="text" value={bill}
                                        onChange={(event) => setBill(event.target.value.replace(/[^1234567890]+/g, ''))}
-                                       required placeholder=' Номер счёта'/>
+                                       required placeholder=' Номер счёта' disabled={workStatus}/>
                             </div>
                         </div>
                         <button type='submit' className='shipping-btn'>Получить позиции</button>
-                    </div>
-            </form>
-            }
-            <div className='shipping-margin'>
-                {secondStepShipping &&
-                    <SecondStepShipping shipmentResponse={shipmentResponse} bill={bill} customer={customer}/>
+                    </form>
                 }
             </div>
+            {secondStepShipping &&
+                <div className='shipping-margin'>
+                    <SecondStepShipping shipmentResponse={shipmentResponse} bill={bill} customer={customer}/>
+                </div>
+            }
         </div>
     )
 }

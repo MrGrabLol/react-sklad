@@ -88,7 +88,7 @@ export function PositionDetails() {
                         card.type === 'Позиция' && card.pack !== null &&
                         <tr>
                             <td className='header'>Поддон</td>
-                            <td><Link to={'/position/' + card.pack}>{card.pack}</Link></td>
+                            <td><Link to={'/position/' + card.pack + '/info'}>{card.pack}</Link></td>
                         </tr>
                     }
                 </table>
@@ -96,11 +96,12 @@ export function PositionDetails() {
             <div className='search-cards'>
                 {
                     card.type === 'Поддон' && card.positions.length > 0 &&
-                    <div>
-                        <h2>Содержит:</h2>
-                        <CardView cards={card.positions}/>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <div style={{width: '97%'}}>
+                            <h2>Содержит:</h2>
+                            <CardView cards={card.positions}/>
+                        </div>
                     </div>
-
                 }
             </div>
         </>

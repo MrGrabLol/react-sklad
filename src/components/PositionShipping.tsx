@@ -13,12 +13,13 @@ export function PositionShipping() {
     const {card} = useLoaderData()
 
     const [customWeight, setCustomWeight] = useState(card.weight)
-    const [bill, setBill] = useState('')
-    const [customer, setCustomer] = useState('')
-    const [error, setError] = useState('')
-    const [secondStepDispatch, setSecondStepDispatch] = useState(false)
-    const [secondStepFullDispatch, setSecondStepFullDispatch] = useState(false)
+    const [bill, setBill] = useState<string>('')
+    const [customer, setCustomer] = useState<string>('')
+    const [error, setError] = useState<string>('')
+    const [secondStepDispatch, setSecondStepDispatch] = useState<boolean>(false)
+    const [secondStepFullDispatch, setSecondStepFullDispatch] = useState<boolean>(false)
     const [dispatchResponse, setDispatchResponse] = useState<IThirdStepShipping>({print: [], new: []})
+    const [workStatus, setWorkStatus] = useState<boolean>(false)
 
     function setArray() {
         let array: IShipping[] = []
@@ -108,21 +109,37 @@ export function PositionShipping() {
                     {secondStepFullDispatch && <h2 style={{color: 'green'}}>Позиция успешно отгружена</h2>}
                     {error && <h2 style={{color: 'red'}}>Ошибка: {error}</h2>}
                     {!secondStepDispatch &&
-                        <form className='dispatch-container-form' onSubmit={submitHandler}>
+                        <form className='dispatch-container-form' onSubmit={submitHandler} style={{marginTop: '50px'}}>
+                            <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+                                <div className='double-switch' style={{width: '50%'}}>
+                                    <span id='double-switch-one' className='double-switch-span item-clicked' onClick={() => {
+                                        document.getElementById('double-switch-one')!.classList.add('item-clicked')
+                                        document.getElementById('double-switch-two')!.classList.remove('item-clicked')
+                                        setWorkStatus(false)
+                                        setCustomer('')
+                                    }}>Отгрузка</span>
+                                    <span id='double-switch-two' className='double-switch-span' onClick={() => {
+                                        document.getElementById('double-switch-one')!.classList.remove('item-clicked')
+                                        document.getElementById('double-switch-two')!.classList.add('item-clicked')
+                                        setWorkStatus(true)
+                                        setCustomer('В работу')
+                                    }}>В работу</span>
+                                </div>
+                            </div>
                             <div className='dispatch-input'>
                                 <div className='dispatch-input-field'>
                                     <label htmlFor="customer">Покупатель</label>
                                     <input id='customer' type="text"
                                            onChange={(event) => setCustomer(event.target.value)} required
                                            placeholder=' Наименование организации/ФИО/...' value={customer}
-                                           disabled={secondStepFullDispatch}/>
+                                           disabled={secondStepFullDispatch || workStatus}/>
                                 </div>
                                 <div className='dispatch-input-field'>
                                     <label htmlFor="bill">Счёт</label>
                                     <input id='bill' type="text" required placeholder=' Номер счёта'
                                            value={bill}
                                            onChange={(event) => setBill(event.target.value.replace(/[^1234567890]+/g, ''))}
-                                           disabled={secondStepFullDispatch}/>
+                                           disabled={secondStepFullDispatch || workStatus}/>
                                 </div>
                             </div>
                             {(card.type === 'Поддон' || card.type === 'поддон') &&

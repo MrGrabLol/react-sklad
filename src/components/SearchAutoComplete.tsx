@@ -54,6 +54,7 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
             showSuggestions: false,
             userInput: event.currentTarget.innerText
         });
+        setChecking(event.currentTarget.innerText)
     }
 
     const onKeyDownHandler = (event: { keyCode: number; }) => {
@@ -177,6 +178,7 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
                 placeholder='Начните ввод: плавка/партия/марка'
                 style={{fontSize: '16px'}}
             />
+            <br/>
             {suggestList()}
         </>
     );
