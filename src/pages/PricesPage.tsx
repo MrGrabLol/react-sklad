@@ -20,11 +20,11 @@ export function PricesPage() {
     const [chosenWireAdmin, setChosenWireAdmin] = useState<string>('')
     const [chosenMaterialAdmin, setChosenMaterialAdmin] = useState<string>('')
     const [chosenAlloyNameAdmin, setChosenAlloyNameAdmin] = useState<string>('')
-    const [diameterMin, setDiameterMin] = useState<number>()
-    const [diameterMax, setDiameterMax] = useState<number>()
-    const [loss, setLoss] = useState<number>()
-    const [expenses, setExpenses] = useState<number>()
-    const [margin, setMargin] = useState<number>()
+    const [diameterMin, setDiameterMin] = useState<string>()
+    const [diameterMax, setDiameterMax] = useState<string>()
+    const [loss, setLoss] = useState<string>()
+    const [expenses, setExpenses] = useState<string>()
+    const [margin, setMargin] = useState<string>()
     // const [composition, setComposition] = useState<IComposition[]>([])
     const [alComposition, setAlComposition] = useState<number>(0)
     const [niComposition, setNiComposition] = useState<number>(0)
@@ -173,11 +173,11 @@ export function PricesPage() {
                     material: chosenWireAdmin,
                     element: chosenMaterialAdmin,
                     name: chosenAlloyNameAdmin,
-                    diameterMin: diameterMin,
-                    diameterMax: diameterMax,
-                    loss: loss,
-                    expenses: expenses,
-                    margin: margin,
+                    diameterMin: Number(diameterMin),
+                    diameterMax: Number(diameterMax),
+                    loss: Number(loss),
+                    expenses: Number(expenses),
+                    margin: Number(margin),
                     composition: composition
                 }, {
                     headers: {
@@ -530,22 +530,22 @@ export function PricesPage() {
                         <span>&#8594;</span>
                     </div>
                     <div id='block3a' className='price-block'>
-                        <input type="text" placeholder='Введите название сплава' value={chosenAlloyNameAdmin} onChange={event => setChosenAlloyNameAdmin(event.target.value)}/>
-                        <input type="text" placeholder='Мин. диаметр' value={diameterMin} onChange={event => setDiameterMin(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Макс. диаметр' value={diameterMax} onChange={event => setDiameterMax(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Потери' value={loss} onChange={event => setLoss(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Затраты' value={expenses} onChange={event => setExpenses(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Маржа' value={margin} onChange={event => setMargin(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
+                        <input className='price-block-input' type="text" placeholder='Введите название сплава' value={chosenAlloyNameAdmin} onChange={event => setChosenAlloyNameAdmin(event.target.value)} required/>
+                        <input className='price-block-input' type="text" placeholder='Мин. диаметр' value={diameterMin} onChange={event => setDiameterMin(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
+                        <input className='price-block-input' type="text" placeholder='Макс. диаметр' value={diameterMax} onChange={event => setDiameterMax(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
+                        <input className='price-block-input' type="text" placeholder='Потери' value={loss} onChange={event => setLoss(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
+                        <input className='price-block-input' type="text" placeholder='Затраты' value={expenses} onChange={event => setExpenses(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
+                        <input className='price-block-input' type="text" placeholder='Маржа' value={margin} onChange={event => setMargin(event.target.value.replace(/[^.1234567890]+/g, ''))} required/>
                     </div>
                     <div id='arrow-block3a' className='arrow-block'>
                         <span>&#8594;</span>
                     </div>
                     <div id='block4a' className='price-block'>
                         <p>Состав: </p>
-                        <input type="text" placeholder='Al' onChange={event => setAlComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Ni' onChange={event => setNiComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Fe' onChange={event => setFeComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
-                        <input type="text" placeholder='Cu' onChange={event => setCuComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
+                        <input className='price-block-input' type="text" placeholder='Al' onChange={event => setAlComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
+                        <input className='price-block-input' type="text" placeholder='Ni' onChange={event => setNiComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
+                        <input className='price-block-input' type="text" placeholder='Fe' onChange={event => setFeComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
+                        <input className='price-block-input' type="text" placeholder='Cu' onChange={event => setCuComposition(Number(event.target.value.replace(/[^.1234567890]+/g, '')))}/>
                         {/*<button type='button' onClick={addInput}>Добавить поле</button>*/}
                         {/*{arr.map((item, i) => {*/}
                         {/*    return (*/}
