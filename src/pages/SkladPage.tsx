@@ -1,8 +1,9 @@
 import icon from "../assets/logo_new_v2.png";
 import {Navigation} from "../components/Navigation";
-import {Outlet, useLocation, useNavigate} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import useToken from "../hooks/useToken";
+import {ModalWindowAddUser} from "../components/ModalWindowAddUser";
 
 export function openNav() {
     document.getElementById("mySidebar")!.style.width = "20%"
@@ -32,6 +33,7 @@ export function SkladPage() {
 
     const {setToken} = useToken()
     const navigate = useNavigate()
+    const [modal, setModal] = useState(false)
 
     useEffect(() => {
         if (!localStorage.getItem('token') || Number(localStorage.getItem('expireTime')!) * 1000 < Date.now()) {
@@ -52,10 +54,17 @@ export function SkladPage() {
                     <Navigation/>
                 </div>
                 <div className='mainbar' id='myMainbar'>
+                    {modal && <ModalWindowAddUser openModal={setModal}/>}
                     <button className='btn-exit' onClick={() => {
                         setToken('')
                         exitHandler()
                     }}>Выйти</button>
+                    {
+                        localStorage.getItem('roles')?.includes('ADMIN') &&
+                            <button className='btn-admin' onClick={() => setModal(true)}>
+                                Добавить пользователя
+                            </button>
+                    }
                     <button className="openbtn" id='btnOpenNav' onClick={() => {
                         openNav()
                     }}>&#9776;</button>

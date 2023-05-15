@@ -69,12 +69,30 @@
     top: 0;
 }
 
-.btn-exit:hover {
+.btn-admin {
+    background-color: #3b4da3;
+    color: white;
+    height: 40px;
+    width: 270px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 0;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    margin-right: 175px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btn-exit:hover, .btn-admin:hover {
     opacity: 0.89;
     cursor: pointer;
 }
 
-.btn-exit:active {
+.btn-exit:active, .btn-admin:active {
     background-color: white;
     color: #3b4da3;
     border: 2px solid #3b4da3;

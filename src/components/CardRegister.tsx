@@ -35,8 +35,6 @@ export function CardRegister({
                                  weightBlock,
                                  manufacturerBlock,
                                  commentBlock,
-                                 registerProp,
-                                 setRegisterProp,
                                  arrayIndex,
                                  mainArray,
                                  packs,
@@ -46,7 +44,7 @@ export function CardRegister({
                                  validArray
                              }: CardRegisterProps) {
 
-    const [customDiameter, setCustomDiameter] = useState<string>(mainArray[arrayIndex].diameter)
+    const [customDiameter, setCustomDiameter] = useState<string>(String(mainArray[arrayIndex].diameter))
     const [customPacking, setCustomPacking] = useState<string>(mainArray[arrayIndex].packing)
     const [customPart, setCustomPart] = useState<string>(mainArray[arrayIndex].part)
     const [customPlav, setCustomPlav] = useState<string>(mainArray[arrayIndex].plav)
@@ -101,7 +99,7 @@ export function CardRegister({
         }
     }
 
-    mainArray[arrayIndex].diameter = customDiameter
+    mainArray[arrayIndex].diameter = Number(customDiameter)
     mainArray[arrayIndex].packing = customPacking.trim()
     mainArray[arrayIndex].part = customPart.trim()
     mainArray[arrayIndex].plav = customPlav.trim()
