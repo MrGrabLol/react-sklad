@@ -12,6 +12,8 @@ interface SearchAutoCompleteProps {
 export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) {
     const controllerRef = useRef<AbortController | null>();
     const [checking, setChecking] = useState('')
+    const [autocomplete, setAutocomplete] = useState(false)
+    const [ulFocus, setUlFocus] = useState(false)
 
     useEffect(() => {
         onChangeHandler()
@@ -107,7 +109,7 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
         if (state.showSuggestions && state.userInput) {
             if (state.markSuggestions.length || state.partSuggestions.length || state.heatSuggestions.length) {
                 suggestionsListComponent = (
-                    <ul className="suggestions">
+                    <ul onMouseOver={() => setUlFocus(true)} onMouseOut={() => setUlFocus(false)} className="suggestions">
                         {
                             state.markSuggestions.length > 0 &&
                             (<li className='suggestion-title'>Марки</li>)}{
@@ -177,9 +179,17 @@ export function SearchAutoComplete ({state, setState}: SearchAutoCompleteProps) 
                 value={checking}
                 placeholder='Начните ввод: плавка/партия/марка'
                 style={{fontSize: '16px'}}
+                onFocus={() => setAutocomplete(true)}
+                onBlur={() => {
+                    if (ulFocus) {
+                        return
+                    } else {
+                        setAutocomplete(false)
+                    }
+                }}
             />
             <br/>
-            {suggestList()}
+            {autocomplete && suggestList()}
         </>
     );
 }
