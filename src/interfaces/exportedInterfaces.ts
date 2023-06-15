@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export interface IModels {
     mark: string,
     diameter: string,
@@ -82,7 +84,7 @@ export interface SearchAutocompleteResponse {
 
 export interface IPositionModel {
     mark: string,
-    diameter: string,
+    diameter: number,
     packing: string,
     plav: string,
     part: string,
@@ -195,7 +197,8 @@ export interface IReserve {
     dueDate: string,
     positions: IPositionsResponse[],
     location: string,
-    status: string
+    status: string,
+    worker: string
 }
 
 export interface IWorker {
@@ -217,4 +220,20 @@ export interface ISendHistoryFields {
 
 export interface ISendHistory {
     transfers: ISendHistoryFields[]
+}
+
+export interface IAlloy {
+    minDiameter: number,
+    maxDiameter: number,
+    id: number
+}
+
+export interface IReceivedAlloy {
+    name: string,
+    alloys: IAlloy[]
+}
+
+export interface IComposition {
+    element: string,
+    value: number
 }

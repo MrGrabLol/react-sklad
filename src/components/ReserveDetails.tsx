@@ -49,6 +49,10 @@ export function ReserveDetails() {
                         <td>{reserve.customer}</td>
                     </tr>
                     <tr>
+                        <td className='header'>Создатель</td>
+                        <td>{reserve.worker}</td>
+                    </tr>
+                    <tr>
                         <td className='header'>Счёт</td>
                         <td>{reserve.bill}</td>
                     </tr>

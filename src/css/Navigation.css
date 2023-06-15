@@ -2,7 +2,6 @@
     align-items: center;
     text-align: center;
     vertical-align: middle;
-    /*float: left;*/
 }
 
 .sidebar-btn {
@@ -42,7 +41,19 @@
     font-size: 170%;
     font-family: 'Open Sans', sans-serif;
     transition: color 0.3s, background-color 0.3s;
-    /*float: left;*/
+    /*text-align: center;*/
+    /*vertical-align: center;*/
+}
+
+.span-hoverable-sidebar span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.span-hoverable-sidebar span {
+    margin-left: 30px;
 }
 
 .span-hoverable-active,
@@ -52,17 +63,56 @@
 }
 
 .sidebar-submenu {
-    display: inline-block;
-    transition: height 0.3s;
+    /*position: absolute;*/
+    /*display: inline-block;*/
+    /*flex-direction: column;*/
+    /*display: inline-block;*/
+    /*transition: height 0.3s;*/
+    /*max-height: 0;*/
+    /*width: 0;*/
+    /*visibility: hidden;*/
+    /*height: 0;*/
+    /*max-height: 0;*/
+    /*height: 0;*/
+    /*height: 0;*/
+    /*width: 0;*/
+    max-height: 0;
+    /*height: 0;*/
+    /*width: 0;*/
+    overflow: hidden;
+    list-style-type: none;
+    transition: max-height 0.2s linear;
+    margin: 0;
+    padding: 0;
 }
 
-.sidebar-submenu-active {
-    height: fit-content;
+.sidebar-submenu li {
+    display: flex;
+    align-items: center;
+    /*width: 100%;*/
+    height: 40px;
+    font-size: 22px;
+    /*text-align: center;*/
+    /*vertical-align: center;*/
+    transition: all 0.2s;
+}
+
+.sidebar-submenu li:hover {
+    padding-left: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.sidebar-submenu li::before {
+    content: '';
+    width: 30px;
+    height: inherit;
+    border-right: 1px solid black;
 }
 
 .sidebar-span {
     display: inline-block;
     width: 100%;
+    /*height: 0;*/
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
 }
@@ -71,4 +121,28 @@ nav .active {
     background-color: white;
     color: #3b4da3;
 }
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-right: 40px;
+}
+
+.down {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    transition: transform 0.25s;
+}
+
+.adown {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+/*.visible {*/
+/*    height: 600px;*/
+/*    max-height: fit-content;*/
+/*}*/
 

@@ -20,14 +20,14 @@
 }
 
 .small p {
-    font-weight: 500;
+    font-weight: 600;
     padding-left: 2mm;
     font-size: 3mm;
     line-height: 0;
 }
 
 .big p {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 5mm;
     padding-left: 2mm;
 }

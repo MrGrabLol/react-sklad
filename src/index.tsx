@@ -27,6 +27,7 @@ import {ReserveDetails} from "./components/ReserveDetails";
 import {WelcomePage} from "./pages/WelcomePage";
 import {SendHistoryPage} from "./pages/SendHistoryPage";
 import {SendDetails, transferLoader} from "./components/SendDetails";
+import {PricesPage} from "./pages/PricesPage";
 
 const JSXRoutes = (
     <>
@@ -46,6 +47,7 @@ const JSXRoutes = (
                 <Route path='/send-details/:id' element={<SendDetails/>} loader={transferLoader}/>
                 <Route path='/send-history' element={<SendHistoryPage/>}/>
                 <Route path='/reserve' element={<ReservePage/>}/>
+                <Route path='/prices' element={<PricesPage/>}/>
             </>
         }/>
         <Route path='/login' element={<LoginPage/>}/>

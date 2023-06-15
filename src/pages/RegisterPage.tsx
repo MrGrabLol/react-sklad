@@ -20,7 +20,7 @@ interface PartValidation {
     }
 }
 
-interface SelectFields {
+export interface SelectFields {
     value: string,
     label: string
 }
@@ -45,7 +45,7 @@ export function RegisterPage() {
         plav: '',
         manufacturer: '',
         weight: 0,
-        diameter: '',
+        diameter: 0,
         comment: '',
         standard: {
             mark: '',
@@ -101,7 +101,7 @@ export function RegisterPage() {
                     plav: plav.trim(),
                     manufacturer: manufacturer.trim(),
                     weight: Number(weight),
-                    diameter: String(Number(diameter)),
+                    diameter: Number(diameter),
                     comment: comment.trim(),
                     standard: {
                         mark: mark.trim(),
@@ -134,7 +134,7 @@ export function RegisterPage() {
                             plav: plav.trim(),
                             manufacturer: manufacturer.trim(),
                             weight: Number(weight),
-                            diameter: String(Number(diameter)),
+                            diameter: Number(diameter),
                             comment: comment.trim(),
                             standard: {
                                 mark: mark.trim(),

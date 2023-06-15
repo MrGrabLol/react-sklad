@@ -43,6 +43,11 @@
     font-size: 18px;
 }
 
+.triple-switch span .triple-switch-label-smaller {
+    font-size: 13px;
+    /*font-weight: bold;*/
+}
+
 .triple-switch label:hover,
 .triple-switch span:hover{
     opacity: 0.89;

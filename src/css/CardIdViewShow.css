@@ -19,7 +19,23 @@
     height: 45px;
     font-size: 20px;
     border-bottom: 2px solid lightgray;
+    /*box-sizing: border-box;*/
     /*border: 2px solid red*/
+}
+
+.one-card-table td:not(.header) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.one-card-table td input,
+.one-card-table td select {
+    /*box-sizing: border-box;*/
+    width: 95%;
+    height: 90%;
+    font-size: 22px;
+    text-align: center;
 }
 
 .one-card-table tr:last-child td {
@@ -34,4 +50,44 @@
 .mainbar-container {
     justify-content: center;
     display: flex;
+}
+
+.btn-position-edit {
+    width: 270px;
+    height: 40px;
+    background-color: #3b4da3;
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-position-edit:hover {
+    opacity: 0.89;
+}
+
+.btn-position-edit:active {
+    color: #3b4da3;
+    background-color: white;
+    border: 2px solid #3b4da3;
+}
+
+.edit-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.edit-btn-container button {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.edit-btn-container .green {
+    background-color: #019801;
+}
+
+.edit-btn-container .red {
+    background-color: crimson;
 }

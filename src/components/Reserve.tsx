@@ -32,6 +32,7 @@ export function Reserve({reserve}: ReserveProps) {
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Вес:</span> {reserve.weight}</p>
                 {reserve.comment && <p className="card-item__text reserve-font"><span className='reserve-header'>Комментарий:</span> {reserve.comment}</p>}
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Покупатель:</span> {reserve.customer}</p>
+                <p className='card-item__text reserve-font'><span className='reserve-header'>Создатель:</span> {reserve.worker}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Счёт:</span> {reserve.bill}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Локация:</span> {reserve.location}</p>
                 <p className="card-item__text reserve-font"><span className='reserve-header'>Дата создания:</span> {reserve.creationDate}</p>
